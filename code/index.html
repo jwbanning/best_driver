@@ -1,18 +1,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
-    <!-- This page is copyright Elated Communications Ltd. (www.elated.com) -->
+    <title></title>
 
-    <title>JavaScript tabs example</title>
-
-<!-- JVECTOR -->
+    <!-- JVECTOR -->
     <link rel="stylesheet" href="css/jquery-jvectormap-1.2.2.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/mapping.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen"/>
-    
-    <script src="js/jquery-1.9.1.js"></script>
 
-    <script src="js/jquery-jvectormap.js"></script>
+
+    <script src="js/jquery-1.9.1.js"></script>
     <script src="js/jquery-mousewheel.js"></script>
-    <script src="js/jvectormap.js"></script>
+    <script src="http://jvectormap.com/js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="assets/jquery-jvectormap-us-aea-en.js"></script>
 
   <script>
     $(function(){
@@ -116,45 +114,11 @@
         }
       });
 
-      $('.list-markers :checkbox').change(function(){
-        var index = $(this).closest('li').attr('data-marker-index');
-
-        if ($(this).prop('checked')) {
-          map.addMarker( index, markers[index], [values1[index], values2[index]] );
-        } else {
-          map.removeMarkers( [index] );
-        }
-      });
-      $('.button-add-all').click(function(){
-        $('.list-markers :checkbox').prop('checked', true);
-        map.addMarkers(markers, [values1, values2]);
-      });
-      $('.button-remove-all').click(function(){
-        $('.list-markers :checkbox').prop('checked', false);
-        map.removeAllMarkers();
-      });
-      $('.button-clear-selected-regions').click(function(){
-        map.clearSelectedRegions();
-      });
-      $('.button-clear-selected-markers').click(function(){
-        map.clearSelectedMarkers();
-      });
-      $('.button-remove-map').click(function(){
-        map.remove();
-      });
-      $('.button-change-values').click(function(){
-        map.series.regions[1].clear();
-        map.series.regions[1].setValues({
-          "US-TX": "black",
-          "US-CA": "black"
-        });
-      });
-      $('.button-reset-map').click(function(){
-        map.reset();
-      });
     });
   </script>
 <!-- JVECTOR -->
+<!-- Tabs -->
+
     <script type="text/javascript">
     //<![CDATA[
 
@@ -259,26 +223,36 @@
       <div class="tabContentContainer">
 <!-- Top Cities -->
         <div class="tabContent" id="advantages">
-          <div class="tabContentMap" style="width:75%;">
-            THERE IS A MAP HERE
-          </div>
-          <div class="tabContentOther" style="width:25%;">
-            <div class="tabContent header">
-
+          <div class="tabContentMap">
+                        
+            <div class="map" style="">
+              
             </div>
-            <div class="tabContent toplistings">
+
+
+          </div>
+          <div class="tabContentOther">
+            <div class="header">
+              <div class="headingContainer">
+                <h4 class="year">2014</h4>
+                <h3 class="title">Top Cities</h3>
+              </div>
+              <div class="">Explore the cities with the fewest auto collisions.</div>
+            </div>
+            <div class="toplistings">
               <ul>
                 <li>Eugene, OR</li>
                 <li>Austin, TX</li>
                 <li>Springfield, MO</li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li>Boise, ID</li>
+                <li>Boise, ID</li>
+                <li>Boise, ID</li>
+                <li>Boise, ID</li>
+                <li>Boise, ID</li>
+                <li>Boise, ID</li>
+                <li>Boise, ID</li>
+                <li>Boise, ID</li>
+                <li>Boise, ID</li>
               </ul>
             </div>
           </div>
@@ -290,10 +264,10 @@
             THERE IS A MAP HERE
           </div>
           <div class="tabContentOther" style="width:25%;">
-            <div class="tabContent header">
+            <div class="header">
 
             </div>
-            <div class="tabContent toplistings">
+            <div class="toplistings">
               <ul>
                 <li>Eugene, OR</li>
                 <li>Austin, TX</li>
@@ -316,10 +290,10 @@
             THERE IS A MAP HERE
           </div>
           <div class="tabContentOther" style="width:25%;">
-            <div class="tabContent header">
+            <div class="header">
 
             </div>
-            <div class="tabContent toplistings">
+            <div class="toplistings">
               <ul>
                 <li>Eugene, OR</li>
                 <li>Austin, TX</li>
@@ -342,10 +316,10 @@
             THERE IS A MAP HERE
           </div>
           <div class="tabContentOther" style="width:25%;">
-            <div class="tabContent header">
+            <div class="header">
 
             </div>
-            <div class="tabContent toplistings">
+            <div class="toplistings">
               <ul>
                 <li>Eugene, OR</li>
                 <li>Austin, TX</li>
@@ -368,10 +342,10 @@
             THERE IS A MAP HERE
           </div>
           <div class="tabContentOther" style="width:25%;">
-            <div class="tabContent header">
+            <div class="header">
 
             </div>
-            <div class="tabContent toplistings">
+            <div class="toplistings">
               <ul>
                 <li>Eugene, OR</li>
                 <li>Austin, TX</li>
@@ -388,54 +362,8 @@
             </div>
           </div>
         </div>
-      
-
       </div>
-
-
-
-
-
-
-<!--       <div class="tabContent" id="about">
-        <h2>About JavaScript tabs</h2>
-        <div>
-          <p>JavaScript tabs partition your Web page content into tabbed sections. Only one section at a time is visible.</p>
-          <p>The code is written in such a way that the page degrades gracefully in browsers that don't support JavaScript or CSS.</p>
-        </div>
-      </div>
-
-      <div class="tabContent hide" id="advantages">
-        <h2>Advantages of tabs</h2>
-        <div>
-          <p>JavaScript tabs are great if your Web page contains a large amount of content.</p>
-          <p>They're also good for things like multi-step Web forms.</p>
-        </div>
-      </div>
-
-      <div class="tabContent hide" id="usage">
-        <h2>Using tabs</h2>
-        <div>
-          <p>Click a tab to view the tab's content. Using tabs couldn't be easier!</p>
-        </div>
-      </div>
-
-       <div class="tabContent hide" id="rainSnow">
-        <h2>Rain and Snow</h2>
-        <div>
-          <p>Click a tab to view the tab's content. Using tabs couldn't be easier!</p>
-        </div>
-      </div>
-
-       <div class="tabContent hide" id="allConditions">
-        <h2>All Conditions</h2>
-        <div>
-          <p>Click a tab to view the tab's content. Using tabs couldn't be easier!</p>
-        </div>
-      </div> -->
-
     </div>
-
   </body>
 </html>
 
