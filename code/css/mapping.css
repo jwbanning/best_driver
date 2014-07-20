@@ -16,7 +16,6 @@ body{
 
 .mappingContainer{
   border:solid 1px #666;
-  width: 100%;
   margin: 0 40px;
   max-width: 960px;
 }
