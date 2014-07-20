@@ -1,0 +1,89 @@
+body{
+  background: #fff;
+}
+.headerImageContainer{
+
+}
+.headerImageContainer h1{
+  text-align: center;
+  margin:0 auto;
+  text-indent: -9999px;
+  background: url('../images/header.png');
+  width:452px;
+  height:135px;
+
+}
+
+.mappingContainer{
+  border:solid 1px #666;
+  width: 100%;
+  margin: 0 40px;
+  max-width: 960px;
+}
+
+/*TABS*/
+#tabs {
+  padding: 0 0 0.3em 0;
+  height:100px;
+}
+#tabs .tab {
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  width: 19%;
+  position: relative;
+  height:100%;
+
+  background-color: #f4f4f4;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+ }
+
+#tabs #topCity {
+  background-image: url('../images/phone-icon-hi.png');
+}
+#tabs #populated{
+    background-image: url('../images/phone-icon-hi.png');
+}
+#tabs #density{
+    background-image: url('../images/phone-icon-hi.png');
+}
+#tabs #rainSnow{
+    background-image: url('../images/phone-icon-hi.png');
+}
+#tabs #allConditions{
+    background-image: url('../images/phone-icon-hi.png');
+}
+#tabs .tab.selected {
+  background-color: #fff;
+}
+#tabs .tab .title {
+  color: #666;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 55px;
+}
+/*TAB BOTTOM COLOR*/
+  #tabs .bottomColor{
+    height:7px;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+  }
+  #tabs #topCity .bottomColor{background-color: #0096d6;}
+  #tabs #populated .bottomColor{background-color: #01b3ad;}
+  #tabs #density .bottomColor{background-color: #e6527a;}
+  #tabs #rainSnow .bottomColor{background-color: #6d5dc9;}
+  #tabs #allConditions .bottomColor{background-color: #ee8722;}
+/**********END TAB BOTTOM COLOR*/
+
+/*TAB CONTENT*/
+div.tabContent {
+  border: 1px solid #c9c3ba;
+  padding: 0.5em;
+  background-color: #f1f0ee; }
+div.tabContent.hide {
+  display: none;
+}
+/*********END TAB CONTENT*/
