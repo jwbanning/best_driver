@@ -38,26 +38,6 @@
             scale: [5, 20],
             normalizeFunction: 'polynomial',
             values: values2
-          }],
-          regions: [{
-            scale: {
-              red: '#ff0000',
-              blue: '#00ff00'
-            },
-            attribute: 'fill',
-            normalizeFunction: 'polynomial',
-            values: {
-              "US-KS": 'red',
-              "US-MO": 'red',
-              "US-IA": 'blue',
-              "US-NE": 'blue'
-            }
-          },{
-            values: {
-              "US-NY": 'blue',
-              "US-FL": 'blue'
-            },
-            attribute: 'fill'
           }]
         },
         regionsSelectable: true,
@@ -197,28 +177,23 @@
     </div>
     <div class="mappingContainer">
 
-      <div id="tabs">
-        <div class="selected tab" id="topCity">
-          <div class="title">Top Cities</div>
+      <ul id="tabs">
+        <li class="selected tab" id="topCity"><div class="title">Top Cities</div>
           <div class="bottomColor"></div>
-        </div>
-        <div class="tab" id="populated">
+        </li><li class="tab" id="populated">
           <div class="title">Highly Populated Areas</div>
           <div class="bottomColor"></div>
-        </div>
-        <div class="tab" id="density">
+        </li><li class="tab" id="density">
           <div class="title">High Density Areas</div>
           <div class="bottomColor"></div>
-        </div>
-        <div class="tab" id="rainSnow">
+        </li><li class="tab" id="rainSnow">
           <div class="title">Rain and Snow</div>
           <div class="bottomColor"></div>
-        </div>
-        <div class="tab" id="allConditions">
+        </li><li class="tab" id="allConditions">
           <div class="title">All Conditions</div>
           <div class="bottomColor"></div>
-        </div>
-      </div>
+        </li>
+      </ul>
 
       <div class="tabContentContainer">
 <!-- Top Cities -->
