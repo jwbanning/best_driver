@@ -132,12 +132,12 @@ div.tabContent .tabContentMap{
     }
     div.tabContent .tabContentOther .toplistings ul li:before{
       content: "";
-      background-image: url('../images/phone-icon-hi.png');
+      background-image: url('../images/marker.png');
       background-color: #f4f4f4;
-      background-size: 30px 30px;
+      background-size: 15px 22px;
       background-repeat: no-repeat;
-      height: 20px;
-      width: 20px;
+      height: 28;
+      width: 17;
       float: left;
     }
   /*********END TAB CONTENT OTHER*/
