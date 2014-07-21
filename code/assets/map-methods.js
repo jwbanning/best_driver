@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $.getJSON('http://localhost/assets/best-driver.json', function(data){
+  $.getJSON('/assets/best-driver.json', function(data){
    
   });
   $(function(){
