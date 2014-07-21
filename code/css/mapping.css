@@ -11,13 +11,61 @@ body{
   background: url('../images/header.png');
   width:452px;
   height:135px;
-
 }
 
 .mappingContainer{
   border:solid 1px #f0f0f0;
   margin: 0 40px;
   max-width: 960px;
+  background: #fff;
+  position: relative;
+}
+
+.mappingContainer:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  top: 0px;
+  right: 15px;
+  width: 50%;
+  height: 100px;
+  max-width: 300px;
+  background: #959595;
+  -webkit-box-shadow: 15px 0px 10px #959595;
+  -moz-box-shadow: 15px 0px 10px #959595;
+  box-shadow: 15px 0px 10px #959595;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  -webkit-border-top-left-radius: 199px;
+  -moz-border-radius-topleft: 199px;
+  border-top-left-radius: 199px;
+  width: 70px;
+}
+
+.mappingContainer:before {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 0px;
+  width: 50%;
+  top: 80%;
+  width: 100px;
+  background: #959595;
+  -webkit-box-shadow: 0 15px 10px #959595;
+  -moz-box-shadow: 0 15px 10px #959595;
+  box-shadow: 0 15px 10px #959595;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  -webkit-border-top-left-radius: 199px;
+  -moz-border-radius-topleft: 199px;
+  border-top-left-radius: 199px;
 }
 
 /*TABS*/
@@ -42,7 +90,11 @@ body{
  }
 
  #tabs .tab:last-child {
-  border: none;
+/*  border: none;
+  background-position: 50% 50%;
+  -moz-box-shadow: 0px 0px 1px 1px #ccc;
+  -webkit-box-shadow: 0px 0px 1px 1px #ccc;
+  box-shadow: 0px 0px 1px 1px #ccc;*/
  }
 
 #tabs #topCity {
@@ -68,6 +120,8 @@ body{
   text-decoration: none;
   text-align: center;
   margin-top: 55px;
+  font-size: 13px;
+  font-family: arial;
 }
 
 /*TAB BOTTOM COLOR*/
@@ -86,12 +140,13 @@ body{
 
 /*TAB CONTENT*/
 .tabContentContainer{
-  height:500px;
+  height:630px;
 }
 div.tabContent {
-  padding: 0.5em;
+  padding:0 0.5em;
   background-color: #fff;
-  min-height: 500px;
+  min-height: 100%;
+  margin-bottom: 90px;
 }
 div.tabContent.hide {
   display: none;
@@ -108,10 +163,13 @@ div.tabContent .tabContentOther{
   float:right;
   border-left: 1px solid #f0f0f0;
   box-sizing:border-box;
+  height: 100%;
 }
 div.tabContent .tabContentOther .header{
   padding:30px;
   border-bottom: solid 1px #ececec;
+  height: 25%;
+  box-sizing:border-box;
 }
   div.tabContent .tabContentOther .header .headingContainer {}
   div.tabContent .tabContentOther .header .headingContainer:before{
@@ -129,6 +187,12 @@ div.tabContent .tabContentOther .header{
 
   div.tabContent .tabContentOther .toplistings{
     padding:30px;
+    box-sizing:border-box;
+    height: 75%;
+    overflow: scroll;
+  }
+  div.tabContent .tabContentOther .toplistings ul {
+    
   }
   div.tabContent .tabContentOther .toplistings ul li{
     line-height: 30px;
