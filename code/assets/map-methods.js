@@ -1,9 +1,10 @@
 $(document).ready(function() {
-  $.getJSON('http://localhost/assets/best-driver.json', function(data){
-   
+  $.getJSON('/assets/best-driver.json', function(data){
+    var test="";
   });
+
   $(function(){
-    
+
 
     $( "#tabs .tab" ).click(function(e) {
       var id = $(e.currentTarget).attr('id');
