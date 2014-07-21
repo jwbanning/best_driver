@@ -15,7 +15,7 @@ body{
 }
 
 .mappingContainer{
-  border:solid 1px #666;
+  border:solid 1px #f0f0f0;
   margin: 0 40px;
   max-width: 960px;
 }
@@ -26,17 +26,23 @@ body{
   height:100px;
 }
 #tabs .tab {
-  display: inline-block;
+  display: block;
+  float: left;
   padding: 0px;
   margin: 0px;
-  width: 19%;
+  width: 20%;
+  border-right: 1px solid #e8e8e8;
+  box-sizing: border-box;
   position: relative;
   height:100%;
-
   background-color: #f4f4f4;
   background-size: 30px 30px;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position:center 17px;
+ }
+
+ #tabs .tab:last-child {
+  border: none;
  }
 
 #tabs #topCity {
@@ -63,6 +69,7 @@ body{
   text-align: center;
   margin-top: 55px;
 }
+
 /*TAB BOTTOM COLOR*/
   #tabs .bottomColor{
     height:7px;
@@ -95,17 +102,19 @@ div.tabContent .tabContentMap{
   float:left;
 
 }
-  /*TAB CONTENT OTHER*/
-  div.tabContent .tabContentOther{
-    width:25%;
-    float:right;
-  }
-  div.tabContent .tabContentOther .header{
-    padding:30px;
-    border-bottom: solid 1px #ececec;
-  }
-    div.tabContent .tabContentOther .header .headingContainer {}
-    div.tabContent .tabContentOther .header .headingContainer:before{
+/*TAB CONTENT OTHER*/
+div.tabContent .tabContentOther{
+  width:25%;
+  float:right;
+  border-left: 1px solid #f0f0f0;
+  box-sizing:border-box;
+}
+div.tabContent .tabContentOther .header{
+  padding:30px;
+  border-bottom: solid 1px #ececec;
+}
+  div.tabContent .tabContentOther .header .headingContainer {}
+  div.tabContent .tabContentOther .header .headingContainer:before{
     content: "";
     background-image: url('../images/phone-icon-hi.png');
     background-color: #f4f4f4;
@@ -114,26 +123,33 @@ div.tabContent .tabContentMap{
     height: 30px;
     width: 30px;
     float: left;
-    }
-    div.tabContent .tabContentOther .header .headingContainer h4{}
-    div.tabContent .tabContentOther .header .headingContainer h3{}
+  }
+  div.tabContent .tabContentOther .header .headingContainer h4{}
+  div.tabContent .tabContentOther .header .headingContainer h3{}
 
-    div.tabContent .tabContentOther .toplistings{
-      padding:30px;
-    }
-    div.tabContent .tabContentOther .toplistings ul li{
-      line-height: 30px;
-      font-size: 12px;
-    }
-    div.tabContent .tabContentOther .toplistings ul li:before{
-      content: "";
-      background-image: url('../images/phone-icon-hi.png');
-      background-color: #f4f4f4;
-      background-size: 30px 30px;
-      background-repeat: no-repeat;
-      height: 20px;
-      width: 20px;
-      float: left;
-    }
+  div.tabContent .tabContentOther .toplistings{
+    padding:30px;
+  }
+  div.tabContent .tabContentOther .toplistings ul li{
+    line-height: 30px;
+    font-size: 15px;
+    height: 40px;
+  }
+  div.tabContent .tabContentOther .toplistings ul li:before{
+    content: "";
+    background-image: url('../images/marker.png');
+    background-image: url('../images/marker.svg');
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    height: 33px;
+    width: 23px;
+    margin-right: 10px;
+    float: left;
+  }
   /*********END TAB CONTENT OTHER*/
 /*********END TAB CONTENT*/
+
+
+
+

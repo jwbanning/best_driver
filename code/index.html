@@ -14,6 +14,7 @@
 
   <script>
     $(function(){
+      var regionStyling = {initial: {fill: '#ccc'},hover: {fill: "#000"}};
       var markers = [
             [61.18, -149.53],
             [21.18, -157.49],
@@ -27,6 +28,8 @@
         container: $('.map'),
         map: 'us_aea_en',
         markers: markers,
+        backgroundColor: '#fff',
+        regionStyle:regionStyling,
         series: {
           markers: [{
             attribute: 'fill',
@@ -41,8 +44,8 @@
           }],
           regions: [{
             scale: {
-              red: '#ff0000',
-              blue: '#00ff00'
+              red: '#ccc',
+              blue: '#999'
             },
             attribute: 'fill',
             normalizeFunction: 'polynomial',
@@ -55,7 +58,7 @@
           },{
             values: {
               "US-NY": 'blue',
-              "US-FL": 'blue'
+              "US-FL": 'blue',
             },
             attribute: 'fill'
           }]
@@ -126,7 +129,6 @@
     var contentDivs = new Array();
 
     function init() {
-
       // Grab the tab links and content divs from the page
       var tabListItems = document.getElementById('tabs').childNodes;
       for ( var i = 0; i < tabListItems.length; i++ ) {
@@ -160,7 +162,6 @@
 
     function showTab() {
       var selectedId = getHash( this.getAttribute('href') );
-
       // Highlight the selected tab, and dim all others.
       // Also show the selected content div, and hide all others.
       for ( var id in contentDivs ) {
@@ -172,7 +173,6 @@
           contentDivs[id].className = 'tabContent hide';
         }
       }
-
       // Stop the browser following the link
       return false;
     }
@@ -231,6 +231,8 @@
 
 
           </div>
+
+
           <div class="tabContentOther">
             <div class="header">
               <div class="headingContainer">
@@ -285,6 +287,8 @@
           </div>
         </div>
 <!-- High Density -->
+
+
         <div class="tabContent hide" id="advantages">
           <div class="tabContentMap" style="width:75%;">
             THERE IS A MAP HERE
@@ -310,6 +314,8 @@
             </div>
           </div>
         </div>
+
+
 <!-- Rain Snow -->
         <div class="tabContent hide" id="advantages">
           <div class="tabContentMap" style="width:75%;">
@@ -336,6 +342,8 @@
             </div>
           </div>
         </div>
+
+
 <!-- All Conditions -->
         <div class="tabContent hide" id="advantages">
           <div class="tabContentMap" style="width:75%;">
