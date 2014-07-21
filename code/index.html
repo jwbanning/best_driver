@@ -11,91 +11,8 @@
     <script src="js/jquery-mousewheel.js"></script>
     <script src="http://jvectormap.com/js/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="assets/jquery-jvectormap-us-aea-en.js"></script>
+    <script src="assets/map-methods.js"></script>
 
-  <script>
-    $(function(){
-      var markers = [
-            [61.18, -149.53],
-            [21.18, -157.49],
-            {latLng: [40.66, -73.56], name: 'New York City', style: {r: 8, fill: 'yellow'}},
-            {latLng: [41.52, -87.37], style: {fill: 'red', r: 10}}
-          ],
-          values1 = [1, 2, 3, 4],
-          values2 = [1, 2, 3, 4];
-
-      var map = new jvm.WorldMap({
-        container: $('.map'),
-        map: 'us_aea_en',
-        markers: markers,
-        series: {
-          markers: [{
-            attribute: 'fill',
-            scale: ['#C8EEFF', '#0071A4'],
-            normalizeFunction: 'polynomial',
-            values: values1
-          },{
-            attribute: 'r',
-            scale: [5, 20],
-            normalizeFunction: 'polynomial',
-            values: values2
-          }]
-        },
-        regionsSelectable: true,
-        markersSelectable: true,
-        markersSelectableOne: true,
-        selectedRegions: JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ),
-        selectedMarkers: JSON.parse( window.localStorage.getItem('jvectormap-selected-markers') || '[]' ),
-
-        onMarkerLabelShow: function(event, label, index){
-          label.html(label.html()+' (modified marker)');
-        },
-        onMarkerOver: function(event, index){
-          console.log('marker-over', index);
-        },
-        onMarkerOut: function(event, index){
-          console.log('marker-out', index);
-        },
-        onMarkerClick: function(event, index){
-          console.log('marker-click', index);
-        },
-        onMarkerSelected: function(event, index, isSelected, selectedMarkers){
-          console.log('marker-select', index, isSelected, selectedMarkers);
-          if (window.localStorage) {
-            window.localStorage.setItem(
-              'jvectormap-selected-markers',
-              JSON.stringify(selectedMarkers)
-            );
-          }
-        },
-
-        onRegionLabelShow: function(event, label, code){
-          label.html(label.html()+' (modified)');
-        },
-        onRegionOver: function(event, code){
-          console.log('region-over', code, map.getRegionName(code));
-        },
-        onRegionOut: function(event, code){
-          console.log('region-out', code);
-        },
-        onRegionClick: function(event, code){
-          console.log('region-click', code);
-        },
-        onRegionSelected: function(event, code, isSelected, selectedRegions){
-          console.log('region-select', code, isSelected, selectedRegions);
-          if (window.localStorage) {
-            window.localStorage.setItem(
-              'jvectormap-selected-regions',
-              JSON.stringify(selectedRegions)
-            );
-          }
-        },
-        onViewportChange: function(e, scale, transX, transY){
-            console.log('viewportChange', scale, transX, transY);
-        }
-      });
-
-    });
-  </script>
 <!-- JVECTOR -->
 <!-- Tabs -->
 
@@ -106,7 +23,6 @@
     var contentDivs = new Array();
 
     function init() {
-
       // Grab the tab links and content divs from the page
       var tabListItems = document.getElementById('tabs').childNodes;
       for ( var i = 0; i < tabListItems.length; i++ ) {
@@ -140,7 +56,6 @@
 
     function showTab() {
       var selectedId = getHash( this.getAttribute('href') );
-
       // Highlight the selected tab, and dim all others.
       // Also show the selected content div, and hide all others.
       for ( var id in contentDivs ) {
@@ -152,7 +67,6 @@
           contentDivs[id].className = 'tabContent hide';
         }
       }
-
       // Stop the browser following the link
       return false;
     }
@@ -202,13 +116,15 @@
             <div class="map" style=""></div>
             <div class="scalebar"></div>
           </div>
+
+
           <div class="tabContentOther">
             <div class="header">
               <div class="headingContainer">
                 <h4 class="year">2014</h4>
                 <h3 class="title">Top Cities</h3>
               </div>
-              <div class="">Explore the cities with the fewest auto collisions.</div>
+              <p>Explore the cities with the fewest auto collisions.</p>
             </div>
             <div class="toplistings">
               <ul>
@@ -259,6 +175,8 @@
           </div>
         </div>
 <!-- High Density -->
+
+
         <div class="tabContent hide" id="advantages">
           <div class="tabContentMap" style="width:75%;">
             THERE IS A MAP HERE
@@ -284,6 +202,8 @@
             </div>
           </div>
         </div>
+
+
 <!-- Rain Snow -->
         <div class="tabContent hide" id="advantages">
           <div class="tabContentMap" style="width:75%;">
@@ -310,6 +230,8 @@
             </div>
           </div>
         </div>
+
+
 <!-- All Conditions -->
         <div class="tabContent hide" id="advantages">
           <div class="tabContentMap" style="width:75%;">
