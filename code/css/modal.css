@@ -1,0 +1,27 @@
+body{background-color:#fff;}
+.modalContainer{border:solid 4px #0096d6;width:360px;}
+
+.modalContainer .cityContainer{padding:15px;}
+.modalContainer .cityContainer .cityName{color:#333333;}
+.modalContainer .cityContainer .cityRank{color:#333333;}
+.modalContainer .cityContainer .cityRank span{color:#333333;}
+
+.modalContainer .rankings{border-top:solid 1px #ececec;border-bottom:solid 1px #ececec;padding: 15px;}
+.modalContainer .rankings .header{color:#535353;}
+.modalContainer .rankings .section{color:#929292; font-size: 12px;line-height: 40px;}
+.modalContainer .rankings .section div{width:50%; float:left;}
+
+.modalContainer .rankings .section div.numRank{float:right; text-align:right;}
+.modalContainer .rankings .section div.numRank span{vertical-align: super; font-size: 50%;}
+
+/*colors*/
+.modalContainer .rankings .topCities .numRank{color:#0096d6;}
+.modalContainer .rankings .populated .numRank{color:#01b3ad;}
+.modalContainer .rankings .density .numRank{color:#e6527a;}
+.modalContainer .rankings .rainSnow .numRank{color:#6d5dc9}
+.modalContainer .rankings .allConditions .numRank{color:#ee8722;}
+
+
+.modalContainer .shareContainer{padding: 15px;}
+.modalContainer .shareContainer div{}
+.modalContainer .shareContainer img{}

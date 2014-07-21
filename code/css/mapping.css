@@ -222,4 +222,17 @@ div.tabContent .tabContentOther .header{
 
 
 
+/*SCALEBAR*/
+.scalebar{
+  margin-top:30px;
+}
+/********END SCALEBAR*/
 
+/*SOCIAL*/
+.socialContiner{
+  margin-top:30px;
+}
+.socialContiner img{
+  float:right;
+}
+/********END SOCIAL*/
