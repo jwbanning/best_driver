@@ -60,6 +60,8 @@ $(document).ready(function() {
           console.log('marker-out', index);
         },
         onMarkerClick: function(event, index){
+          alert('show marker');
+
           console.log('marker-click', index);
         },
         onMarkerSelected: function(event, index, isSelected, selectedMarkers){
@@ -73,9 +75,11 @@ $(document).ready(function() {
         },
         onRegionLabelShow: function(event, label, code){
           label.html(label.html()+' (modified)');
+          return false;
         },
-        onRegionOver: function(event, code){
+        onRegionOver: function(event, code){debugger;
           console.log('region-over', code, map.getRegionName(code));
+          return false;
         },
         onRegionOut: function(event, code){
           console.log('region-out', code);
