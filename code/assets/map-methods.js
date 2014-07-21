@@ -78,7 +78,7 @@ $(document).ready(function() {
           label.html(label.html()+' (modified)');
           return false;
         },
-        onRegionOver: function(event, code){debugger;
+        onRegionOver: function(event, code){
           console.log('region-over', code, map.getRegionName(code));
           return false;
         },
