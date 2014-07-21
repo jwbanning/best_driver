@@ -3,6 +3,17 @@ $(document).ready(function() {
    
   });
   $(function(){
+    
+
+    $( "#tabs .tab" ).click(function(e) {
+      var id = $(e.currentTarget).attr('id');
+      //clear all the classes on the LI
+      $( "#tabs .tab" ).removeClass('selected');
+      $(e.currentTarget).addClass('selected');
+      
+    });
+
+
     var regionStyling = {initial: {fill: '#e8e8e8'},hover: {fill: "#666"}};
     var markers = [
           [61.18, -149.53],
@@ -44,15 +55,9 @@ $(document).ready(function() {
             "US-IA": 'blue',
             "US-NE": 'blue'
           }
-        },{
-          values: {
-            "US-NY": 'blue',
-            "US-FL": 'blue',
-          },
-          attribute: 'fill'
         }]
       },
-      regionsSelectable: true,
+      regionsSelectable: false,
       markersSelectable: true,
       markersSelectableOne: true,
       selectedRegions: JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ),
