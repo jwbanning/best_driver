@@ -130,7 +130,7 @@ $(document).ready(function() {
       var id = $(e.currentTarget).attr('id'),
           sectionColor = $(e.currentTarget).data('color'),
           type = $(e.currentTarget).data('type');
-          // byline = $(e.currentTarget).data('byline');
+          byline = $(e.currentTarget).data('byline');
 
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
@@ -139,8 +139,7 @@ $(document).ready(function() {
       $('.headingContainer .icon').removeClass().addClass('icon').addClass(id);
       model.viewModel.type = type;
       model.viewModel.id = id;
-
-      // model.viewModel.byline = byline;
+      model.viewModel.byline = byline;
       model.viewModel.color = sectionColor;
       //model.viewModel.map.setSelectedMarkers();
       filterLocations(type);

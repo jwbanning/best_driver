@@ -139,7 +139,7 @@ body{
   height:630px;
 }
 div.tabContent {
-  padding:0 0 0 0.5em;
+  padding:0 0 0 0.0em;
   background-color: #fff;
   min-height: 100%;
   margin-bottom: 90px;
@@ -221,8 +221,12 @@ div.tabContent .tabContentOther .header{
 
 
 /*SCALEBAR*/
-.scalebar{
+.sliderContainer{
   margin-top:30px;
+}
+.sliderContainer #slider{
+  height:30px;
+  width:100%;
 }
 /********END SCALEBAR*/
 
