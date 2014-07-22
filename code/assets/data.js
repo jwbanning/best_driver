@@ -1,12 +1,19 @@
 $(document).ready(function() {
-  function Task(data) {
+  function Locations(data) {
     this.location = ko.observable(data);
   }
 
-  function formatMarkers(markers) {
+  function filterLocations(type) {
+     var m = model.viewModel.locations().sort(function(left, right) { 
+        return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
+      });
+   model.viewModel.locations(m);
+  }
+
+  function formatMarkers(markerList, type) {
    var markers = [];
-    for (var i = 0; i < model.viewModel.tasks().length; i++) {
-      markers.push({'latLng': [model.viewModel.tasks()[i].location().Lat, model.viewModel.tasks()[i].location().Lon], 'name': model.viewModel.tasks()[i].location().City +", " + model.viewModel.tasks()[i].location().State});
+    for (var i = 0; i < model.viewModel.locations().length; i++) {
+      markers.push({'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
     }
     return markers;
   }
@@ -32,15 +39,18 @@ $(document).ready(function() {
     return map;
   }
 
+  //THIS IS THE MODEL ---------------------------------
   function TaskListViewModel() {
     var self = this;
-    self.tasks = ko.observableArray([]);
+    self.type =  ko.observable("2014 Best Driver Rank");
+    self.locations = ko.observableArray([]);
+
     self.newTaskText = ko.observable();
     self.map = setMap();
     
     $.getJSON("/assets/best-driver.json", function(allData) {
-        var mappedTasks = $.map(allData, function(item) { return new Task(item) });
-        self.tasks(mappedTasks);
+        var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
+        self.locations(mappedTasks);
     });  
   }
 
@@ -50,8 +60,9 @@ $(document).ready(function() {
 
 
     //Subscribe to the model to listen for changes and update map markers
-    model.viewModel.tasks.subscribe(function(newValue) {
+    model.viewModel.locations.subscribe(function(newValue) {
       var markers = formatMarkers(newValue);
+       model.viewModel.map.removeAllMarkers();
       model.viewModel.map.addMarkers(markers);
     });
 
@@ -65,6 +76,8 @@ $(document).ready(function() {
           type = $(e.currentTarget).data('type');
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
+      model.viewModel.type = type;
+      filterLocations(type);
     });
 
 });
