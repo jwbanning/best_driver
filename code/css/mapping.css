@@ -205,7 +205,7 @@ div.tabContent .tabContentOther .header{
     font-size: 15px;
     height: 40px;
   }
-  div.tabContent .tabContentOther .toplistings ul li:before{
+  div.tabContent .tabContentOther .toplistings ul li span{
     content: "";
     background-image: url('../images/marker.png');
     background-image: url('../images/marker.svg');
@@ -216,6 +216,9 @@ div.tabContent .tabContentOther .header{
     width: 23px;
     margin-right: 10px;
     float: left;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
   }
   /*********END TAB CONTENT OTHER*/
 /*********END TAB CONTENT*/

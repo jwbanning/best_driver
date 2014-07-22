@@ -25,7 +25,7 @@
     <div class="mappingContainer">
 
       <ul id="tabs">
-        <li class="selected tab" id="topCity" data-type="top-city"><div class="title">Top Cities</div>
+        <li class="selected tab" id="topCity" data-type="topCity"><div class="title">Top Cities</div>
           <div class="bottomColor"></div>
         </li>
         <li class="tab" id="populated" data-type="populated">
@@ -36,11 +36,11 @@
           <div class="title">High Density Areas</div>
           <div class="bottomColor"></div>
         </li>
-        <li class="tab" id="rainSnow" data-type="rain-snow">
+        <li class="tab" id="rainSnow" data-type="rainSnow">
           <div class="title">Rain and Snow</div>
           <div class="bottomColor"></div>
         </li>
-        <li class="tab" id="allConditions" data-type="all-condition">
+        <li class="tab" id="allConditions" data-type="allCondition">
           <div class="title">All Conditions</div>
           <div class="bottomColor"></div>
         </li>
@@ -65,8 +65,11 @@
               <p>Explore the cities with the fewest auto collisions.</p>
             </div>
             <div class="toplistings">
-              <ul data-bind="foreach: tasks, visible: tasks().length > 0">
-                <li><p data-bind="text: location().City"></p></li> 
+              <ul data-bind="foreach: locations, visible: locations().length > 0">
+                <li>
+                  <span class="markerIcon" data-bind="text: location()['2014 Rain & Snow']"></span>
+                  <p data-bind="text: location().City +', '+ location().State"></p>
+                </li> 
               </ul>
             </div>
             <div class="socialContiner">
@@ -75,114 +78,6 @@
           </div>
         </div>
         
-<!-- Populate Areas -->
-<!--         <div class="tabContent hide" id="advantages">
-          <div class="tabContentMap" style="width:75%;">
-            THERE IS A MAP HERE
-          </div>
-          <div class="tabContentOther" style="width:25%;">
-            <div class="header">
-
-            </div>
-            <div class="toplistings">
-              <ul>
-                <li>Eugene, OR</li>
-                <li>Austin, TX</li>
-                <li>Springfield, MO</li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
-<!-- High Density -->
-<!--         <div class="tabContent hide" id="advantages">
-          <div class="tabContentMap" style="width:75%;">
-            THERE IS A MAP HERE
-          </div>
-          <div class="tabContentOther" style="width:25%;">
-            <div class="header">
-
-            </div>
-            <div class="toplistings">
-              <ul>
-                <li>Eugene, OR</li>
-                <li>Austin, TX</li>
-                <li>Springfield, MO</li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-        </div>
- -->
-
-<!-- Rain Snow -->
-<!--         <div class="tabContent hide" id="advantages">
-          <div class="tabContentMap" style="width:75%;">
-            THERE IS A MAP HERE
-          </div>
-          <div class="tabContentOther" style="width:25%;">
-            <div class="header">
-
-            </div>
-            <div class="toplistings">
-              <ul>
-                <li>Eugene, OR</li>
-                <li>Austin, TX</li>
-                <li>Springfield, MO</li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
-
-
-<!-- All Conditions -->
-<!--         <div class="tabContent hide" id="advantages">
-          <div class="tabContentMap" style="width:75%;">
-            THERE IS A MAP HERE
-          </div>
-          <div class="tabContentOther" style="width:25%;">
-            <div class="header">
-
-            </div>
-            <div class="toplistings">
-              <ul>
-                <li>Eugene, OR</li>
-                <li>Austin, TX</li>
-                <li>Springfield, MO</li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </body>
