@@ -4,13 +4,10 @@ $(document).ready(function() {
   }
 
   function filterLocations(type) {
-   if (type=='rainSnow') {
-      var m;
-      m = model.viewModel.locations().sort(function(left, right) { 
-        return left.location()['2014 Rain & Snow'] == right.location()['2014 Rain & Snow'] ? 0 : (left.location()['2014 Rain & Snow'] < right.location()['2014 Rain & Snow'] ? -1 : 1) 
+     var m = model.viewModel.locations().sort(function(left, right) { 
+        return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
       });
-      model.viewModel.locations(m);
-   };
+   model.viewModel.locations(m);
   }
 
   function formatMarkers(markerList, type) {
@@ -45,7 +42,9 @@ $(document).ready(function() {
   //THIS IS THE MODEL ---------------------------------
   function TaskListViewModel() {
     var self = this;
+    self.type =  ko.observable("2014 Best Driver Rank");
     self.locations = ko.observableArray([]);
+
     self.newTaskText = ko.observable();
     self.map = setMap();
     
@@ -77,6 +76,7 @@ $(document).ready(function() {
           type = $(e.currentTarget).data('type');
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
+      model.viewModel.type = type;
       filterLocations(type);
     });
 
