@@ -48,6 +48,7 @@ $(document).ready(function() {
   function TaskListViewModel() {
     var self = this;
     self.type =  ko.observable("2014 Best Driver Rank");
+    self.id =  ko.observable("topCity");
     self.locations = ko.observableArray([]);
 
     self.newTaskText = ko.observable();
@@ -84,7 +85,9 @@ $(document).ready(function() {
       $(e.currentTarget).addClass('selected');
       //change the color on the list items
       $('.tabContentOther .toplistings ul li svg path').css('fill', sectionColor);
+      $('.headingContainer .icon').removeClass().addClass('icon').addClass(id);
       model.viewModel.type = type;
+      model.viewModel.id = id;
       model.viewModel.color = sectionColor;
       //model.viewModel.map.setSelectedMarkers();
       filterLocations(type);
