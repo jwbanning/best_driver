@@ -30,7 +30,7 @@ $(document).ready(function() {
       markerStyle: {
         initial: {
           fill: color,
-          stroke: '#0096d6'
+          stroke:'transparent'
         },
         selected: {
           fill: 'blue'
@@ -78,14 +78,14 @@ $(document).ready(function() {
     //UI EVENTS
     $( "#tabs .tab" ).on('click', function(e) {
       var id = $(e.currentTarget).attr('id'),
-          color = $(e.currentTarget).data('color'),
+          sectionColor = $(e.currentTarget).data('color'),
           type = $(e.currentTarget).data('type');
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
       //change the color on the list items
-      $('.tabContentOther .toplistings ul li svg path').css('fill', color);
+      $('.tabContentOther .toplistings ul li svg path').css('fill', sectionColor);
       model.viewModel.type = type;
-      model.viewModel.color = 'red'
+      model.viewModel.color = sectionColor;
       //model.viewModel.map.setSelectedMarkers();
       filterLocations(type);
     });
