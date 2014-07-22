@@ -70,17 +70,17 @@ $(document).ready(function() {
         return false;
       },
       onRegionOver: function(event, code){
-        console.log('region-over', code, map.getRegionName(code));
+        //console.log('region-over', code, map.getRegionName(code));
         return false;
       },
       onRegionOut: function(event, code){
-        console.log('region-out', code);
+        //console.log('region-out', code);
       },
       onRegionClick: function(event, code){
-        console.log('region-click', code);
+        //console.log('region-click', code);
       },
       onRegionSelected: function(event, code, isSelected, selectedRegions){
-        console.log('region-select', code, isSelected, selectedRegions);
+        //console.log('region-select', code, isSelected, selectedRegions);
         if (window.localStorage) {
           window.localStorage.setItem(
             'jvectormap-selected-regions',
@@ -89,8 +89,33 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
-          console.log('viewportChange', scale, transX, transY);
+        console.log('viewportChange', scale, transX, transY);
+        var scalefactor = 1;
+        if (scale > 0 && scale <= 1.1) {
+          console.log('US');
+          scalefactor = 1;
+        }
+        else if(scale > 1 && scale <= 2.56) {
+          console.log('region');
+          scalefactor = 2;
+        }
+        else if(scale > 2.57 && scale <= 4.096) {
+          console.log('state');
+          scalefactor = 3;
+        }
+        else if(scale > 4.097 && scale <= 6.554) {
+          console.log('city');
+          scalefactor = 4;
+        }
+        else if(scale > 6.555 && scale <= 8) {
+          console.log('county');
+          scalefactor = 5;
+        }
+
+        console.log(scalefactor + ' scale');
+
       }
+
 
 
     });
