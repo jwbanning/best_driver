@@ -4,7 +4,8 @@ $(document).ready(function() {
   }
 
   function filterLocations(type) {
-     var m = model.viewModel.locations().sort(function(left, right) { 
+    var clonedArray = jQuery.extend([], model.viewModel.locations());
+     var m = clonedArray.sort(function(left, right) { 
         return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
       });
    model.viewModel.locations(m);
@@ -13,7 +14,7 @@ $(document).ready(function() {
   function formatMarkers(markerList, type) {
    var markers = [];
     for (var i = 0; i < model.viewModel.locations().length; i++) {
-      markers.push({'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
+      markers.push({'style': {fill: model.viewModel.color}, 'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
     }
     return markers;
   }
@@ -30,7 +31,10 @@ $(document).ready(function() {
         initial: {
           fill: color,
           stroke: '#0096d6'
-        }
+        },
+        selected: {
+          fill: 'blue'
+        },
       },
       markers: [],
       regionsSelectable: false,
@@ -81,6 +85,8 @@ $(document).ready(function() {
       //change the color on the list items
       $('.tabContentOther .toplistings ul li svg path').css('fill', color);
       model.viewModel.type = type;
+      model.viewModel.color = 'red'
+      //model.viewModel.map.setSelectedMarkers();
       filterLocations(type);
     });
 
