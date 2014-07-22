@@ -1,6 +1,17 @@
 body{
   background: #fff;
 }
+.headerImageContainer{
+
+}
+.headerImageContainer h1{
+  text-align: center;
+  margin:0 auto;
+  text-indent: -9999px;
+  background: url('../images/header.png');
+  width:452px;
+  height:135px;
+}
 
 .mappingContainer{
   border:solid 1px #f0f0f0;

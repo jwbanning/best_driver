@@ -40,6 +40,57 @@ $(document).ready(function() {
       regionsSelectable: false,
       markersSelectable: true,
       markersSelectableOne: true,
+
+      onMarkerLabelShow: function(event, label, index){
+        label.html(label.html()+' (modified marker)');
+      },
+      onMarkerOver: function(event, index){
+        console.log('marker-over', index);
+        return false;
+      },
+      onMarkerOut: function(event, index){
+        console.log('marker-out', index);
+      },
+      onMarkerClick: function(event, index){
+        alert('show marker');
+
+        console.log('marker-click', index);
+      },
+      onMarkerSelected: function(event, index, isSelected, selectedMarkers){
+        console.log('marker-select', index, isSelected, selectedMarkers);
+        if (window.localStorage) {
+          window.localStorage.setItem(
+            'jvectormap-selected-markers',
+            JSON.stringify(selectedMarkers)
+          );
+        }
+      },
+      onRegionLabelShow: function(event, label, code){
+        label.html(label.html()+' (modified)');
+        return false;
+      },
+      onRegionOver: function(event, code){
+        console.log('region-over', code, map.getRegionName(code));
+        return false;
+      },
+      onRegionOut: function(event, code){
+        console.log('region-out', code);
+      },
+      onRegionClick: function(event, code){
+        console.log('region-click', code);
+      },
+      onRegionSelected: function(event, code, isSelected, selectedRegions){
+        console.log('region-select', code, isSelected, selectedRegions);
+        if (window.localStorage) {
+          window.localStorage.setItem(
+            'jvectormap-selected-regions',
+            JSON.stringify(selectedRegions)
+          );
+        }
+      },
+      onViewportChange: function(e, scale, transX, transY){
+          console.log('viewportChange', scale, transX, transY);
+      }
     });
     return map;
   }
@@ -49,6 +100,7 @@ $(document).ready(function() {
     var self = this;
     self.type =  ko.observable("2014 Best Driver Rank");
     self.id =  ko.observable("topCity");
+    self.copy =  ko.observable("");
     self.locations = ko.observableArray([]);
 
     self.newTaskText = ko.observable();
