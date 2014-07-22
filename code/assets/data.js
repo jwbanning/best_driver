@@ -18,8 +18,9 @@ $(document).ready(function() {
     return markers;
   }
 
-  function setMap() {
+  function setMap(color) {
     var regionStyling = {initial: {fill: '#e8e8e8'},hover: {fill: "#666"}};
+    var color = color || '#0096d6';
     var map = new jvm.WorldMap({
       container: $('.map'),
       map: 'us_aea_en',
@@ -27,7 +28,7 @@ $(document).ready(function() {
       regionStyle:regionStyling,
       markerStyle: {
         initial: {
-          fill: '#0096d6',
+          fill: color,
           stroke: '#0096d6'
         }
       },
@@ -63,7 +64,7 @@ $(document).ready(function() {
     model.viewModel.locations.subscribe(function(newValue) {
       var markers = formatMarkers(newValue);
        model.viewModel.map.removeAllMarkers();
-      model.viewModel.map.addMarkers(markers);
+        model.viewModel.map.addMarkers(markers);
     });
 
 
@@ -73,9 +74,12 @@ $(document).ready(function() {
     //UI EVENTS
     $( "#tabs .tab" ).on('click', function(e) {
       var id = $(e.currentTarget).attr('id'),
+          color = $(e.currentTarget).data('color'),
           type = $(e.currentTarget).data('type');
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
+      //change the color on the list items
+      $('.tabContentOther .toplistings ul li svg path').css('fill', color);
       model.viewModel.type = type;
       filterLocations(type);
     });

@@ -205,10 +205,17 @@ div.tabContent .tabContentOther .header{
     font-size: 15px;
     height: 40px;
   }
-  div.tabContent .tabContentOther .toplistings ul li span{
+/*  .mappingContainer.topCity div.tabContent .tabContentOther .toplistings ul li span{}
+  .mappingContainer.populated div.tabContent .tabContentOther .toplistings ul li span{}
+  .mappingContainer.rainSnow div.tabContent .tabContentOther .toplistings ul li span{}
+  .mappingContainer.density div.tabContent .tabContentOther .toplistings ul li span{}
+  .mappingContainer.allConditions div.tabContent .tabContentOther .toplistings ul li span{}*/
+
+
+  div.tabContent .tabContentOther .toplistings ul li svg{
     content: "";
-    background-image: url('../images/marker.png');
-    background-image: url('../images/marker.svg');
+/*    background-image: url('../images/marker.png');
+    background-image: url('../images/marker.svg');*/
     background-size: contain;
     background-color: transparent;
     background-repeat: no-repeat;
