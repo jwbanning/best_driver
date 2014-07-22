@@ -143,7 +143,7 @@ body{
   height:630px;
 }
 div.tabContent {
-  padding:0 0.5em;
+  padding:0 0 0 0.5em;
   background-color: #fff;
   min-height: 100%;
   margin-bottom: 90px;
