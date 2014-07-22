@@ -5,6 +5,11 @@ $(document).ready(function() {
 
   function filterLocations(type) {
     var clonedArray = jQuery.extend([], model.viewModel.locations());
+    var currentType = type;
+    var clonedArray = ko.utils.arrayFilter(model.viewModel.locations(), function(item) {
+                        return item.location()[type] !== null;
+                      });
+    
      var m = clonedArray.sort(function(left, right) { 
         return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
       });
@@ -104,8 +109,6 @@ $(document).ready(function() {
     self.id =  ko.observable("topCity");
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.locations = ko.observableArray([]);
-
-    self.newTaskText = ko.observable();
     self.map = setMap();
     
     $.getJSON("/assets/best-driver.json", function(allData) {
