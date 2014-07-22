@@ -100,7 +100,7 @@ $(document).ready(function() {
     var self = this;
     self.type =  ko.observable("2014 Best Driver Rank");
     self.id =  ko.observable("topCity");
-    self.copy =  ko.observable("");
+    self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.locations = ko.observableArray([]);
 
     self.newTaskText = ko.observable();
@@ -125,21 +125,22 @@ $(document).ready(function() {
     });
 
 
-
-
-
     //UI EVENTS
     $( "#tabs .tab" ).on('click', function(e) {
       var id = $(e.currentTarget).attr('id'),
           sectionColor = $(e.currentTarget).data('color'),
-          type = $(e.currentTarget).data('type');
+          type = $(e.currentTarget).data('type'),
+          byline = $(e.currentTarget).data('byline');
+
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
       //change the color on the list items
       $('.tabContentOther .toplistings ul li svg path').css('fill', sectionColor);
-      $('.headingContainer .icon').removeClass().addClass('icon').addClass(id);
-      model.viewModel.type = type;
-      model.viewModel.id = id;
+      //$('.headingContainer .icon').removeClass().addClass('icon').addClass(id);
+
+      model.viewModel.type(type);
+      model.viewModel.id(id);
+      model.viewModel.byline(byline);
       model.viewModel.color = sectionColor;
       //model.viewModel.map.setSelectedMarkers();
       filterLocations(type);
