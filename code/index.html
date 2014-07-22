@@ -11,7 +11,7 @@
     <script src="js/jquery-mousewheel.js"></script>
     <script src="http://jvectormap.com/js/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="assets/jquery-jvectormap-us-aea-en.js"></script>
-    <script src="assets/map-methods.js"></script>
+    
     <script src="assets/knockout.js"></script>
     <script src="assets/data.js"></script>
 
@@ -25,18 +25,22 @@
     <div class="mappingContainer">
 
       <ul id="tabs">
-        <li class="selected tab" id="topCity"><div class="title">Top Cities</div>
+        <li class="selected tab" id="topCity" data-type="top-city"><div class="title">Top Cities</div>
           <div class="bottomColor"></div>
-        </li><li class="tab" id="populated">
+        </li>
+        <li class="tab" id="populated" data-type="populated">
           <div class="title">Highly Populated Areas</div>
           <div class="bottomColor"></div>
-        </li><li class="tab" id="density">
+        </li>
+        <li class="tab" id="density" data-type="density">
           <div class="title">High Density Areas</div>
           <div class="bottomColor"></div>
-        </li><li class="tab" id="rainSnow">
+        </li>
+        <li class="tab" id="rainSnow" data-type="rain-snow">
           <div class="title">Rain and Snow</div>
           <div class="bottomColor"></div>
-        </li><li class="tab" id="allConditions">
+        </li>
+        <li class="tab" id="allConditions" data-type="all-condition">
           <div class="title">All Conditions</div>
           <div class="bottomColor"></div>
         </li>
@@ -62,9 +66,7 @@
             </div>
             <div class="toplistings">
               <ul data-bind="foreach: tasks, visible: tasks().length > 0">
-                  <li>
-                      <p data-bind="text: location().City"></p>
-                  </li> 
+                <li><p data-bind="text: location().City"></p></li> 
               </ul>
             </div>
             <div class="socialContiner">
