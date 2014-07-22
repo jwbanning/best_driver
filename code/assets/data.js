@@ -91,6 +91,8 @@ $(document).ready(function() {
       onViewportChange: function(e, scale, transX, transY){
           console.log('viewportChange', scale, transX, transY);
       }
+
+
     });
     return map;
   }
@@ -132,9 +134,14 @@ $(document).ready(function() {
           type = $(e.currentTarget).data('type'),
           byline = $(e.currentTarget).data('byline');
 
-
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
+
+      $('.tabContent .sliderContainer #slider').removeClass('disabled');
+      if (!$('#tabs #topCity').hasClass('selected')){
+        $('.tabContent .sliderContainer #slider').addClass('disabled');
+      }
+
       //change the color on the list items
       $('.tabContentOther .toplistings ul li svg path').css('fill', sectionColor);
       //$('.headingContainer .icon').removeClass().addClass('icon').addClass(id);

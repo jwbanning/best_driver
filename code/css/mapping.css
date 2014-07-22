@@ -222,11 +222,29 @@ div.tabContent .tabContentOther .header{
 
 /*SCALEBAR*/
 .sliderContainer{
-  margin-top:30px;
+  margin-top:40px;
 }
 .sliderContainer #slider{
-  height:30px;
+  height:5px;
   width:100%;
+  width: 100%;
+  margin:0px;
+  background: #0096d6;
+  border: #0096d6;
+}
+.sliderContainer #slider.disabled{
+  background: #f1f1f1;
+  border: #f1f1f1;
+}
+.sliderContainer #slider.disabled a{
+  background: #f1f1f1;
+  border: #f1f1f1;
+}
+.sliderContainer #slider a{
+  border: 1px solid #0096d6;
+  background: #0096d6;
+  width: 0.7em;
+  height: 0.7em;
 }
 /********END SCALEBAR*/
 
@@ -236,5 +254,6 @@ div.tabContent .tabContentOther .header{
 }
 .socialContiner img{
   float:right;
+
 }
 /********END SOCIAL*/
