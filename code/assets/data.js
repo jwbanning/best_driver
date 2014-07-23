@@ -49,6 +49,7 @@ $(document).ready(function() {
 
       onMarkerLabelShow: function(event, label, index){
         label.html(label.html()+' (modified marker)');
+      return false;
       },
       onMarkerOver: function(event, index){
         console.log('marker-over', index);
@@ -56,6 +57,7 @@ $(document).ready(function() {
       },
       onMarkerOut: function(event, index){
         console.log('marker-out', index);
+        return false;
       },
       onMarkerClick: function(event, index){
         $('.toplistings ul li').get(index).click();
@@ -214,6 +216,9 @@ $(document).ready(function() {
       max: 2014,
       step: 1,
       slide: function( event, ui ) {
+        if($('#tabs .tab.selected').attr('id') == 'topCity'){
+          // debugger;
+        }
         val = ui.value;
         // mapObject.series.regions[0].setValues(data.states[ui.value]);
         // mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
