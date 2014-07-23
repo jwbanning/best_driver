@@ -63,10 +63,10 @@ $(document).ready(function() {
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
          var path    = $('circle[data-index="'+index+'"]');
          var pathParent  = $('circle[data-index="'+index+'"]').parent();
-         var text = '<svg xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"><text x="20"  y="40">Example SVG text 1</text><line x1="1" y1="4" x2="1" y2="4" style="stroke: #000000"/></svg>'
-         
-         $(pathParent).append('<g>'+path+'</g>');
-         $(path).append(text);
+         var text = ' <svg class="textSvg"><text data-index="'+index+'" text-anchor="middle" alignment-baseline="middle" x="'+path.attr('cx')+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+index+'  </text></svg>';
+
+         $(pathParent).append(path);
+         $(pathParent).append(text);
       },
       onRegionLabelShow: function(event, label, code){
         label.html(label.html()+' (modified)');
@@ -92,7 +92,12 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
-        console.log('viewportChange', scale, transX, transY);
+        $('.jvectormap-container .textSVG text').each(function(index, item) {
+          var x = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cx');
+          var y = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cy');
+          $(item).attr('x',x);
+          $(item).attr('y',y)
+        });
         var scalefactor = 1;
         if (scale > 0 && scale <= 1.1) {
           console.log('US');
@@ -133,10 +138,9 @@ $(document).ready(function() {
     self.map = setMap();
     self.currentActiveLocation = ko.observable({});
 
-    self.popModal = function(currentLocation,e) {
+    self.popModal = function(currentLocation) {
             $('.modal').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
-            e.stopPropagation();
          }
     
     $.getJSON("/assets/best-driver.json", function(allData) {
@@ -155,6 +159,8 @@ $(document).ready(function() {
       var markers = formatMarkers(newValue);
        model.viewModel.map.removeAllMarkers();
        model.viewModel.map.addMarkers(markers);
+       $('.jvectormap-container .textSVG text').remove();
+
     });
 
 
@@ -188,28 +194,7 @@ $(document).ready(function() {
       };
     
     });
-    // Close the modal
-    $( ".modalContainer .close" ).on('click', function(e) {
-       $(e.currentTarget).closest('.modal').removeClass('show-modal');
-    });
-    $('.mappingContainer').not(".modal").on('click', function(e) {
-      // debugger;
-      // if($(e.currentTarget).hasClass('.modal')){ 
-      // }
-       $('.modal').removeClass('show-modal');
-    });
-    $("#slider").slider({
-      value: 2014,
-      min: 2005,
-      max: 2014,
-      step: 1,
-      slide: function( event, ui ) {
-        val = ui.value;
-        // mapObject.series.regions[0].setValues(data.states[ui.value]);
-        // mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
-        // mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
-      }
-    });
+
   
 
 });
