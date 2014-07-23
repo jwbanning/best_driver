@@ -127,6 +127,12 @@ $(document).ready(function() {
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.locations = ko.observableArray([]);
     self.map = setMap();
+    self.currentActiveLocation = ko.observable({});
+
+    self.popModal = function(currentLocation) {
+            $('.modal').addClass('show-modal');
+            self.currentActiveLocation(currentLocation.location())
+         }
     
     $.getJSON("/assets/best-driver.json", function(allData) {
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
@@ -173,6 +179,8 @@ $(document).ready(function() {
       //model.viewModel.map.setSelectedMarkers();
       filterLocations(type);
     });
+
+  
 
 });
 

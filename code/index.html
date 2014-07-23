@@ -58,6 +58,15 @@
                 <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 100%;"></a>
               </div>
             </div>
+            <div class="modal" data-bind="" }>
+              <h2 data-bind="text: currentActiveLocation().City +', '+currentActiveLocation().State" class=""></h2>
+              <h2 class="">is the <span data-bind="text: currentActiveLocation()['2014 Best Driver Rank']"></span>th savest driving city</h2>
+              <h2 class="">2014 Rankings</h2>
+              <h2 class="">Highly Populated Areas <span data-bind="text: currentActiveLocation()['2014 Highly Populated Areas']"></span></h2>
+              <h2 class="">High Desnity Areas <span data-bind="text: currentActiveLocation()['2014 High Desnity Areas']"></span></h2>
+              <h2 class="">Rain and Snow <span data-bind="text: currentActiveLocation()['2014 Rain & Snow']"></span></h2>
+              <h2 class="">All Conditions <span data-bind="text: currentActiveLocation()['2014 All Conditions']"></span></h2>
+            </div>
           </div>
 
           <div class="tabContentOther">
@@ -71,10 +80,9 @@
             </div>
             <div class="toplistings">
               <ul data-bind="foreach: locations, visible: locations().length > 0">
-                <li>
+                <li data-bind="click: $parent.popModal">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="44px" viewBox="0 0 30 44" enable-background="new 0 0 30 44" xml:space="preserve">
                     <path fill="#0276A7" d="M28.898,16.164c0,7.659-13.867,24.65-13.867,24.65S1.167,23.822,1.167,16.164c0-7.658,6.208-13.866,13.864-13.866C22.689,2.298,28.898,8.505,28.898,16.164z"/>
-                    
                       <text text-anchor="middle" alignment-baseline="middle" x="14.4" y="16" style="fill: #fff; font-size: 11px;" data-bind="text:($index() + 1)">  </text>
                    
                   </svg>

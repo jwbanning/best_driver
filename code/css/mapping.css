@@ -143,6 +143,7 @@ div.tabContent {
   background-color: #fff;
   min-height: 100%;
   margin-bottom: 90px;
+  position: relative;
 }
 div.tabContent.hide {
   display: none;
@@ -151,6 +152,7 @@ div.tabContent.hide {
 div.tabContent .tabContentMap{
   width:75%;
   float:left;
+  position: relative;
 
 }
 /*TAB CONTENT OTHER*/
@@ -264,3 +266,25 @@ div.tabContent .tabContentOther .header{
 
 }
 /********END SOCIAL*/
+
+
+
+/*MODAL*/
+.modal {
+  position: absolute;
+  top: 22%;
+  bottom: 25%;
+  left: 20%;
+  right: 33%;
+  background-color: #fff;
+  border: 3px solid #0096d6;
+  display: none;
+}
+.modal.show-modal {
+  display: block;
+}
+
+/********END MODAL*/
+
+
+
