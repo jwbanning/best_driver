@@ -222,9 +222,9 @@ $(document).ready(function() {
       e.preventDefault();
     });
 
-    $('.mappingContainer').not(".modal").on('click', function(e) {
-      $('.modal').removeClass('show-modal');
-    });
+    // $('.mappingContainer').not(".modal").on('click', function(e) {
+    //   $('.modal').removeClass('show-modal');
+    // });
 
 
     $("#slider").slider({
