@@ -188,6 +188,11 @@ $(document).ready(function() {
     
     });
 
+    $( ".modalContainer .close" ).on('click', function(e) {
+
+       $(e.currentTarget).closest('.modal').removeClass('show-modal');
+   });
+
   
 
 });

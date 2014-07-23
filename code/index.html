@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/jquery-jvectormap-1.2.2.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/mapping.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen"/>
+
     <link rel="stylesheet" media="all" href="/css/jquery-ui-1.8.22.custom.css">
 
 
@@ -59,13 +60,52 @@
               </div>
             </div>
             <div class="modal" data-bind="" }>
-              <h2 data-bind="text: currentActiveLocation().City +', '+currentActiveLocation().State" class=""></h2>
-              <h2 class="">is the <span data-bind="text: currentActiveLocation()['2014 Best Driver Rank']"></span>th savest driving city</h2>
-              <h2 class="">2014 Rankings</h2>
-              <h2 class="">Highly Populated Areas <span data-bind="text: currentActiveLocation()['2014 Highly Populated Areas']"></span></h2>
-              <h2 class="">High Desnity Areas <span data-bind="text: currentActiveLocation()['2014 High Desnity Areas']"></span></h2>
-              <h2 class="">Rain and Snow <span data-bind="text: currentActiveLocation()['2014 Rain & Snow']"></span></h2>
-              <h2 class="">All Conditions <span data-bind="text: currentActiveLocation()['2014 All Conditions']"></span></h2>
+              
+              <div class="modalContainer">
+                <div id="close" class="close"></div>
+                <div class="cityContainer">
+                  <h2 data-bind="text: currentActiveLocation().City +', '+currentActiveLocation().State" class="cityName"></h2>
+                  <h2 class="cityRank">is the <span data-bind="text: currentActiveLocation()['2014 Best Driver Rank']"></span> safest driving city</h2>
+                </div>
+
+                <div class="rankings">
+                  <div class="header">2014 rankings:</div>
+
+                  <div class="populated section">
+                    <h2>Highly Populated areas:</h2>
+                    <h2 class="numRank">
+                      <span data-bind="text: currentActiveLocation()['2014 Highly Populated Areas']"></span>
+                      <span class="ordinal">rd</span>
+                    </h2>
+                  </div>
+                  <div class="density section">
+                    <h2>High density areas:</h2>
+                    <h2 class="numRank">
+                       <span data-bind="text: currentActiveLocation()['2014 High Density Areas']"></span>
+                       <span class="ordinal">rd</span>
+                     </h2>
+                  </div>
+                  <div class="rainSnow section">
+                    <h2>Rain and snow:</h2>
+                    <h2 class="numRank">
+                      <span data-bind="text: currentActiveLocation()['2014 Rain & Snow']"></span>
+                      <span class="ordinal">rd</span>
+                    </h2>
+                  </div>
+                  <div class="allConditions section">
+                    <h2>All conditions:</h2>
+                    <h2 class="numRank">
+                      <span data-bind="text: currentActiveLocation()['2014 All Conditions']"></span>
+                      <span class="ordinal">nd</span>
+                    </h2>
+                  </div>
+                </div>
+
+                <div class="shareContainer">
+                  <h2>Share <span data-bind="text: currentActiveLocation().City +', '+currentActiveLocation().State" class="cityName"></span>2014 ranking:</h2>
+                  <img src="images/share.png" />
+                </div>
+              </div>
             </div>
           </div>
 
