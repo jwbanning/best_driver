@@ -280,6 +280,15 @@ div.tabContent .tabContentOther .header{
 
 
 /*MODAL*/
+.ui-blocker {
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  display: none;
+  z-index: 0;
+}
 .modal {
   position: absolute;
   top: 22%;
@@ -288,8 +297,9 @@ div.tabContent .tabContentOther .header{
   right: 33%;
   background-color: #fff;
   display: none;
+  z-index: 10;
 }
-.modal.show-modal {
+.tabContentMap.show-modal .modal, .tabContentMap.show-modal .ui-blocker {
   display: block;
 }
 

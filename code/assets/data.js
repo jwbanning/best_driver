@@ -70,6 +70,9 @@ $(document).ready(function() {
       },
       onMarkerClick: function(event, index){
         $('.toplistings ul li').get(index).click();
+        event.stopPropagation();
+        event.preventDefault();
+        return;
         
       },
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
@@ -151,7 +154,8 @@ $(document).ready(function() {
     self.currentActiveLocation = ko.observable({});
 
     self.popModal = function(currentLocation,e) {
-            $('.modal').css('border','solid 5px'+self.color+'').addClass('show-modal');
+            $('.modal').css('border','solid 5px'+self.color+'')
+            $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             e.stopPropagation();
          }
@@ -187,6 +191,7 @@ $(document).ready(function() {
 
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
+      $('.tabContentMap').removeClass('show-modal');
 
       $('.tabContent .sliderContainer #slider').removeClass('disabled');
       if (!$('#tabs #topCity').hasClass('selected')){
@@ -214,17 +219,14 @@ $(document).ready(function() {
      
      // Close the modal
     $( ".modalContainer .close" ).on('click', function(e) {
-       $(e.currentTarget).closest('.modal').removeClass('show-modal');
+       $(e.currentTarget).closest('.tabContentMap').removeClass('show-modal');
     });
     
-    $(".modalContainer").on('click', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-    });
 
-    // $('.mappingContainer').not(".modal").on('click', function(e) {
-    //   $('.modal').removeClass('show-modal');
-    // });
+    $('.ui-blocker').not().on('click', function(e) {
+       $('.tabContentMap').removeClass('show-modal');
+      e.stopPropagation();
+    });
 
 
     $("#slider").slider({
@@ -233,13 +235,10 @@ $(document).ready(function() {
       max: 2014,
       step: 1,
       slide: function( event, ui ) {
-        if($('#tabs .tab.selected').attr('id') == 'topCity'){
-          // debugger;
-        }
-        val = ui.value;
-        // mapObject.series.regions[0].setValues(data.states[ui.value]);
-        // mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
-        // mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
+       var val = ui.value;
+       var yearString = val+' Best Driver Rank'
+       filterLocations(yearString);
+        
       }
     });
 
