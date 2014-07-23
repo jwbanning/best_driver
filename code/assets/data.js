@@ -238,6 +238,7 @@ $(document).ready(function() {
        var val = ui.value;
        var yearString = val+' Best Driver Rank'
        filterLocations(yearString);
+       model.viewModel.type(yearString);
         
       }
     });
