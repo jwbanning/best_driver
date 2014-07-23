@@ -13,7 +13,16 @@ $(document).ready(function() {
      var m = clonedArray.sort(function(left, right) { 
         return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
       });
+
    model.viewModel.locations(m);
+   setTopMarkers();
+  }
+
+  function setTopMarkers() {
+    for (var i = 0; i < 10; i++) {
+     model.viewModel.map.setSelectedMarkers(i);
+     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
+    };
   }
 
   function formatMarkers(markerList, type) {
@@ -66,7 +75,7 @@ $(document).ready(function() {
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
          var path    = $('circle[data-index="'+index+'"]');
          var pathParent  = $('circle[data-index="'+index+'"]').parent();
-         var text = ' <svg class="textSvg"><text data-index="'+index+'" text-anchor="middle" alignment-baseline="middle" x="'+path.attr('cx')+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+index+'  </text></svg>';
+         var text = ' <svg class="textSvg"><text data-index="'+index+'" text-anchor="middle" alignment-baseline="middle" x="'+path.attr('cx')+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+(parseInt(index)+1)+'  </text></svg>';
 
          $(pathParent).append(path);
          $(pathParent).append(text);
@@ -150,6 +159,7 @@ $(document).ready(function() {
     $.getJSON("/assets/best-driver.json", function(allData) {
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
         self.locations(mappedTasks);
+        filterLocations(self.type());
     });  
   }
 
@@ -192,12 +202,6 @@ $(document).ready(function() {
 
       model.viewModel.color = sectionColor;
       filterLocations(type);
-
-      for (var i = 0; i < 11; i++) {
-       model.viewModel.map.setSelectedMarkers(i);
-       $('circle[data-index="'+i+'"]').css('fill', sectionColor);
-      };
-    
     });
      
      // Close the modal
@@ -225,8 +229,6 @@ $(document).ready(function() {
         // mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
       }
     });
-
-  
 
 });
 
