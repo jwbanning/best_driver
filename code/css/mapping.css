@@ -302,7 +302,7 @@ div.tabContent .tabContentOther .header{
 
 .modalContainer .rankings{border-top:solid 1px #ececec;border-bottom:solid 1px #ececec;padding: 15px;}
 .modalContainer .rankings .header{color:#535353;}
-.modalContainer .rankings .section{color:#929292; font-size: 12px;line-height: 40px;}
+.modalContainer .rankings .section{color:#929292; font-size: 12px;line-height: 40px; height:40px;}
 .modalContainer .rankings .section h2{width:50%; float:left;}
 
 .modalContainer .rankings .section h2.numRank{float:right; text-align:right;}

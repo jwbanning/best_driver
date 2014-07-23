@@ -133,9 +133,10 @@ $(document).ready(function() {
     self.map = setMap();
     self.currentActiveLocation = ko.observable({});
 
-    self.popModal = function(currentLocation) {
+    self.popModal = function(currentLocation,e) {
             $('.modal').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
+            e.stopPropagation();
          }
     
     $.getJSON("/assets/best-driver.json", function(allData) {
@@ -187,12 +188,28 @@ $(document).ready(function() {
       };
     
     });
-
+    // Close the modal
     $( ".modalContainer .close" ).on('click', function(e) {
-
        $(e.currentTarget).closest('.modal').removeClass('show-modal');
-   });
-
+    });
+    $('.mappingContainer').not(".modal").on('click', function(e) {
+      // debugger;
+      // if($(e.currentTarget).hasClass('.modal')){ 
+      // }
+       $('.modal').removeClass('show-modal');
+    });
+    $("#slider").slider({
+      value: 2014,
+      min: 2005,
+      max: 2014,
+      step: 1,
+      slide: function( event, ui ) {
+        val = ui.value;
+        // mapObject.series.regions[0].setValues(data.states[ui.value]);
+        // mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
+        // mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
+      }
+    });
   
 
 });
