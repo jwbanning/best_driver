@@ -191,6 +191,14 @@ $(document).ready(function() {
       $('.tabContent .sliderContainer #slider').removeClass('disabled');
       if (!$('#tabs #topCity').hasClass('selected')){
         $('.tabContent .sliderContainer #slider').addClass('disabled');
+        $("#slider").slider({
+          disabled:true
+        });
+      }
+      else{
+       $("#slider").slider({
+          disabled: false
+        }); 
       }
 
       //change the color on the list items
@@ -208,12 +216,17 @@ $(document).ready(function() {
     $( ".modalContainer .close" ).on('click', function(e) {
        $(e.currentTarget).closest('.modal').removeClass('show-modal');
     });
-    $('.mappingContainer').not(".modal").on('click', function(e) {
-      // debugger;
-      // if($(e.currentTarget).hasClass('.modal')){ 
-      // }
-       //$('.modal').removeClass('show-modal');
+    
+    $(".modalContainer").on('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
     });
+
+    $('.mappingContainer').not(".modal").on('click', function(e) {
+      $('.modal').removeClass('show-modal');
+    });
+
+
     $("#slider").slider({
       value: 2014,
       min: 2005,
