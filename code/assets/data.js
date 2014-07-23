@@ -57,18 +57,10 @@ $(document).ready(function() {
         console.log('marker-out', index);
       },
       onMarkerClick: function(event, index){
-        alert('show marker');
-
-        console.log('marker-click', index);
+        
       },
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
-        console.log('marker-select', index, isSelected, selectedMarkers);
-        if (window.localStorage) {
-          window.localStorage.setItem(
-            'jvectormap-selected-markers',
-            JSON.stringify(selectedMarkers)
-          );
-        }
+        debugger;
       },
       onRegionLabelShow: function(event, label, code){
         label.html(label.html()+' (modified)');
@@ -151,7 +143,7 @@ $(document).ready(function() {
     model.viewModel.locations.subscribe(function(newValue) {
       var markers = formatMarkers(newValue);
        model.viewModel.map.removeAllMarkers();
-        model.viewModel.map.addMarkers(markers);
+       model.viewModel.map.addMarkers(markers);
     });
 
 
