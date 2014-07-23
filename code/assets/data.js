@@ -191,6 +191,7 @@ $(document).ready(function() {
 
       for (var i = 0; i < 11; i++) {
        model.viewModel.map.setSelectedMarkers(i);
+       $('circle[data-index="'+i+'"]').css('fill', sectionColor);
       };
     
     });
