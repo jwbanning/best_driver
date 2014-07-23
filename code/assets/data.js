@@ -19,7 +19,7 @@ $(document).ready(function() {
   function formatMarkers(markerList, type) {
    var markers = [];
     for (var i = 0; i < model.viewModel.locations().length; i++) {
-      markers.push({'style': {fill: model.viewModel.color}, 'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
+      markers.push({'style': {fill: model.viewModel.color},'id':true, 'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
     }
     return markers;
   }
@@ -38,13 +38,14 @@ $(document).ready(function() {
           stroke:'transparent'
         },
         selected: {
-          fill: 'blue'
+          r: 16,
+          fill: color
         },
       },
       markers: [],
       regionsSelectable: false,
       markersSelectable: true,
-      markersSelectableOne: true,
+      markersSelectableOne: false,
 
       onMarkerLabelShow: function(event, label, index){
         label.html(label.html()+' (modified marker)');
@@ -60,7 +61,12 @@ $(document).ready(function() {
         
       },
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
-        debugger;
+         var path    = $('circle[data-index="'+index+'"]');
+         var pathParent  = $('circle[data-index="'+index+'"]').parent();
+         var text = '<svg xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"><text x="20"  y="40">Example SVG text 1</text><line x1="1" y1="4" x2="1" y2="4" style="stroke: #000000"/></svg>'
+         
+         $(pathParent).append('<sect>'+path+'</sect>');
+         $(path).append(text);
       },
       onRegionLabelShow: function(event, label, code){
         label.html(label.html()+' (modified)');
@@ -113,8 +119,6 @@ $(document).ready(function() {
 
       }
 
-
-
     });
     return map;
   }
@@ -131,7 +135,7 @@ $(document).ready(function() {
 
     self.popModal = function(currentLocation) {
             $('.modal').addClass('show-modal');
-            self.currentActiveLocation(currentLocation.location())
+            self.currentActiveLocation(currentLocation.location());
          }
     
     $.getJSON("/assets/best-driver.json", function(allData) {
@@ -176,8 +180,12 @@ $(document).ready(function() {
       model.viewModel.byline(byline);
 
       model.viewModel.color = sectionColor;
-      //model.viewModel.map.setSelectedMarkers();
       filterLocations(type);
+
+      for (var i = 0; i < 11; i++) {
+       model.viewModel.map.setSelectedMarkers(i);
+      };
+    
     });
 
   
