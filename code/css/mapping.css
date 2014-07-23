@@ -283,7 +283,7 @@ div.tabContent .tabContentOther .header{
   display: block;
 }
 
-.modalContainer{border:solid 4px #0096d6; background-color: #fff;}
+.modalContainer{background-color: #fff;}
 .modalContainer .close{
   background-image:url('../images/modal_close.png');
   background-repeat:no-repeat;

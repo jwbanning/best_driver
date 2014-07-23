@@ -44,7 +44,7 @@ $(document).ready(function() {
       },
       markers: [],
       regionsSelectable: false,
-      markersSelectable: true,
+      markersSelectable: false,
       markersSelectableOne: false,
 
       onMarkerLabelShow: function(event, label, index){
@@ -58,6 +58,7 @@ $(document).ready(function() {
         console.log('marker-out', index);
       },
       onMarkerClick: function(event, index){
+        $('.toplistings ul li').get(index).click();
         
       },
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
@@ -139,7 +140,7 @@ $(document).ready(function() {
     self.currentActiveLocation = ko.observable({});
 
     self.popModal = function(currentLocation,e) {
-            $('.modal').addClass('show-modal');
+            $('.modal').css('border','solid 5px'+self.color+'').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             e.stopPropagation();
          }
@@ -205,7 +206,7 @@ $(document).ready(function() {
       // debugger;
       // if($(e.currentTarget).hasClass('.modal')){ 
       // }
-       $('.modal').removeClass('show-modal');
+       //$('.modal').removeClass('show-modal');
     });
     $("#slider").slider({
       value: 2014,
