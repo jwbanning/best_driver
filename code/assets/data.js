@@ -65,7 +65,7 @@ $(document).ready(function() {
          var pathParent  = $('circle[data-index="'+index+'"]').parent();
          var text = '<svg xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"><text x="20"  y="40">Example SVG text 1</text><line x1="1" y1="4" x2="1" y2="4" style="stroke: #000000"/></svg>'
          
-         $(pathParent).append('<sect>'+path+'</sect>');
+         $(pathParent).append('<g>'+path+'</g>');
          $(path).append(text);
       },
       onRegionLabelShow: function(event, label, code){
