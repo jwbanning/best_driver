@@ -60,7 +60,7 @@ $(document).ready(function() {
         
       },
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
-        debugger;
+
       },
       onRegionLabelShow: function(event, label, code){
         label.html(label.html()+' (modified)');
