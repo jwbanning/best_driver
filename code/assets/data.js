@@ -63,10 +63,10 @@ $(document).ready(function() {
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
          var path    = $('circle[data-index="'+index+'"]');
          var pathParent  = $('circle[data-index="'+index+'"]').parent();
-         var text = '<svg xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"><text x="20"  y="40">Example SVG text 1</text><line x1="1" y1="4" x2="1" y2="4" style="stroke: #000000"/></svg>'
-         
-         $(pathParent).append('<g>'+path+'</g>');
-         $(path).append(text);
+         var text = ' <svg class="textSvg"><text data-index="'+index+'" text-anchor="middle" alignment-baseline="middle" x="'+path.attr('cx')+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+index+'  </text></svg>';
+
+         $(pathParent).append(path);
+         $(pathParent).append(text);
       },
       onRegionLabelShow: function(event, label, code){
         label.html(label.html()+' (modified)');
@@ -92,7 +92,12 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
-        console.log('viewportChange', scale, transX, transY);
+        $('.jvectormap-container .textSVG text').each(function(index, item) {
+          var x = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cx');
+          var y = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cy');
+          $(item).attr('x',x);
+          $(item).attr('y',y)
+        });
         var scalefactor = 1;
         if (scale > 0 && scale <= 1.1) {
           console.log('US');
@@ -154,6 +159,8 @@ $(document).ready(function() {
       var markers = formatMarkers(newValue);
        model.viewModel.map.removeAllMarkers();
        model.viewModel.map.addMarkers(markers);
+       $('.jvectormap-container .textSVG text').remove();
+
     });
 
 
@@ -187,11 +194,6 @@ $(document).ready(function() {
       };
     
     });
-
-    $( ".modalContainer .close" ).on('click', function(e) {
-
-       $(e.currentTarget).closest('.modal').removeClass('show-modal');
-   });
 
   
 
