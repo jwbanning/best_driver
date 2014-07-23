@@ -161,6 +161,7 @@ $(document).ready(function() {
          }
     
     $.getJSON("/assets/best-driver.json", function(allData) {
+        setSliderTicks();
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
         self.locations(mappedTasks);
         filterLocations(self.type());
@@ -243,7 +244,23 @@ $(document).ready(function() {
       }
     });
 
-});
+    function setSliderTicks(){
+      var $slider =  $('#slider');
+      var max =  $slider.slider("option", "max") - $slider.slider("option", "min");    
+      var spacing =  $slider.width() / (max);
+
+      $slider.find('.ui-slider-tick-mark').remove();
+        for (var i = 0; i < max+1 ; i++) {
+            $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * i) - 4 + 'px').appendTo($slider);                    
+        }
+    }
+
+    window.onresize = function(event) {
+      setSliderTicks();
+    };
+
+
+}); //END DOCUMENT READY
 
 
 

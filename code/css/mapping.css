@@ -264,6 +264,19 @@ div.tabContent .tabContentOther .header{
   background: #0096d6;
   width: 0.7em;
   height: 0.7em;
+  margin-top: 1px;
+  outline-width: 0;
+}
+.ui-slider-tick-mark {
+  display:inline-block;
+  width:4px;
+  background:#0096d6;
+  height:16px;
+  position:absolute;
+  top:-5px;
+}
+.ui-slider-disabled .ui-slider-tick-mark{
+  background:#f1f1f1;
 }
 /********END SCALEBAR*/
 
