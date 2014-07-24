@@ -386,10 +386,15 @@ div.tabContent .tabContentOther .header{
 
 
 .modalContainer .shareContainer{padding: 15px;}
-.modalContainer .shareContainer h2{ width:100%;font-family:'Open Sans',,sans-serif; font-weight:600;font-size:14px;}}
+.modalContainer .shareContainer h2{ width:100%;font-family:'Open Sans',sans-serif; font-weight:600;font-size:14px;}
 
 
 /********END MODAL*/
 
+/*jvectormap-container style overrides*/
+.jvectormap-container svg g text {
+  pointer-events:none;
+  cursor:pointer;
+}
 
 
