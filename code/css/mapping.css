@@ -335,9 +335,9 @@ div.tabContent .tabContentOther .header{
 .modal {
   position: absolute;
   top: 22%;
-  bottom: 25%;
+  bottom: 32%;
   left: 20%;
-  right: 33%;
+  right: 40%;
   background-color: #fff;
   display: none;
   z-index: 10;
@@ -346,7 +346,10 @@ div.tabContent .tabContentOther .header{
   display: block;
 }
 
-.modalContainer{background-color: #fff;}
+.modalContainer{
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
 .modalContainer .close{
   background-image:url('../images/modal_close.png');
   background-repeat:no-repeat;
@@ -359,16 +362,16 @@ div.tabContent .tabContentOther .header{
 }
 
 .modalContainer .cityContainer{padding:15px;}
-.modalContainer .cityContainer .cityName{color:#333333;}
-.modalContainer .cityContainer .cityRank{color:#333333;}
-.modalContainer .cityContainer .cityRank span{color:#333333;}
+.modalContainer .cityContainer .cityName{color:#333333; font-size:18px; font-weight:700; text-transform:uppercase; font-family: 'Open Sans', sans-serif;}
+.modalContainer .cityContainer .cityRank{color:#333333; font-size:14px; font-weight: 600;}
+.modalContainer .cityContainer .cityRank span{color:#333333;font-weight:700;}
 
 .modalContainer .rankings{border-top:solid 1px #ececec;border-bottom:solid 1px #ececec;padding: 15px;}
-.modalContainer .rankings .header{color:#535353;}
-.modalContainer .rankings .section{color:#929292; font-size: 12px;line-height: 40px; height:40px;}
-.modalContainer .rankings .section h2{width:50%; float:left;}
+.modalContainer .rankings .header{color:#535353; font-weight: 600; font-family:'Open Sans', sans-serif;font-size:14px;}
+.modalContainer .rankings .section{color:#929292; font-weight:400;font-family:'Open Sans',sans-serif; font-size: 13px;line-height: 30px; height:30px;}
+.modalContainer .rankings .section h2{width:70%; float:left;}
 
-.modalContainer .rankings .section h2.numRank{float:right; text-align:right;}
+.modalContainer .rankings .section h2.numRank{float:right; text-align:right;width:30%;}
 .modalContainer .rankings .section h2.numRank span{font-size:100%;}
 .modalContainer .rankings .section h2.numRank span.ordinal{vertical-align: super; font-size: 50%;}
 
@@ -381,8 +384,8 @@ div.tabContent .tabContentOther .header{
 
 
 .modalContainer .shareContainer{padding: 15px;}
-.modalContainer .shareContainer h2{ width:100%;}
-.modalContainer .shareContainer img{}
+.modalContainer .shareContainer h2{ width:100%;font-family:'Open Sans',,sans-serif; font-weight:600;font-size:14px;}}
+
 
 /********END MODAL*/
 
