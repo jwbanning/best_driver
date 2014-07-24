@@ -142,7 +142,7 @@ $(document).ready(function() {
   //THIS IS THE MODEL ---------------------------------
   function TaskListViewModel() {
     var self = this;
-    self.type =  ko.observable("2014 Top Cities");
+    self.type =  ko.observable("2014 Best Driver Rank");
     self.id =  ko.observable("topCity");
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.locations = ko.observableArray([]);
@@ -155,13 +155,13 @@ $(document).ready(function() {
             self.currentActiveLocation(currentLocation.location());
             e.stopPropagation();
          }
-
+    
     $.getJSON("/assets/best-driver.json", function(allData) {
         setSliderTicks();
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
         self.locations(mappedTasks);
         filterLocations(self.type());
-    });
+    });  
   }
 
     //expose the model and bind
@@ -214,11 +214,10 @@ $(document).ready(function() {
 
       model.viewModel.color = sectionColor;
       filterLocations(type);
-      
+
       //need to reset the map to be back at the US view.
       var mapObject = $('.map').vectorMap('get', 'mapObject');
       mapObject.setScale(0);
-
 
     });
      
@@ -241,7 +240,7 @@ $(document).ready(function() {
       step: 1,
       slide: function( event, ui ) {
        var val = ui.value;
-       var yearString = val+' Top Cities'
+       var yearString = val+' Best Driver Rank'
        filterLocations(yearString);
        model.viewModel.type(yearString);
       }
