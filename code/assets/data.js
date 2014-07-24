@@ -145,6 +145,7 @@ $(document).ready(function() {
     self.type =  ko.observable("2014 Best Driver Rank");
     self.id =  ko.observable("topCity");
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
+    self.year =  ko.observable("2014");
     self.locations = ko.observableArray([]);
     self.map = setMap();
     self.currentActiveLocation = ko.observable({});
@@ -185,6 +186,9 @@ $(document).ready(function() {
           sectionColor = $(e.currentTarget).data('color'),
           type = $(e.currentTarget).data('type'),
           byline = $(e.currentTarget).data('byline');
+          // hacks to handle the bad JSON
+          year = '2014';
+          newtype = type.substring(5);
 
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
@@ -208,9 +212,10 @@ $(document).ready(function() {
       //change the color on the list items
       $('.tabContentOther .toplistings ul li svg path').css('fill', sectionColor);
       //$('.headingContainer .icon').removeClass().addClass('icon').addClass(id);
-      model.viewModel.type(type);
+      model.viewModel.type(newtype);
       model.viewModel.id(id);
       model.viewModel.byline(byline);
+      model.viewModel.year(year);
 
       model.viewModel.color = sectionColor;
       filterLocations(type);
