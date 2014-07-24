@@ -142,7 +142,7 @@ $(document).ready(function() {
   //THIS IS THE MODEL ---------------------------------
   function TaskListViewModel() {
     var self = this;
-    self.type =  ko.observable("2014 Best Driver Rank");
+    self.type =  ko.observable("Best Driver Rank");
     self.id =  ko.observable("topCity");
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.year =  ko.observable("2014");
@@ -186,9 +186,11 @@ $(document).ready(function() {
           sectionColor = $(e.currentTarget).data('color'),
           type = $(e.currentTarget).data('type'),
           byline = $(e.currentTarget).data('byline');
+          
           // hacks to handle the bad JSON
           year = '2014';
           newtype = type.substring(5);
+          model.viewModel.year('2014');
 
       $( "#tabs .tab" ).removeClass('selected');
       $(e.currentTarget).addClass('selected');
@@ -245,9 +247,10 @@ $(document).ready(function() {
       step: 1,
       slide: function( event, ui ) {
        var val = ui.value;
-       var yearString = val+' Best Driver Rank'
+       var yearString = 'Best Driver Rank'
        filterLocations(yearString);
        model.viewModel.type(yearString);
+       model.viewModel.year(ui.value);
       }
     });
 
