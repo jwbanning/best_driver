@@ -173,6 +173,7 @@ div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap 
 div.tabContent .tabContentMap .jvectormap-zoomin{bottom:40;}
 div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20;}
 
+
 /*TAB CONTENT OTHER*/
 div.tabContent .tabContentOther{
   width:25%;
@@ -280,6 +281,7 @@ div.tabContent .tabContentOther .header{
   margin:0px;
   background: #0096d6;
   border: #0096d6;
+  border-radius: 0px;
 }
 .sliderContainer #slider.disabled{
   background: #f1f1f1;
