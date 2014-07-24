@@ -38,6 +38,7 @@ $(document).ready(function() {
     var color = color || '#0096d6';
     var map = new jvm.WorldMap({
       container: $('.map'),
+      zoomStep: 2,
       map: 'us_aea_en',
       backgroundColor: '#fff',
       regionStyle:regionStyling,

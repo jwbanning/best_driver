@@ -1,5 +1,6 @@
 body{
   background: #fff;
+  font-family: 'Open Sans', sans-serif;
 }
 .headerImageContainer{
 
@@ -119,7 +120,8 @@ body{
   text-decoration: none;
   text-align: center;
   margin-top: 63px;
-  font-size: 13px;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /*TAB BOTTOM COLOR*/
@@ -172,6 +174,8 @@ div.tabContent .tabContentOther .header{
   border-bottom: solid 1px #ececec;
   height: 25%;
   position: relative;
+  font-family: 'Open Sans', sans-serif;
+  color: #666;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
@@ -185,12 +189,21 @@ div.tabContent .tabContentOther .header{
     float: left;
   }
 
-  div.tabContent .tabContentOther .header .headingContainer h4{}
-  div.tabContent .tabContentOther .header .headingContainer h3{}
+  div.tabContent .tabContentOther .header .headingContainer h4{
+    color:#666;
+    font-size:15px;
+  }
+  div.tabContent .tabContentOther .header .headingContainer h3{
+    color:#666;
+    font-size:21px;
+    /*font-family: 'Open Sans', sans-serif;*/
+  }
   div.tabContent .tabContentOther .header p {
     position: absolute;
     bottom: 30px;
-    font-size: 14px;
+    font-size: 13px;
+    /*font-family: 'Open Sans', sans-serif;*/
+
   }
 
   div.tabContent .tabContentOther .toplistings{
@@ -209,6 +222,9 @@ div.tabContent .tabContentOther .header{
     font-size: 15px;
     height: 40px;
     padding: 5px 30px;
+    font-family: 'Open Sans', sans-serif;
+    color:#333;
+    font-weight: 600;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
