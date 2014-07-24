@@ -195,6 +195,8 @@ $(document).ready(function() {
       $(e.currentTarget).addClass('selected');
       $('.tabContentMap').removeClass('show-modal');
 
+      $( "div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap .jvectormap-zoomout").css('color', sectionColor);
+
       $('.tabContent .sliderContainer #slider').removeClass('disabled');
       if (!$('#tabs #topCity').hasClass('selected')){
         $('.tabContent .sliderContainer #slider').addClass('disabled');
@@ -205,7 +207,7 @@ $(document).ready(function() {
       else{
        $("#slider").slider({
           disabled: false
-        }); 
+        });
       }
 
       //change the color on the list items

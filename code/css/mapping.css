@@ -159,6 +159,20 @@ div.tabContent .tabContentMap{
   position: relative;
 
 }
+/*ZOOM LEVEL CONTROLS*/
+
+div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap .jvectormap-zoomout{
+  background: #fff;
+  color: #0096d6;;
+  border:solid 1px #e3e3e3;
+  top:auto;
+  left:auto;
+  right:20;
+  border-radius: 0px;
+}
+div.tabContent .tabContentMap .jvectormap-zoomin{bottom:40;}
+div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20;}
+
 /*TAB CONTENT OTHER*/
 div.tabContent .tabContentOther{
   width:25%;
