@@ -123,7 +123,7 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
-          $('.jvectormap-container .textSVG text').each(function(index, item) {
+          $('.jvectormap-container .textSvg text').each(function(index, item) {
           var x = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cx');
           var y = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cy');
           $(item).attr('x',x);
@@ -203,7 +203,7 @@ $(document).ready(function() {
       var markers = formatMarkers(newValue);
        model.viewModel.map.removeAllMarkers();
        model.viewModel.map.addMarkers(markers);
-       $('.jvectormap-container .textSVG text').remove();
+       $('.jvectormap-container .textSvg text').remove();
 
     });
 
