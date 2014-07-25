@@ -158,16 +158,17 @@ $(document).ready(function() {
             self.currentActiveLocation(currentLocation.location());
             e.stopPropagation();
             
-            lat = self.currentActiveLocation().Lat;
-            lng = self.currentActiveLocation().Lon;
-            scale =5;
+
+            var lat = self.currentActiveLocation().Lat;
+            var lng = self.currentActiveLocation().Lon;
+            var scale = 5;
             // zoom to the area of interest
             // debugger;
             var mapObj = $('.map').vectorMap('get', 'mapObject');
+            mapObj.setScale(0);
             var foo = mapObj.latLngToPoint(lat,lng);
-
-            w = foo.x / mapObj.width;
-            h = foo.y / mapObj.height;
+            var w = foo.x / mapObj.width;
+            var h = foo.y / mapObj.height;
             mapObj.setFocus(5, w, h);
          }
     
@@ -273,7 +274,7 @@ $(document).ready(function() {
         var yearString = 'Top Cities'
         filterLocations(yearString);
         model.viewModel.type(yearString);
-model.viewModel.year(ui.value);
+        model.viewModel.year(ui.value);
       }
     });
 
