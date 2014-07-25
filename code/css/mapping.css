@@ -156,7 +156,6 @@ div.tabContent .tabContentMap{
   width:75%;
   float:left;
   position: relative;
-
 }
 /*ZOOM LEVEL CONTROLS*/
 
@@ -210,7 +209,7 @@ div.tabContent .tabContentOther .listingHeader{
   }
   div.tabContent .tabContentOther .listingHeader .headingContainer h3{
     color:#666;
-    font-size:21px;
+    font-size:17px;
     /*font-family: 'Open Sans', sans-serif;*/
   }
   div.tabContent .tabContentOther .listingHeader p {
@@ -234,6 +233,7 @@ div.tabContent .tabContentOther .listingHeader{
     
   }
   div.tabContent .tabContentOther .toplistings ul li{
+    list-style-type: none;
     line-height: 30px;
     font-size: 15px;
     height: 40px;
