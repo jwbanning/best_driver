@@ -167,8 +167,9 @@ $(document).ready(function() {
             var mapObj = $('.map').vectorMap('get', 'mapObject');
             mapObj.setScale(0);
             var foo = mapObj.latLngToPoint(lat,lng);
-            var w = foo.x / mapObj.width;
+            var w = (foo.x - 25) / mapObj.width;
             var h = foo.y / mapObj.height;
+
             mapObj.setFocus(5, w, h);
          }
     
