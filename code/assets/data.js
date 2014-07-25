@@ -53,6 +53,7 @@ $(document).ready(function() {
     var map = new jvm.WorldMap({
       container: $('.map'),
       zoomStep: 2,
+      zoomOnScroll: false,
       map: 'us_aea_en',
       backgroundColor: '#fff',
       regionStyle:regionStyling,

@@ -145,10 +145,10 @@ ul.breadcrumb li span {
 }
 .bestdriver-app .map {
 	clear:both;
-	width: 725px;
+	/*width: 725px;*/
 	height: 630px;
-	float:left;
-	border: 1px solid #ccc;	
+	/*float:left;*/
+	/*border: 1px solid #ccc;	*/
 	border-top: none;
 }
 .bestdriver-app .list {
