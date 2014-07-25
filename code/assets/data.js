@@ -142,7 +142,7 @@ $(document).ready(function() {
   //THIS IS THE MODEL ---------------------------------
   function TaskListViewModel() {
     var self = this;
-    self.type =  ko.observable("Best Driver Rank");
+    self.type =  ko.observable("Top Cities");
     self.id =  ko.observable("topCity");
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.year =  ko.observable("2014");
@@ -155,6 +155,12 @@ $(document).ready(function() {
             $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             e.stopPropagation();
+
+       // var mapObject = $('.map').vectorMap('get', 'mapObject');
+        self.map.setFocus(5, 37.770172,-122.422771);
+        //    self.map.mapObj.setFocusLatLng;
+
+            
          }
     
     $.getJSON("/assets/best-driver.json", function(allData) {
@@ -247,7 +253,7 @@ $(document).ready(function() {
       step: 1,
       slide: function( event, ui ) {
        var val = ui.value;
-       var yearString = 'Best Driver Rank'
+       var yearString = 'Top Cities'
        filterLocations(yearString);
        model.viewModel.type(yearString);
        model.viewModel.year(ui.value);
