@@ -123,8 +123,7 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
-
-        $('.jvectormap-container text').each(function(index, item) {
+          $('.jvectormap-container .textSVG text').each(function(index, item) {
           var x = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cx');
           var y = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cy');
           $(item).attr('x',x);
