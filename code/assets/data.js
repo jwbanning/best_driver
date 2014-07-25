@@ -272,7 +272,7 @@ $(document).ready(function() {
         var yearString = 'Top Cities'
         filterLocations(yearString);
         model.viewModel.type(yearString);
-model.viewModel.year(ui.value);
+        model.viewModel.year(ui.value);
       }
     });
 
