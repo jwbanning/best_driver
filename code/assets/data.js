@@ -3,11 +3,18 @@ $(document).ready(function() {
     this.location = ko.observable(data);
   }
 
-  function filterLocations(type) {
+  function filterLocations(type, year) {
+    // debugger;
+    if (year==''){
+      type = type;
+    }
+    else{
+      type = year + ' ' + type;
+    }
     var clonedArray = jQuery.extend([], model.viewModel.locations());
     var currentType = type;
     var clonedArray = ko.utils.arrayFilter(model.viewModel.locations(), function(item) {
-      return item.location()[type] !== null;
+      return item.location()[type] !== null && item.location()[type] !== -1;
     });
      var m = clonedArray.sort(function(left, right) {
         return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
@@ -188,8 +195,9 @@ $(document).ready(function() {
     $.getJSON("/assets/best-driver.json", function(allData) {
         setSliderTicks();
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
+        yr = '';
         self.locations(mappedTasks);
-        filterLocations(self.initialLoadType());
+        filterLocations(self.initialLoadType(), yr);
     });  
   }
 
@@ -247,7 +255,7 @@ $(document).ready(function() {
       model.viewModel.byline(byline);
       model.viewModel.year(year);
       model.viewModel.color = sectionColor;
-      filterLocations(type);
+      filterLocations(type, '');
 
       //need to reset the map to be back at the US view.
       var mapObject = $('.map').vectorMap('get', 'mapObject');
@@ -281,7 +289,6 @@ $(document).ready(function() {
       max: 2014,
       step: 1,
       slide: function( event, ui ) {
-        // debugger;
         closeModal(event);
         $('.tabContentMap').removeClass('show-modal');
         //need to reset the map to be back at the US view.
@@ -290,7 +297,7 @@ $(document).ready(function() {
 
         var val = ui.value;
         var yearString = 'Top Cities';
-        filterLocations(yearString);
+        filterLocations(yearString, val);
         model.viewModel.type(yearString);
         model.viewModel.year(ui.value);
       }
