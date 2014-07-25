@@ -9,7 +9,7 @@ body{
   text-align: center;
   margin:0 auto;
   text-indent: -9999px;
-  background: url('../images/header.png');
+  background: url('../img/map/header.png');
   width:452px;
   height:135px;
 }
@@ -100,16 +100,16 @@ body{
   box-shadow: 0px 0px 1px 1px #ccc;*/
  }
 
-#tabs #topCity {background-image: url('../images/topCities_Gray.png');}
-#tabs #topCity.selected, .icon.topCity{background-image: url('../images/topCities_Active.png');}
-#tabs #populated{background-image: url('../images/populated_Gray.png');}
-#tabs #populated.selected, .icon.populated{background-image: url('../images/populated_Active.png');}
-#tabs #density{background-image: url('../images/density_Gray.png');}
-#tabs #density.selected, .icon.density{background-image: url('../images/density_Active.png');}
-#tabs #rainSnow{background-image: url('../images/rainSnow_Gray.png');}
-#tabs #rainSnow.selected, .icon.rainSnow{background-image: url('../images/rainSnow_Active.png');}
-#tabs #allConditions{background-image: url('../images/allConditions_Gray.png');}
-#tabs #allConditions.selected, .icon.allConditions{background-image: url('../images/allConditions_Active.png');}
+#tabs #topCity {background-image: url('../img/map/topCities_Gray.png');}
+#tabs #topCity.selected, .icon.topCity{background-image: url('../img/map/topCities_Active.png');}
+#tabs #populated{background-image: url('../img/map/populated_Gray.png');}
+#tabs #populated.selected, .icon.populated{background-image: url('../img/map/populated_Active.png');}
+#tabs #density{background-image: url('../img/map/density_Gray.png');}
+#tabs #density.selected, .icon.density{background-image: url('../img/map/density_Active.png');}
+#tabs #rainSnow{background-image: url('../img/map/rainSnow_Gray.png');}
+#tabs #rainSnow.selected, .icon.rainSnow{background-image: url('../img/map/rainSnow_Active.png');}
+#tabs #allConditions{background-image: url('../img/map/allConditions_Gray.png');}
+#tabs #allConditions.selected, .icon.allConditions{background-image: url('../img/map/allConditions_Active.png');}
 
 #tabs .tab.selected {
   background-color: #fff;
@@ -255,8 +255,8 @@ div.tabContent .tabContentOther .listingHeader{
   }
   div.tabContent .tabContentOther .toplistings ul li svg{
     content: "";
-/*    background-image: url('../images/marker.png');
-    background-image: url('../images/marker.svg');*/
+/*    background-image: url('../img/map/marker.png');
+    background-image: url('../img/map/marker.svg');*/
     background-size: contain;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -359,7 +359,7 @@ div.tabContent .tabContentOther .listingHeader{
   font-family: 'Open Sans', sans-serif;
 }
 .modalContainer .close{
-  background-image:url('../images/modal_close.png');
+  background-image:url('../img/map/modal_close.png');
   background-repeat:no-repeat;
   background-size: contain;
   height:12px;
