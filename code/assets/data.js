@@ -169,14 +169,14 @@ $(document).ready(function() {
     self.popModal = function(currentLocation,e) {
             $('.toplistings ul li.active').removeClass('active');
             $(e.currentTarget).addClass('active');
-            $('.modal').css('border','solid 5px'+self.color+'')
+            $('.modal').css('border', 'solid 5px' + self.color + '');
             $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             e.stopPropagation();
             panMapToMarkers();
 
             var markerIdx = $(e.currentTarget).attr('idx');
-            var currentClasses = $('circle[data-index="'+markerIdx+'"]').attr("class")
+            var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
             $('.panned-to').attr("class", currentClasses);
             $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
             
@@ -259,11 +259,11 @@ $(document).ready(function() {
      
      // Close the modal
     $( ".modalContainer .close" ).on('click', function(e) {
-       closeModal(e)
+        closeModal(e);
     });
 
     $('.ui-blocker').not().on('click', function(e) {
-       closeModal(e)
+        closeModal(e);
     });
 
     function closeModal(e) {
@@ -289,7 +289,7 @@ $(document).ready(function() {
         mapObject.setScale(0);
 
         var val = ui.value;
-        var yearString = 'Top Cities'
+        var yearString = 'Top Cities';
         filterLocations(yearString);
         model.viewModel.type(yearString);
         model.viewModel.year(ui.value);
