@@ -144,6 +144,7 @@ $(document).ready(function() {
   function TaskListViewModel() {
     var self = this;
     self.type =  ko.observable("Top Cities");
+    self.initialLoadType =  ko.observable("2014 Top Cities");
     self.id =  ko.observable("topCity");
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.year =  ko.observable("2014");
@@ -177,7 +178,7 @@ $(document).ready(function() {
         setSliderTicks();
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
         self.locations(mappedTasks);
-        filterLocations(self.type());
+        filterLocations(self.initialLoadType());
     });  
   }
 
