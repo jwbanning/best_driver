@@ -245,13 +245,14 @@ $(document).ready(function() {
       model.viewModel.id(id);
       model.viewModel.byline(byline);
       model.viewModel.year(year);
-
       model.viewModel.color = sectionColor;
       filterLocations(type);
 
       //need to reset the map to be back at the US view.
       var mapObject = $('.map').vectorMap('get', 'mapObject');
       mapObject.setScale(0);
+
+      $(".toplistings").scrollTop(0);
 
     });
      
@@ -280,6 +281,7 @@ $(document).ready(function() {
       step: 1,
       slide: function( event, ui ) {
         // debugger;
+        closeModal(event);
         $('.tabContentMap').removeClass('show-modal');
         //need to reset the map to be back at the US view.
         var mapObject = $('.map').vectorMap('get', 'mapObject');
