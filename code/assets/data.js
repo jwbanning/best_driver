@@ -270,7 +270,6 @@ $(document).ready(function() {
         e.stopPropagation();
        var currentClasses = $('.panned-to').siblings().attr("class");
        $('.panned-to').attr("class", currentClasses);
-       debugger;
     }
 
     //Set Slider
