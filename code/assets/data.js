@@ -18,6 +18,7 @@ $(document).ready(function() {
    setTopMarkers();
   }
 
+
   function setTopMarkers() {
     for (var i = 0; i < 10; i++) {
      model.viewModel.map.setSelectedMarkers(i);
@@ -59,7 +60,7 @@ $(document).ready(function() {
 
       onMarkerLabelShow: function(event, label, index){
         label.html(label.html()+' (modified marker)');
-      return false;
+        return false;
       },
       onMarkerOver: function(event, index){
         console.log('marker-over', index);
@@ -155,14 +156,23 @@ $(document).ready(function() {
             $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             e.stopPropagation();
-
-       // var mapObject = $('.map').vectorMap('get', 'mapObject');
-        self.map.setFocus(5, 37.770172,-122.422771);
-        //    self.map.mapObj.setFocusLatLng;
-
             
+            lat = self.currentActiveLocation().Lat;
+            lng = self.currentActiveLocation().Lon;
+            scale =5;
+            // zoom to the area of interest
+            // debugger;
+            var mapObj = $('.map').vectorMap('get', 'mapObject');
+            var foo = mapObj.latLngToPoint(lat,lng);
+
+            w = foo.x / mapObj.width;
+            h = foo.y / mapObj.height;
+            mapObj.setFocus(5, w, h);
          }
     
+
+
+
     $.getJSON("/assets/best-driver.json", function(allData) {
         setSliderTicks();
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
@@ -252,11 +262,17 @@ $(document).ready(function() {
       max: 2014,
       step: 1,
       slide: function( event, ui ) {
-       var val = ui.value;
-       var yearString = 'Top Cities'
-       filterLocations(yearString);
-       model.viewModel.type(yearString);
-       model.viewModel.year(ui.value);
+        // debugger;
+        $('.tabContentMap').removeClass('show-modal');
+        //need to reset the map to be back at the US view.
+        var mapObject = $('.map').vectorMap('get', 'mapObject');
+        mapObject.setScale(0);
+
+        var val = ui.value;
+        var yearString = 'Top Cities'
+        filterLocations(yearString);
+        model.viewModel.type(yearString);
+model.viewModel.year(ui.value);
       }
     });
 

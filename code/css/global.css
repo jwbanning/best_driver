@@ -1,0 +1,1708 @@
+/********************/
+/***** General ******/
+/********************/
+html, body, div, span, 
+h1, h2, h3, h4, h5, h6, p, 
+blockquote, a, img, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, tr, th, td{
+	margin:0;
+	padding:0;
+	border:none;
+	/* outline:none; */
+}
+body{
+	/*background:#e8edef;*/
+	background:#fff;
+	font-family:'Open Sans', sans-serif;
+}
+p{
+	margin:20px 0;
+}
+.clear{
+	clear:both;
+}
+.none{
+	display:none;
+}
+
+sup
+{
+vertical-align:0;
+position:relative;
+font-weight:normal;
+left:.1em;
+bottom:1.2ex;
+font-size:.6em;
+}
+
+.ie8 sup
+{
+font-size:.75em;
+bottom:1.4ex;
+}
+.safari sup
+{
+bottom:.8ex;
+/*
+left:-2px;
+*/
+}
+.safari sup abbr
+{
+font-size:8px;
+}
+sup:hover {
+	text-decoration:none;
+}
+
+/********************/
+/****** Links *******/
+/********************/
+a:link,
+a:visited{
+	color:#5e8b2d;
+	text-decoration:none;
+}
+a:active,
+a:hover{
+	color:#446d1e;
+}
+
+/*:focus{
+background:yellow !important;  
+}*/
+	
+/********************/
+/****** Header ******/
+/********************/
+.header{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	min-width:960px;
+	height:130px;
+	z-index:100;
+	background:url(../img/css/nav-closed.png) 0 bottom repeat-x;
+}
+.tablet .header{
+   position:absolute;/* fixed position does not work with zoomed out sites as zooming in will chop off content. */
+}
+.nInsuranceOn{
+   background:url(../img/css/nav-open-insurance.png) 0 bottom repeat-x;
+	 height:198px;
+}
+.nInsuranceOn.icons{
+   background:url(../img/css/nav-open-insurance-icons.png) 0 bottom repeat-x;
+   height:231px;
+}
+.nOn,
+.loggedin .nAccountOn{
+   background:url(../img/css/nav-open.png) 0 bottom repeat-x;
+   height:175px;  
+}
+.nAccountOn{
+   background:url(../img/css/nav-open-account.png) 0 bottom repeat-x;
+   height:196px;
+}
+.topnavOuter{
+	height:36px;
+	background-color:#00467f;
+	border-bottom:1px solid #115288;
+}
+.topnavInner{
+	position:relative;
+	margin:0 auto;
+	width:960px;
+	font:12px/22px arial, helvetica, sans-serif;
+	overflow:hidden;
+}
+.topnavInner ul{
+	float:right;
+}
+.topnavInner li{
+   float:left;
+   list-style-type:none;
+	margin-top:7px;
+}
+.topnavInner a{
+	color:#fff;
+	font-weight:bold;
+	padding:0 20px;
+	border-right:1px solid #1a598c;
+	white-space:nowrap;
+}
+.topnavInner .cust a{
+   font-weight:normal;   
+}
+.topnavInner .custName{
+   font-weight:bold;
+   padding:0 15px 0 0;
+   background:url(../img/icons/topnav_customer.png) right 50% no-repeat; 
+}
+.skipnav:link{
+   color:#00467f;
+   border-right:0;
+   position:absolute;
+   left:0;
+   top:0;
+   font-size:.8em;
+   padding:0 5px;
+}
+.skipnav:visited{
+   color:#00467f;  
+}
+.skipnav:focus{
+   color:#fff;  
+}
+.tablet .skipnav{
+   display:none;  
+}
+.topnavInner a:hover{
+	text-decoration:underline;
+}
+.zipTopnav{
+	padding-left:13px;
+	margin-left:18px;
+	background:transparent url(../img/icons/pin.png) left center no-repeat;
+}
+.zipTopnav .zipCode{
+	padding-right:13px;
+	background:transparent url(../img/icons/arrow-down-white.png) right center no-repeat;
+}
+.search,
+.zip{
+	float:left;
+	border:1px solid #ccc;
+	margin:7px 12px;
+	background-color:#fff;
+}
+.zip{
+   width:165px;
+   margin-left:0;
+   position:relative;
+}
+.mod1 .zip{
+   float:none;
+   border:0;
+   background-color:transparent;
+   margin:0;
+   position:static;
+   width:auto; 
+}
+.zip.err,
+.err .zip{
+   border-color:#f00;  
+}
+.disable{
+   cursor:default;
+}
+.errIco{
+   background:url(../img/icons/error.png) 0 0 no-repeat;
+   position:absolute;
+   width:17px;
+   height:17px; 
+}
+.modalZipCode .errIco{
+   right:4px;
+   top:5px;
+}
+.search input,
+.zip input{
+	float:left;
+	font:12px/1.5 'Open Sans', sans-serif;
+	color:#333;
+	padding:2px 5px;
+	margin:0;
+	width:114px;
+	border:0;
+	outline:none;
+}
+.tablet .search input{
+   -webkit-appearance:none;/* remove text input inner shadow */  
+}
+.zip input{
+   font-style:italic;  
+}
+.search a,
+.zip a{
+	float:left;	
+	border:none;	
+	margin-top:3px;
+	overflow:hidden;/* fix for focus ring due to text replacement */
+}
+.search a{
+   text-indent:-9999em;
+   padding:0 6px 0 0;
+}
+.search a.searchIcon{
+	height:15px;
+	width:15px;
+	background:transparent url(../img/icons/search.png) no-repeat;
+}
+.search:hover,
+.zip:hover{
+	border:2px solid #ccc;
+	margin:6px 12px;
+}
+.zip:hover{
+   margin-left:0;
+}
+.search.active,
+.zip.active{
+	border:2px solid #27ae60;
+	margin:6px 12px;
+}
+.zip.active{
+   margin-left:0;
+}
+.search.active a,
+.zip.active a{
+	background-position:0 -15px;
+}
+.search a:hover,
+.zip a:hover{
+	background-position:0 0;
+}
+.topnavInner .search,
+.topnavInner .search:hover,
+.search.active:hover{
+   margin-right:0;   
+}
+.topnavInner .search:hover,
+.search.active{
+   margin-left: 10px;
+}
+/********************/
+/** Main & Sub Nav **/
+/********************/
+.mainnavInner{
+	position:relative;
+	margin:0 auto;
+	width:960px;
+}
+.headerLogo{
+	float:left;
+	height:75px;
+	width:190px;
+	background:transparent url(../img/logo-header.png) 9px 18px no-repeat;
+	text-indent:-9999em;
+	overflow:hidden;/* fix for focus ring due to text replacement */
+}
+.mainnav{
+	float:right;
+	list-style:none;
+	z-index:20;
+}
+.mainnav:before,
+.mainnav:after{
+    content:"";
+    display:table;
+}
+.mainnav:after{
+    clear:both;
+}
+.mainnav li{
+	float:left;
+	display:block;
+	font:14px/15px 'Open Sans',sans-serif;
+}
+.topLvl{
+   margin: 20px 0 0 0;
+}
+.tLvl:link,
+.tLvl:visited{
+   padding:16px 10px 25px 10px;
+   display:block;
+   color:#0096D6;
+   border-left:1px solid transparent;
+   border-right:1px solid transparent;
+}
+.tLvl:hover{
+   color:#00467f;  
+}
+.tLvl.on{
+   background-color:#EEF2F6;
+   border-color:#d4d8dc;
+   border-top:1px solid #d4d8dc;
+   border-bottom:2px solid #EEF2F6;
+   padding:15px 10px 24px 10px;
+   position:relative;
+   z-index:10;
+   color:#00467F;
+}
+.singleLvl span{
+   border-left:0;
+   border-right:0;
+}
+.insLower span{
+    border-left:1px solid transparent;
+}
+.insUpper,
+.insLower{
+   position:absolute;
+   text-align:center;
+	visibility:hidden; /* width of inactive sub navs cannot be calculated unless display block. Use visibility to hide contents. */
+}
+.snav,
+.nAccount .outer{
+	width:960px;
+	position:absolute;
+	top:76px;
+	left:0;
+	text-align:center;
+	visibility:hidden; /* width of inactive sub navs cannot be calculated unless display block. Use visibility to hide contents. */
+}
+.preAuth .inner{
+   float:right;
+   position:relative;
+   max-width:960px;
+}
+.nInsuranceOn .nInsurance .insUpper,
+.nInsuranceOn .nInsurance .insLower,
+.nClaimsOn .nClaims .snav,
+.nSupportOn .nSupport .snav,
+.nResourcesOn .nResources .snav,
+.nAccountOn .nAccount .outer,
+.nAccountOn .nAccount .postAuth .snav{
+	visibility:visible;
+	width:960px;/* to be overridden by javascript */
+}
+.mainnav li li{	
+	margin:0;
+}
+.insUpper li{
+    font:16px/24px 'Open Sans',sans-serif;
+}
+.insUpper a{
+    margin:9px 0 10px 0;
+    padding:0 1px;
+    line-height:24px;
+    border-left:1px solid #d4d8dc;
+    display:block;
+}
+.snav_auto a      { color:#EA5A08; }
+.snav_home a      { color:#9737B6; }
+.snav_renters a   { color:#6D5DC9; }
+.snav_condo a     { color:#D300AE; }
+.snav_motorcycle a{ color:#269C32; }
+.snav_business a  { color:#01B3AD; }
+.snav_life a      { color:#E85079; }
+.insUpper li a span{
+    padding:0 25px;
+}
+.singleLvl li,
+.postAuth li{
+  background:url(../img/css/insurance_lower-border.gif) 0 50% no-repeat;
+	padding-left:1px;  
+}
+.singleLvl .snav li.first{
+   background:0;
+}
+.snav a{
+   padding:0 20px;
+   color:#5F6364;
+   line-height:49px;
+}
+.insUpper .on a{
+   border-right:1px solid #d4d8dc;
+}
+.insUpper .next a{
+   border-left:none;  
+}
+.insUpper .last a{
+   border-right:1px solid #d4d8dc;
+}
+/*.snav li a:hover,*/
+.insLower a:hover{
+	border-bottom:3px solid #5F6364;
+}
+.insUpper li a:hover{
+	background-color:transparent;
+	border-bottom:0;
+}
+.singleLvl a,
+.auth2Lvl{
+   border:0;
+   margin:0 1px;
+   display:block;
+   border-bottom:3px solid transparent;
+}
+.singleLvl li a:hover,
+.auth2Lvl:hover,
+.open .auth2Lvl{
+   border-bottom:3px solid #00467f;
+}
+.icons .snav_auto span{ background:transparent url(../img/icons/snav_auto.png) center top no-repeat; }
+.icons .snav_home span{ background:transparent url(../img/icons/snav_home.png) center top no-repeat; }
+.icons .snav_renters span{ background:transparent url(../img/icons/snav_renters.png) center top no-repeat; }
+.icons .snav_condo span{ background:transparent url(../img/icons/snav_condo.png) center top no-repeat; }
+.icons .snav_motorcycle span{ background:transparent url(../img/icons/snav_motorcycle.png) center top no-repeat; }
+.icons .snav_business span{ background:transparent url(../img/icons/snav_business.png) center top no-repeat; }
+.icons .snav_life span{ background:transparent url(../img/icons/snav_life.png) center top no-repeat; }
+.icons .insUpper li a:hover span,
+.icons .insUpper li.on a span{
+	background-position:50% -57px;
+}
+.insUpper a:hover span,
+.insUpper .on span{
+	color:#fff;
+}
+.snav_auto a{ 
+   color:#ea5a08;
+}
+.snav_auto a:hover span,
+.snav_auto.on a span{ 
+   background-color:#ea5a08; 
+}
+.snav_home a{ 
+   color:#9737b6; 
+}
+.snav_home a:hover span,
+.snav_home.on a span{ 
+   background-color:#9737b6; 
+}
+.snav_renters a{ 
+   color:#6d5dc9; 
+}
+.snav_renters a:hover span,
+.snav_renters.on a span{ 
+   background-color:#6d5dc9; 
+}
+.snav_condo a{ 
+   color:#d300ae; 
+}
+.snav_condo a:hover span,
+.snav_condo.on a span{ 
+   background-color:#d300ae; 
+}
+.snav_motorcycle a{ 
+   color:#269c32; 
+}
+.snav_motorcycle a:hover span,
+.snav_motorcycle.on a span{ 
+   background-color:#269c32;  
+}
+.snav_business a{ 
+   color:#01b3ad; 
+}
+.snav_business a:hover span,
+.snav_business.on a span{ 
+   background-color:#01b3ad; 
+}
+.snav_life a{ 
+   color:#e85079; 
+}
+.snav_life a:hover span,
+.snav_life.on a span{ 
+   background-color:#e85079; 
+}
+.insUpper li a span{
+	display:block;
+}
+.icons .insUpper li a span{
+  padding-top:33px;
+}
+.insUpper {
+	height:119px;
+}
+.icons .insUpper {
+	height:152px;
+}
+.insLower{
+    top:119px;  
+    border-top:0;   
+}
+.icons .insLower{
+    top:152px;      
+}
+.insLower li{
+    font:14px/14px helvetica,arial,sans-serif;
+    background:url(../img/css/insurance_lower-border.gif) no-repeat left center;
+    padding-left:1px;
+}
+.insLower .first{
+    background:none;
+}
+.insLower a{
+   margin:0 1px;
+   padding:0;
+   border:0;
+   color:#5F6364;
+   display:block;
+}
+.insLower span{
+   display:block;
+   line-height:32px;
+   padding:0 20px;
+   border:0;
+}
+.nAccount label{
+	position:absolute;
+	left:-9999em;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+.preAuth .inner div{
+	float:left;
+}
+.preAuth .outer{
+	margin:0 3px 0 0;
+	font:16px/32px helvetica, arial, sans-serif;
+	color:#4e5052;
+	top: 88px;
+}
+.createAcct{
+	margin-top:10px;
+	font:11px/14px helvetica, arial, sans-serif;
+}
+.createAcct a{
+	color:#353739;
+	text-decoration:underline;
+	padding:0;
+}
+.createAcct a:hover{
+	text-decoration:none;
+}
+.inputWrapper{
+	margin:0 0 0 9px;
+	text-align:right;
+}
+.nAccount input{
+	height:17px;
+	width:154px;
+	padding:7px;
+	margin-bottom:4px;
+	border:1px solid #bfbfbf;
+	outline-style:none;
+	font:12px/15px helvetica, arial, sans-serif;
+	color:#444;
+}
+.nAccount input:hover{
+	padding:6px;
+	border:2px solid #ccc;
+}
+.nAccount .active{
+	padding:6px;
+	border:2px solid #27ae60 !important;
+}
+.nAccount .cta{
+	font:10px/12px helvetica, arial, sans-serif;
+	padding:0;
+}
+.btnLogin{
+	margin:0 10px 0 15px;
+	font:11px/11px helvetica, arial, sans-serif;
+	color:#353739;
+	text-align:left;
+}
+.btnLogin a{
+	display:block;
+	padding:7px 41px 7px 19px;
+	font:14px/19px 'Open Sans', sans-serif;
+	color:#fff;
+	background:#26ae60 url(../img/icons/lock.png) right center no-repeat;
+	text-decoration:none;
+}
+.btnLogin a:hover{
+	background-color:#239c56;
+}
+.btnLogin input{
+	margin:4px 4px 0 0;
+	padding:0;
+	vertical-align:bottom;
+}
+.forgotLinks{
+   position:absolute;
+   left:0;
+   top:0;
+}
+.forgotLinks a{
+   color:#353739;
+   text-decoration:underline;
+   position:absolute;
+   left:0;
+   top:0;
+   white-space:nowrap;   
+}
+.forgotLinks a:hover{
+	text-decoration:none;
+}
+
+/**********************/
+/*** My Account Nav ***/
+/**********************/
+.postAuth .snav{
+   visibility:hidden;
+   width:auto; 
+}
+.nAccountOn .postAuth{
+   width:auto;  
+}
+.postAuth .snav .first{
+   color:#5F6364;
+   line-height:49px;
+   background:none;
+}
+.postAuth .snav{
+   width:auto;
+}
+.postAuth .open{
+   background:none;
+   border-left:1px solid #d4d8dc;
+   border-right:1px solid #d4d8dc;
+   padding-left:0;
+}
+.postAuth .first.open{
+	 border-left:none;
+   border-right:none;
+}
+.postAuth .last.open{
+	 border-left:none;
+   border-right:none;
+}
+.open .auth2Lvl{
+  background:#fff;
+  margin:0;
+  padding:0 21px;
+}
+.first.open .auth2Lvl {
+	padding:0 22px;
+	background:transparent url(../img/css/insurance_lower-border.gif) 100% 1.4em no-repeat;
+}
+.last.open .auth2Lvl{
+  	padding:0 22px;
+	background:transparent url(../img/css/insurance_lower-border.gif) 0 1.4em no-repeat;
+}
+.nAccount .next{
+  background:none;
+}
+.postAuth .next{
+  padding-left:0;
+}
+.next .auth2Lvl{
+   border-left:0;
+}
+.snav .auth2Lvl .more{
+   background:url(../img/icons/acct-nav-arrow.png) center 90% no-repeat;
+   display:block;
+}
+.postAuth .postAuthSNav{
+   visibility:hidden;
+   position:absolute; 
+   top:52px;
+   width:176px;
+   padding:0 0 5px 0;
+   background:url(../img/css/drop-nav-shadow-btm.png) 0 bottom no-repeat;
+}
+.postAuth .open{
+   visibility:visible;
+}
+.postAuthSNav li,
+.postAuthSNav .first{
+   float:none;
+   background:url(../img/css/drop-nav-shadow.png) 0 0 repeat-y;
+   list-style-type:none;
+}
+.postAuthSNav a{
+   border:0;
+   display:block;
+   padding:0;   
+}
+.postAuthSNav span{
+   border-bottom:1px solid #eaeced;
+   display:block;
+   margin:0 4px;
+}
+.open .postAuthSNav{
+   visibility:visible;
+}
+.open .postAuthSNav span{
+   color:#666;
+   background:#fff;
+}
+.open .postAuthSNav a:hover span{
+   color:#00467f;
+   background:#f5f7fa;
+   text-decoration:underline;
+}
+
+/********************/
+/*** Tertiary Nav ***/
+/********************/
+.tNavShell {
+	float:left;
+	position:relative;
+	margin:0 20px 0 0;
+	width:222px;
+	height:0;
+}
+.tNav {
+	position:absolute;
+	margin:0;
+	width:220px;/* edited 9/05/2013 now matches grid */
+	background:#fff url(../img/css/tertiary-nav-bg.png) right top no-repeat;
+	overflow:hidden;
+}
+.tNavBtm{
+	position:absolute;
+	bottom:-20px;
+	right:0;
+	width:7px;
+	height:137px;
+	background:#fff url(../img/css/tertiary-nav-btm-bg.png) right bottom no-repeat;
+}
+
+.tNav.fixed{
+	position:fixed;
+}
+.tNav .accordion{
+	overflow:hidden;
+	padding:0 14px 0 2px;
+}
+.tNav .accordion li{
+	list-style:none;
+	position:relative;
+}
+.tNav li a{
+	display:block;
+	position:relative;
+	min-width:110px;
+	padding:5px 10px 5px 20px;
+	text-align:left;
+	color:#1666af;
+	font:bold 14px/22px 'Open Sans', sans-serif;
+	text-decoration:none;
+	border-top:1px solid #eaeaea;
+}
+.tNav .accordion li:first-child a{
+	border:none;
+}
+.tNav li a:hover{
+	color:#0076b8;
+	text-decoration:underline;
+}
+.tNav li .on{
+   color:#666;  
+}
+.tNav li .on:hover {
+   color:#666;
+	text-decoration:none;  
+}
+.tNav .subMenuTog{
+   /* toggle open/closed plus/minus */
+	display:block;
+	position:absolute;
+	top:1px;
+	right:2px;
+	padding:8px;
+	font:12px/18px 'Open Sans', sans-serif;
+	border:0;
+	min-width:0;
+	width:14px;
+	height:14px;
+	background:url(../img/icons/tnav/collapse-expand.png) -30px 0 no-repeat;
+	text-indent:-9999em;
+	overflow:hidden;
+}
+.tNav .subMenuTog:hover{
+   background-position:-30px -30px;
+}
+.tNav .expanded .subMenuTog{
+   background-position:0 0;
+}
+.tNav .expanded .subMenuTog:hover{
+   background-position:0 -30px;
+}
+.tNav .expanded a{
+   border-bottom:0;  
+}
+.subMenu{
+   margin:5px 0;
+   width:182px;
+}
+.subMenu li{
+   padding:0 0 10px 0;  
+}
+.subMenu li a{
+	padding:0 0 0 30px;
+	border:none;
+	font:12px/1.4 'Open Sans', sans-serif;
+	height:auto;
+	position:static;
+}
+.subMenu li a span{
+	color:#797979;
+}
+.tNav .subMenu{
+	display:none;
+}
+.tNav .secHead{
+   display:block;
+   font:28px/1.5 'Open Sans', sans-serif;
+   padding:0 0 0 18px;
+   margin:0 2px;
+   height:auto;
+}
+.tNav .secHead:hover{
+   text-decoration:none;  
+}
+.tNav .autoTNav:link,
+.tNav .autoTNav:hover,
+.tNav .autoTNav:visited{
+   color:#ea5a08;
+   background:url(../img/icons/tnav/auto.png) 4em 50% no-repeat;
+}
+
+/*************************/
+/****** Get a Quote ******/
+/*************************/
+.quoteHead,
+.quoteDrawer{
+	position:relative;
+	float:left;
+	width:145px;
+	height:41px;
+	margin:25px 0 0 20px;
+}
+.quoteDrawer{
+	margin:0 0 5px -1px;
+	width:auto;
+	float:none;
+}
+.quoteHead a,
+.quoteDrawer a{
+   color:#fff;	
+}
+.getQuoteLnk{
+   position:absolute;
+   display:block;
+   height:41px;
+   width:145px;
+   background:transparent url(../img/btns/get-a-quote.png) no-repeat;
+   text-indent:-9999em;
+   z-index:100;
+   overflow:hidden;/* fix for focus ring due to text replacement */
+}
+@-moz-document url-prefix(){ 
+   .quoteHead .getQuoteLnk:focus{
+      /* firefox bug is not showing outline on focus for just this element. Invert is default however setting colors that invert properly does nothing. This is the only fix. */
+      outline-color:#000; /* this will fix Firefox but breaks IE. thus the hack is inside an @ rule specific for mozilla gecko. http://css-tricks.com/snippets/css/css-hacks-targeting-firefox/ */
+   }
+}
+.quoteDrawer .getQuoteLnk{
+   position:static;
+}
+.show .getQuoteLnk{
+   background-position:0 -43px;
+}
+.quoteDrop{
+   width:562px;
+   position:absolute;
+   left:1px;
+   top:42px;	
+   color:#fff;
+   overflow:hidden;
+   display:none;
+   z-index:30;
+}
+.quoteDrawer .quoteDrop{
+   top:-255px;  
+   width:384px;
+}
+.show .quoteDrop{
+   display:block;	
+}
+.quoteLoc{
+   width:100%;
+   float:left;
+   min-height:46px;
+   background:#136AB3;
+   float:left;
+   overflow:hidden;
+}
+.quoteLoc p{
+   font-size:12px;
+   line-height:3.8;
+   margin:0 0 0 20px;
+   float:left;
+}
+.quoteLoc p span{
+   font-weight:bold;  
+}
+.zipEdit:link{
+   background:url(../img/icons/pin.png) 0 0 no-repeat;
+   padding:0 0 0 15px;
+   margin:0 0 0 10px;
+   font-size:12px;
+   line-height:3.8;
+   text-decoration:underline;
+}
+.zipEdit:hover{
+   text-decoration:none;
+}
+.zip input{
+   padding-left:25px;
+   background:url(../img/icons/pin.png) 8px 6px no-repeat;
+   width:142px;
+   height:24px;
+   font-size:16px;
+   font-weight:bold;
+   font-style:italic;
+}
+.modalContentZip .active input{
+   width:90px;
+}
+.quoteSelect{
+   float:left;
+   padding:20px 0 10px 25px;	
+   background:#0095D5;
+   width:100%;
+}
+.quoteSelect h3{
+   font-size:18px;
+   line-height:22px;
+   font-weight:normal;
+   float:left;
+   width:100%;
+   margin-bottom:12px;
+}
+.quoteSelect h3 a{
+   font-size:12px;
+   margin-left:10px;
+   text-decoration:underline;	
+}
+.quoteSelect h3 a:hover{
+   text-decoration:none;	
+}
+.quoteSelect dl{
+   float:left;
+   width:157px;	
+   margin-right:20px;
+}
+.quoteSelect dl dd{
+   border-top:1px solid #33abde;	
+   line-height:36px;
+   font-size:15px;
+   font-weight:bold;
+   padding:0 0 0 8px;
+}
+.quoteSelect dl dd:first-child{
+   border-top:none;	
+}
+.quoteHead .quoteSelect dl dd.last{
+   border-bottom:1px solid #33abde;	
+}
+.quoteSelect dl dd:hover{
+   background:#146bb3;	
+}
+.quoteSelect .quoteIcon{
+   background-image:url(../img/icons/quote_selection.png);	
+   background-repeat:no-repeat;
+   padding-left:35px;
+}
+.quoteAuto{
+   background-position:0 3px;
+}
+.quoteDrawer .quoteAuto{
+   background-position:0 0;
+}
+.quoteHome{
+   background-position:0 -38px;
+}
+.quoteHome{
+   background-position:0 -40px;
+}
+.quoteRenters{
+   background-position:0 -76px;
+}
+.quoteDrawer .quoteRenters{
+   background-position:0 -78px;
+}
+.quoteLife{
+   background-position:0 -117px;
+}
+.quoteDrawer .quoteLife{
+   background-position:0 -120px;
+}
+.quoteCondo{
+   background-position:0 -160px;
+}
+.quoteCondo{
+   background-position:0 -162px;
+}
+.quoteMotorcycle{
+   background-position:0 -202px;
+}
+.quoteDrawer .quoteMotorcycle{
+   background-position:0 -204px;
+}
+.quoteBoat{
+   background-position:0 -238px;
+}
+.quoteDrawer .quoteBoat{
+   background-position:0 -240px;
+}
+.quoteBusiness{
+   background-position:0 -274px;
+}
+.quoteDrawer .quoteBusiness{
+   background-position:0 -276px;
+}
+.quoteATV{
+   background-position:0 -311px;
+}
+.quoteDrawer .quoteATV{
+   background-position:0 -313px;
+}
+.quoteMore{
+   background-position:0 -349px;
+}
+.quoteMore{
+   background-position:0 -350px;
+}
+.quoteFind{
+   background-position:0 -386px;
+}
+.quoteDropBtm{
+   background:url(../img/quote-btm-shadow.png) repeat-x;
+   height:4px;
+   width:100%;
+   float:left;
+   clear:both;
+}
+.quoteDrawer li span{
+	position:absolute;
+	top:0;
+	left:12px;
+	height:45px;
+	width:40px;
+	background:transparent url(../img/icons/quote-options.gif) no-repeat;
+}
+.bottomWrapper{
+	position:relative;
+	z-index:29;
+}
+
+/********************/
+/****** Drawer ******/
+/********************/
+.drawerOuter{
+	width:100%;
+	min-width:960px;
+	background:#14477e;
+	z-index:90;
+}
+.drawerInner{
+	margin:0 auto;
+	padding:58px 0 40px 0;
+	width:960px;
+	font:12px/16px helvetica,arial,sans-serif;
+	color:#fff;
+}
+.bottomWrapper .wide{
+   position:static;  
+}
+.tablet .drawerInner{
+   padding-top:105px;
+}
+
+ /* alas we need the content to overflow so use another method to contain floats. */
+.drawerInner:before, /* For modern browsers */
+.drawerInner:after{
+  content:'';
+  display:table;
+}
+.drawerInner:after{
+  clear:both;
+}
+.drawerInner{ display:inline-block; } /* For IE6/7 */
+.drawerInner{ display:block; } /* For IE6/7 */
+
+.drawerInner p{
+	margin:10px 0;
+}
+.drawerTab{
+	position:absolute;
+	top:-58px;
+	right:0;
+}
+.tablet .column,
+.tablet .column-wide {
+	margin-top:-50px;
+}
+.wide .drawerTab{
+   right:170px;  
+}
+.drawerTab a{
+	display:block;
+	font:bold 15px/62px 'Open Sans', sans-serif;
+	color:#fff;
+	text-transform:uppercase;
+	padding-left:104px;
+	background:transparent url(../img/css/drawer_tab_left.png) 0 0 no-repeat;
+}
+.drawerTab a span{
+	display:block;
+	padding:6px 53px 0 0;
+	background:transparent url(../img/css/drawer_tab_right.png) right 0 no-repeat;
+}
+.drawerOuter.fixed{
+	position:fixed;
+}
+.drawerOuter.static{
+	position:static;
+}
+.drawerInner .column,
+.drawerInner .column-wide{
+	float:left;
+}
+.drawerInner .column{
+	width:146px;
+	height:220px;
+}
+.drawerInner .column-wide{
+	width:519px;
+}
+.drawerInner .colLabel{
+	color:#a4d6f4;
+	margin:10px 0 20px 0;
+	font:16px/18px 'Open Sans', sans-serif;
+	text-transform:capitalize;
+}
+.drawerInner .agents,
+.drawerInner .agent{
+	overflow:hidden;
+	position:relative;
+	padding:0 18px;
+	border-left:1px solid #2c5a8b;
+	border-right:1px solid #2c5a8b;
+}
+.column-wide.drawerInner .agents,
+.column-wide.drawerInner .agent{
+   padding:0 13px 0 18px;  
+}
+.drawerInner .agents ul,
+.drawerInner .agent ul{
+   overflow:hidden;
+	list-style:none;
+	height:120px;
+	margin:0 0 12px 0;
+}
+.drawerInner .column-wide.agents ul,
+.drawerInner .column-wide.agent ul{
+	width:525px;
+}
+.drawerInner .agents ul li,
+.drawerInner .agent ul li{
+	float:left;
+	padding:10px 0 0 10px;
+	margin:0 0 5px 0;
+	height:110px;
+	width:250px;
+	font:12px/16px helvetica,arial,sans-serif;
+	background:#123e6f;
+	border:1px solid #154478;
+	cursor:pointer;
+}
+.drawerInner .column-wide.agents ul li,
+.drawerInner .column-wide.agent ul li{
+   margin:0 10px 5px 0;
+   width:240px;
+}
+.drawerInner .agents li:hover,
+.drawerInner .agent li:hover{
+	background:#0d3663;
+}
+.drawerInner .agent-nav li:hover{
+   background:transparent;   
+}
+.drawerInner .agents li img,
+.drawerInner .agent li img{
+	float:left;
+	padding-right:10px;
+	display:block;
+	margin:0 0 36px 0;
+}
+.drawerInner .agents ul a,
+.drawerInner .agents ul a:hover,
+.drawerInner .agent ul a,
+.drawerInner .agent ul a:hover{
+	color:#fff;
+	text-decoration:none;
+}
+.drawerInner .agentPhone{
+	font:bold 13px 'Open Sans', sans-serif;
+	display:block;
+}
+.drawerInner .agentType{
+	font:11px helvetica,arial,sans-serif;
+}
+.drawerInner .agentName{
+	font:13px helvetica,arial,sans-serif;
+	color:#f2f44f;
+	margin:0 0 5px 0;
+}
+.drawerInner .agentAddr{
+	float:left;
+	width:164px;
+}
+.drawerInner .agents .agentWeb,
+.drawerInner .agent .agentWeb{
+   display:block;
+   text-decoration:underline;
+}
+.drawerInner .agent-nav{
+   float:right;
+}
+.drawerInner .agent-nav li{
+   float:left;
+   list-style-type:none;
+   margin:0 5px;
+}
+.drawerInner .agent-nav a{
+   color:#44c6fc;
+   font:bold 13px/1.4 'Open Sans', sans-serif;
+   text-decoration:underline; 
+}
+.drawerInner .agent-nav a:hover{
+   text-decoration:none;  
+}
+.drawerInner .agent-nav .current a,
+.drawerInner .agent-nav .disabled a{
+   font-weight:normal;
+   text-decoration:none;
+   color:#297a9b;
+   cursor:default;
+}
+.drawerInner .arrowCTA{
+   color:#f7f972;
+   background:url(../img/icons/arrow-right.png) right center no-repeat;
+   padding:0 10px 0 0;
+   font-weight:bold;
+}
+.drawerInner .arrowCTA:hover{
+   text-decoration:underline;  
+}
+.drawerInner .agents .btn{
+	float:right;
+	padding:5px 11px;
+	margin:5px 6px;
+	font:15px/18px 'Open Sans', sans-serif;
+	color:#f7f972;
+	background-color:#123e6f;
+}
+.cDrawer .drawerInner .agent{
+   width:266px;  
+}
+.drawerInner .support{
+	padding:0 20px;
+}
+.cDrawer .drawerInner .support{
+   width:230px;
+   border-right:1px solid #2c5a8b;
+}
+.drawerInner .support .btn{
+	display:block;
+	padding:7px 0;
+	margin:10px 0;
+	font:20px/24px 'Open Sans', sans-serif;
+	color:#fff;
+	background-color:#123e6f;
+}
+.drawerInner .support .phone{
+	font:30px/40px 'Open Sans', sans-serif;
+	color:#fff;
+}
+.drawerInner .support .phone span{
+   font-size:16px;  
+}
+.drawerInner .addtl{
+   width:220px;  
+}
+.drawerInner .mod1,
+.drawerInner .mod2{
+   padding:0 0 0 20px;
+   font-size:13px; 
+}
+.drawerInner .mod1{
+   border-bottom:1px solid #2c5a8b;
+   padding-bottom:10px;
+}
+.drawerInner .mod1 p,
+.drawerInner .mod2 p{
+   margin-bottom:0;
+}
+.drawerInner .addtl .colLabel{
+   margin-bottom:15px;  
+}
+.drawerInner .iconIndent{
+   padding-left:30px;  
+}
+.multiPol p.iconIndent{
+   background:url(../img/icons/multipolicy.png) 0 0 no-repeat;  
+}
+.paperless p.iconIndent{
+   background:url(../img/icons/paperless.png) 0 0 no-repeat;  
+}
+.drawerInner .getQuote{
+	padding:0 18px 0 0;
+}
+.drawerInner .locLabel{
+   color:#fff;
+   margin:0 0 5px 0;
+}
+.drawerLoc span{
+   font-weight:bold;
+}
+.drawerLoc .zipEdit{
+   display:block;
+   line-height:1.4;
+   color:#fff;
+   margin:0 0 15px 0;  
+}
+.retQuote:link,
+.retQuote:visited{
+   color:#fff;
+   text-decoration:underline;  
+}
+.retQuote:hover{
+   text-decoration:none;  
+}
+.quoteHead .active input{
+   width:90px;
+}
+.errMsg{
+   color:#c00;
+   background:#fcc url(../img/icons/error.png) 5px 50% no-repeat;
+   padding:5px 5px 5px 28px;
+   font-size:14px;
+   line-height:1.4;
+}
+.modalZipCode .errMsg{
+   background-position:10px 50%;
+   padding-left:38px;
+   line-height:1.8;  
+}
+.drawerInner .notice{
+   position:absolute;
+   top:24px;   
+   z-index:-1;
+   width:68%;
+}
+.drawerInner.wide .notice{
+   width:100%;
+   max-width:960px; 
+}
+.drawerInner .errMsg{
+   display:none;   
+}
+.open .drawerInner .errMsg{
+   display:block;   
+}
+.needZip{
+   background:#123E6F url(../img/zip-hero.jpg) 0 0 no-repeat;
+   padding:20px 30px 30px 205px;
+}
+.drawerInner .undetectZip{
+   width:540px;
+   padding-bottom:40px; 
+}
+
+/********************/
+/****** Footer ******/
+/********************/
+.footer{
+	width:100%;
+	min-width:960px;
+	z-index:100;
+	clear:both;
+   position:absolute;
+	bottom:0;
+}
+.footer ul{
+	list-style:none;
+}
+.footerOuter{
+	width:100%;
+	background:#eaeef2 url(../img/css/tile_footer_outer.gif) repeat-x;
+}
+.footerInner{
+	margin:0 auto;
+	width:960px;
+	overflow:hidden;
+	padding:35px 0 30px 0;
+}
+.footerLogo{
+	float:left;
+	height:108px;
+	width:152px;
+	background:transparent url(../img/logo_footer.png) no-repeat;
+	text-indent:-9999px;
+}
+.footerCol1,
+.footerCol2,
+.footerCol3{
+	float:left;
+}
+.footerCol1,
+.footerCol2{
+	width:170px;
+	margin-right:50px;
+}
+.footerCol3{
+	width:260px;
+}
+.footerCol1{
+	margin-left:65px;
+	padding-left:40px;
+	border-left:1px solid #d3d7db;
+}
+.footerInner h4{
+	margin:9px 0 6px 0;
+	font:bold 12px/18px arial,helvetica,sans-serif;
+	color:#565859;
+	text-transform:uppercase;
+}
+.footerCol1 a{
+	font:10px/26px arial,helvetica,sans-serif;
+	color:#565859;
+	text-decoration:underline;
+}
+.footerCol1 a:hover{
+   text-decoration:none;  
+}
+.footerCol2 a{
+	font:bold 12px/36px arial,helvetica,sans-serif;
+	color:#0076b8;
+	text-transform:uppercase;
+}
+.footerCol2 a:hover{
+   text-decoration:underline;  
+}
+.footerCol3 {
+	font:10px/18px arial,helvetica,sans-serif;
+	color:#919597;
+}
+.footerCol3 p{
+	margin:12px 0;
+}
+.social{
+   width:245px;
+	list-style:none;
+	margin:10px 0 75px 0;
+}
+.social li{
+   float:left;   
+}
+.social a{
+   background:url(../img/icons/social-sprite.png) 0 0 no-repeat;
+   height:31px;
+   text-indent:-9999em;
+   display:block;
+   overflow:hidden;/* fix for focus ring due to text replacement */
+}
+.social .fb a{
+   width:28px;
+}
+.social .fb a:hover{
+   background-position:0 -40px;
+}
+.social .tw a{
+   width:44px;
+   background-position:-28px 0;
+}
+.social .tw a:hover{
+   background-position:-28px -40px;
+}
+.social .gp a{
+   width:45px;
+   background-position:-72px 0;
+}
+.social .gp a:hover{
+   background-position:-72px -40px;
+}
+.social .yt a{
+   width:40px;
+   background-position:-117px 0;
+}
+.social .yt a:hover{
+   background-position:-117px -40px;
+}
+.social .in a{
+   width:48px;
+   background-position:-157px 0;
+}
+.social .in a:hover{
+   background-position:-157px -40px;
+}
+.social .fd a{
+   width:36px;
+   background-position:-205px 0;
+}
+.social .fd a:hover{
+   background-position:-205px -40px;
+}
+.footerBtm{
+	width:100%;
+	background-color:#dfe4eb;
+	height:45px;
+	text-align:center;
+	text-transform:uppercase;
+	font:bold 10px/13px 'Open Sans', sans-serif;
+	clear:both;
+}
+.footerBtm ul{
+	margin:0 auto;
+	width:960px;
+}
+.footerBtm li{
+	display:inline-block;
+	padding:16px 27px 16px 29px;
+	background:transparent url(../img/css/pipe_footer.gif) no-repeat left center;
+}
+.footerBtm li:first-child{
+	background:none;
+}
+.footer .footerBtm a{
+	color:#666;
+	display:block;
+}
+.footer .footerBtm a:hover{
+   text-decoration:underline;  
+}
+.footerBtm .adChoices a{
+	padding-left:17px;
+	background:transparent url(../img/icons/ad-choices.gif) no-repeat left center;
+}
+
+/********************/
+/***** Headers ******/
+/********************/
+h1{
+	margin:44px 0 20px 0;
+	font:60px/72px 'Open Sans', sans-serif;
+	color:#000;
+}
+
+/********************/
+/***** Buttons ******/
+/********************/
+
+.btnSave:link,
+.btnSave:hover,
+.btnSave:visited{
+	text-indent:0;
+	display:none;
+	width:34px;
+	background:#B6B6B6;
+	font:11px/1.9 Arial, Helvetica, sans-serif;
+	padding:0 0 0 8px;
+	margin-right:3px;
+	margin-top:4px;
+	color:#fff;
+}
+.btnSave.ready{
+	background:#136BB3;
+}
+.cancel{
+	clear:both;
+	float:right;
+	font-size:11px;
+	margin-bottom:10px;
+	text-decoration:underline;	
+	display:none;
+}
+.cancel.show{
+	display:block;	
+}
+.cancel:hover{
+	text-decoration:none;	
+}
+
+/********************/
+/******* IE7 ********/
+/********************/
+.ie7 .topnavInner .search input{
+  margin-left:-10px; /* IE 7 has some strange indent for the input not caused by css */
+  display:block;
+}
+.ie7 .snav_inner li,
+.ie7 .snav_insurance li,
+.ie7 .footerBtm li,
+.ie7 .snav li{
+	zoom:1;
+	display:inline;
+}
+.ie7 .postAuth .postAuthSNav li{
+   display:block;
+   zoom:normal;   
+}
+.ie7 .btnLogin input{
+   display:block;
+   float:left;
+}
+.ie7 .btnLogin label{
+   margin-top:10px;
+   display:block;
+   float:left;
+}
+/*.ie7 .drawerInner .agents,
+.ie7 .drawerInner .agent{
+   z-index:-1;
+}*/
+.ie7 .footerInner{
+   padding-top:45px;  
+}
+.ie7 .quoteDrawer{
+   z-index: 2;   
+}
+.ie8 .drawerInner .support .phone{
+   font:35px/40px 'Open Sans', sans-serif;
+}
+#checkPoint{
+	position:absolute;
+	top:250px;
+	left:0;
+	display:block;
+	background:red;
+	width:25px;
+	height:25px;	
+}
+
+/* Fix Gigia issues on IE8 */
+.gig-simpleShareUI-caption {
+	background: #F7F7F7 !important;
+	border-bottom: 1px solid #DBDBDB  !important;
+}
+
+.gig-simpleShareUI {
+	background: white !important;	
+}
+.gig-simpleShareUI-content {
+	background: white !important;	
+}
+.gig-simpleShareUI-button {
+	background: white !important;	
+	width: 100px !important;
+	display:block !important;
+	float: left !important;
+}
+
+.gig-simpleShareUI-inner {
+	border: none !important;
+}
+
+/* Fix Gigia shares */
+span.gig-simpleShareUI-buttonText-facebook, span.gig-simpleShareUI-buttonText-twitter {
+	font-weight: normal !important;
+}
+
+/* Fix Gigia zoom and IE8 breaking issues */
+.gig-share-button-container {
+	height:22px;
+	line-height:22px;
+}

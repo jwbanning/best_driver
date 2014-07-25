@@ -265,6 +265,9 @@ div.tabContent .tabContentOther .header{
     text-align: center;
     font-size: 10px;
   }
+  .tabContentOther .toplistings ul li svg path{
+    fill:#0096d6;
+  }
   /*********END TAB CONTENT OTHER*/
 /*********END TAB CONTENT*/
 
