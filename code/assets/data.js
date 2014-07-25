@@ -9,7 +9,6 @@ $(document).ready(function() {
     var clonedArray = ko.utils.arrayFilter(model.viewModel.locations(), function(item) {
                         return item.location()[type] !== null;
                       });
-    
      var m = clonedArray.sort(function(left, right) { 
         return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
       });
@@ -32,6 +31,20 @@ $(document).ready(function() {
       markers.push({'style': {fill: model.viewModel.color},'id':true, 'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
     }
     return markers;
+  }
+
+  function panMapToMarkers() {
+    var lat = model.viewModel.currentActiveLocation().Lat;
+    var lng = model.viewModel.currentActiveLocation().Lon;
+    var scale = 5;
+    // zoom to the area of interest
+    // debugger;
+    var mapObj = $('.map').vectorMap('get', 'mapObject');
+    mapObj.setScale(0);
+    var foo = mapObj.latLngToPoint(lat,lng);
+    var w = (foo.x - 25) / mapObj.width;
+    var h = foo.y / mapObj.height;
+    mapObj.setFocus(5, w, h);
   }
 
   function setMap(color) {
@@ -113,7 +126,7 @@ $(document).ready(function() {
           var x = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cx');
           var y = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cy');
           $(item).attr('x',x);
-          $(item).attr('y',y)
+          $(item).attr('y',y);
         });
         var scalefactor = 1;
         if (scale > 0 && scale <= 2.0) {
@@ -153,24 +166,19 @@ $(document).ready(function() {
     self.currentActiveLocation = ko.observable({});
 
     self.popModal = function(currentLocation,e) {
+            $('.toplistings ul li.active').removeClass('active');
+            $(e.currentTarget).addClass('active');
             $('.modal').css('border','solid 5px'+self.color+'')
             $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             e.stopPropagation();
+            panMapToMarkers();
+
+            var markerIdx = $(e.currentTarget).attr('idx');
+            var currentClasses = $('circle[data-index="'+markerIdx+'"]').attr("class")
+            $('.panned-to').attr("class", currentClasses);
+            $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
             
-
-            var lat = self.currentActiveLocation().Lat;
-            var lng = self.currentActiveLocation().Lon;
-            var scale = 5;
-            // zoom to the area of interest
-            // debugger;
-            var mapObj = $('.map').vectorMap('get', 'mapObject');
-            mapObj.setScale(0);
-            var foo = mapObj.latLngToPoint(lat,lng);
-            var w = (foo.x - 25) / mapObj.width;
-            var h = foo.y / mapObj.height;
-
-            mapObj.setFocus(5, w, h);
          }
     
 
@@ -207,8 +215,8 @@ $(document).ready(function() {
           byline = $(e.currentTarget).data('byline');
           
           // hacks to handle the bad JSON
-          year = '2014';
-          newtype = type.substring(5);
+          var year = '2014';
+          var newtype = type.substring(5);
           model.viewModel.year('2014');
 
       $( "#tabs .tab" ).removeClass('selected');
@@ -249,16 +257,23 @@ $(document).ready(function() {
      
      // Close the modal
     $( ".modalContainer .close" ).on('click', function(e) {
-       $(e.currentTarget).closest('.tabContentMap').removeClass('show-modal');
+       closeModal(e)
     });
-    
 
     $('.ui-blocker').not().on('click', function(e) {
-       $('.tabContentMap').removeClass('show-modal');
-      e.stopPropagation();
+       closeModal(e)
     });
 
+    function closeModal(e) {
+       $('.toplistings ul li.active').removeClass('active');
+       $('.tabContentMap').removeClass('show-modal');
+        e.stopPropagation();
+       var currentClasses = $('.panned-to').siblings().attr("class");
+       $('.panned-to').attr("class", currentClasses);
+       debugger;
+    }
 
+    //Set Slider
     $("#slider").slider({
       value: 2014,
       min: 2005,
@@ -279,16 +294,16 @@ $(document).ready(function() {
       }
     });
 
-    function setSliderTicks(){
+    function setSliderTicks() {
       var $slider =  $('#slider');
       var max =  $slider.slider("option", "max") - $slider.slider("option", "min");
       var spacing =  $slider.width() / (max);
 
       $slider.find('.ui-slider-tick-mark').remove();
         for (var i = 0; i < max+1 ; i++) {
-            $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * i) - 4 + 'px').appendTo($slider);                    
+          $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * i) - 4 + 'px').appendTo($slider);                    
         }
-    }
+      }
 
     window.onresize = function(event) {
       setSliderTicks();

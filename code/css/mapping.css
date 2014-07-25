@@ -245,7 +245,7 @@ div.tabContent .tabContentOther .header{
   box-sizing: border-box;         /* Opera/IE 8+ */
   }
 
-  div.tabContent .tabContentOther .toplistings ul li:hover{
+  div.tabContent .tabContentOther .toplistings ul li:hover, div.tabContent .tabContentOther .toplistings ul li.active{
     cursor:pointer;
     background: #F6F6F6;
   }
@@ -398,6 +398,10 @@ div.tabContent .tabContentOther .header{
 .jvectormap-container svg g text {
   pointer-events:none;
   cursor:pointer;
+}
+.panned-to {
+  stroke:black;
+  stroke-width:3;
 }
 
 
