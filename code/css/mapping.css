@@ -168,6 +168,7 @@ div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap 
   left:auto;
   right:20px;
   border-radius: 0px;
+  font-size: 16px;
 }
 div.tabContent .tabContentMap .jvectormap-zoomin{bottom:40px;}
 div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20px;}
@@ -249,7 +250,9 @@ div.tabContent .tabContentOther .listingHeader{
     cursor:pointer;
     background: #F6F6F6;
   }
-
+  div.tabContent .tabContentOther .toplistings ul li p{
+    margin-top: 0px;
+  }
   div.tabContent .tabContentOther .toplistings ul li svg{
     content: "";
 /*    background-image: url('../images/marker.png');
@@ -362,19 +365,23 @@ div.tabContent .tabContentOther .listingHeader{
   height:12px;
   width:12px;
   position: absolute;
-  top: 15;
-  right:15;
+  top: 15px;
+  right:15px;
 }
 
 .modalContainer .cityContainer{padding:15px;}
-.modalContainer .cityContainer .cityName{color:#333333; font-size:18px; font-weight:700; text-transform:uppercase; font-family: 'Open Sans', sans-serif;}
-.modalContainer .cityContainer .cityRank{color:#333333; font-size:14px; font-weight: 600;}
+.modalContainer .cityContainer .cityName{color:#333333; font-size:18px; font-weight:700; text-transform:uppercase; font-family: 'Open Sans', sans-serif;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.modalContainer .cityContainer .cityRank{margin-top: 0px;color:#333333; font-size:14px; font-weight: 600;}
 .modalContainer .cityContainer .cityRank span{color:#333333;font-weight:700;}
 
 .modalContainer .rankings{border-top:solid 1px #ececec;border-bottom:solid 1px #ececec;padding: 15px;}
-.modalContainer .rankings .header{color:#535353; font-weight: 600; font-family:'Open Sans', sans-serif;font-size:14px;}
+.modalContainer .rankings .modalHeader{color:#535353; font-weight: 600; font-family:'Open Sans', sans-serif;font-size:14px;}
 .modalContainer .rankings .section{color:#929292; font-weight:400;font-family:'Open Sans',sans-serif; font-size: 13px;line-height: 30px; height:30px;}
-.modalContainer .rankings .section h2{width:70%; float:left;}
+.modalContainer .rankings .section h2{width:70%; float:left; font-size: 13px;
+margin-top:0px; margin-bottom:0px; color:#929292;}
 
 .modalContainer .rankings .section h2.numRank{float:right; text-align:right;width:30%;}
 .modalContainer .rankings .section h2.numRank span{font-size:100%;}
@@ -388,8 +395,8 @@ div.tabContent .tabContentOther .listingHeader{
 .modalContainer .rankings .allConditions .numRank{color:#ee8722;}
 
 
-.modalContainer .shareContainer{padding: 15px;}
-.modalContainer .shareContainer h2{ width:100%;font-family:'Open Sans',sans-serif; font-weight:600;font-size:14px;}
+.modalContainer .shareContainer{padding: 15px 15px 0;}
+.modalContainer .shareContainer h2{margin-top: 0px; color:#333333;width:100%;font-family:'Open Sans',sans-serif; font-weight:600;font-size:14px;}
 
 
 /********END MODAL*/

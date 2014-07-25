@@ -44,7 +44,7 @@ $(document).ready(function() {
     var foo = mapObj.latLngToPoint(lat,lng);
     var w = (foo.x - 25) / mapObj.width;
     var h = foo.y / mapObj.height;
-    mapObj.setFocus(5, w, h);
+    mapObj.setFocus(scale, w, h);
   }
 
   function setMap(color) {
