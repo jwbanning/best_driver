@@ -190,8 +190,8 @@ This Landing Page resides under:
 		<td>SS</td>
 	</tr>		
 	<tr>
-		<td>Director of Engineering:</td>
-		<td>Ryan Ploetz</td>
+		<td>Senior Copywrter:</td>
+		<td>Ashley Lapin</td>
 		<td>RP</td>
 	</tr>	
 	<tr>
