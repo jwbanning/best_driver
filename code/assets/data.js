@@ -198,6 +198,7 @@ $(document).ready(function() {
         yr = '';
         self.locations(mappedTasks);
         filterLocations(self.initialLoadType(), yr);
+        addZoomBar();
     });  
   }
 
@@ -234,6 +235,8 @@ $(document).ready(function() {
 
       $( "div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap .jvectormap-zoomout").css('color', sectionColor);
 
+      //Slider Options
+      $("#slider").slider('value','2014');
       $('.tabContent .sliderContainer #slider').removeClass('disabled');
       if (!$('#tabs #topCity').hasClass('selected')){
         $('.tabContent .sliderContainer #slider').addClass('disabled');
@@ -260,7 +263,6 @@ $(document).ready(function() {
       //need to reset the map to be back at the US view.
       var mapObject = $('.map').vectorMap('get', 'mapObject');
       mapObject.setScale(0);
-
       $(".toplistings").scrollTop(0);
 
     });
@@ -302,6 +304,11 @@ $(document).ready(function() {
         model.viewModel.year(ui.value);
       }
     });
+
+    function addZoomBar() {
+      var html = '<div class="zoom-bar-wrapper"><div class="zoom-bar"><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-ball"></div></div></div>';
+      $(html).insertAfter('.jvectormap-zoomin');
+    };
 
     function setSliderTicks() {
       var $slider =  $('#slider');

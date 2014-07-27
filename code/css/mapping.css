@@ -169,8 +169,56 @@ div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap 
   border-radius: 0px;
   font-size: 16px;
 }
-div.tabContent .tabContentMap .jvectormap-zoomin{bottom:40px;}
+div.tabContent .tabContentMap .jvectormap-zoomin{bottom:155px;}
 div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20px;}
+
+.zoom-bar-wrapper {
+  height: 118px;
+  width: 4px;
+  background: #e3e3e3;
+  position: absolute;
+  right: 27px;
+  bottom: 38px;
+}
+.zoom-bar {
+  height: 100%;
+  width: 100%;
+  background: #e3e3e3;
+  position: relative;
+}
+.zoom-ball {
+  width: 14px;
+  height: 14px;
+  border-radius: 300px;
+  position: absolute;
+  bottom: 7px;
+  left: -5px;
+  margin: 0 auto;
+  background:rgb(148, 148, 148);;
+}
+.zoom-tick {
+  width: 15px;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  left: -5px;
+  background: #ccc;
+
+}
+.zoom-tick:nth-child(1) {
+  top: 13px;
+}
+
+.zoom-tick:nth-child(2) {
+  top: 43px;
+}
+
+.zoom-tick:nth-child(3) {
+  bottom: 38px;
+}
+.zoom-tick:nth-child(4) {
+  bottom: 13px;
+}
 
 
 /*TAB CONTENT OTHER*/
