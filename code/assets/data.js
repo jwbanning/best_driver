@@ -136,25 +136,27 @@ $(document).ready(function() {
           $(item).attr('x',x);
           $(item).attr('y',y);
         });
-        var scalefactor = 1;
-        if (scale > 0 && scale <= 2.0) {
+        var scalefactor = 0;
+        console.log(scale)
+        if (scale > 0 && scale < 2.0) {
           console.log('US');
           scalefactor = 1;
         }
-        else if(scale > 2.1 && scale <= 4.0) {
+        else if(scale >= 2 && scale < 4.0) {
           console.log('region');
           scalefactor = 2;
         }
-        else if(scale > 4.1 && scale <= 6.0) {
+        else if(scale >=4 && scale <= 6.0) {
           console.log('state');
           scalefactor = 3;
         }
-        else if(scale > 6.1 && scale <= 8) {
+        else if(scale >= 6.1 && scale <= 8) {
           console.log('city');
           scalefactor = 4;
         }
-        console.log(scalefactor + ' scale');
 
+        $('#zoom-bar').slider('value', ''+scalefactor+'')
+        // console.log(scalefactor + ' scale');
       }
 
     });
@@ -305,9 +307,22 @@ $(document).ready(function() {
       }
     });
 
+
+
     function addZoomBar() {
-      var html = '<div class="zoom-bar-wrapper"><div class="zoom-bar"><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-ball"></div></div></div>';
-      $(html).insertAfter('.jvectormap-zoomin');
+      var html = '<div class="zoom-bar-wrapper"><div id="zoom-bar"><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-tick"></div><div class="zoom-ball"></div></div></div>';
+      $('.tabContentMap').prepend(html);
+       $("#zoom-bar").slider({
+        value: 1,
+        min: 1,
+        max: 4,
+        step: 1,
+        orientation:'vertical',
+        slide: function( event, ui ) {
+          var mapObj = $('.map').vectorMap('get', 'mapObject');
+          mapObj.setScale(ui.value);
+        }
+      });
     };
 
     function setSliderTicks() {
