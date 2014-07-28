@@ -136,21 +136,22 @@ $(document).ready(function() {
           $(item).attr('x',x);
           $(item).attr('y',y);
         });
+
         var scalefactor = 0;
         console.log(scale)
         if (scale > 0 && scale < 2.0) {
           console.log('US');
           scalefactor = 1;
         }
-        else if(scale >= 2 && scale < 4.0) {
+        else if(scale >= 2 && scale < 3.7) {
           console.log('region');
           scalefactor = 2;
         }
-        else if(scale >=4 && scale <= 6.0) {
+        else if(scale >=3.7 && scale < 5) {
           console.log('state');
           scalefactor = 3;
         }
-        else if(scale >= 6.1 && scale <= 8) {
+        else if(scale >= 5 && scale <= 8) {
           console.log('city');
           scalefactor = 4;
         }
@@ -318,7 +319,21 @@ $(document).ready(function() {
         orientation:'vertical',
         slide: function( event, ui ) {
           var mapObj = $('.map').vectorMap('get', 'mapObject');
-          mapObj.setScale(ui.value);
+          var rounded = Math.round(ui.value);
+          if (ui.value == 1) {
+            rounded = 0;
+          }
+          else if (ui.value == 2) {
+            rounded = 2;
+          }
+          else if (ui.value == 3) {
+            rounded = 4;
+          }
+          else if (ui.value == 4) {
+            rounded = 8;
+          }
+          console.log('this '+ui.value)
+          mapObj.setScale(rounded);
         }
       });
     };
