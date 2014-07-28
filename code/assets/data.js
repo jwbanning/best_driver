@@ -333,7 +333,7 @@ $(document).ready(function() {
             rounded = 8;
           }
           console.log('this '+ui.value)
-          mapObj.setScale(rounded);
+          mapObj.setFocus(rounded,0.5,0.5);
         }
       });
     };
