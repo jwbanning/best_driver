@@ -154,7 +154,7 @@ $(document).ready(function() {
           console.log('city');
           scalefactor = 4;
         }
-
+        console.log(scalefactor)
         $('#zoom-bar').slider('value', ''+scalefactor+'')
         // console.log(scalefactor + ' scale');
       }
@@ -191,8 +191,6 @@ $(document).ready(function() {
             
          }
     
-
-
 
     $.getJSON("/assets/best-driver.json", function(allData) {
         setSliderTicks();
