@@ -260,6 +260,7 @@ $(document).ready(function() {
       model.viewModel.year(year);
       model.viewModel.color = sectionColor;
       filterLocations(type, '');
+      $('.ui-slider-handle').css('background-color', model.viewModel.color);
 
       //need to reset the map to be back at the US view.
       var mapObject = $('.map').vectorMap('get', 'mapObject');
