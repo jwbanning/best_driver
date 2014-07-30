@@ -136,6 +136,14 @@ $(document).ready(function() {
           $(item).attr('x',x);
           $(item).attr('y',y);
         });
+        $('.jvectormap-container .labelSvg text').each(function(index, item) {
+          var itemPicked = $(item).data('index');
+          var x = $('.jvectormap-container circle[data-index="'+itemPicked+'"]').attr('cx');
+          var y = $('.jvectormap-container circle[data-index="'+itemPicked+'"]').attr('cy');
+          var xInt = parseInt(x) + 20;
+          $(item).attr('x',xInt);
+          $(item).attr('y',y);
+        });
 
         window.a = window.a + 1 || 0;
 
@@ -172,11 +180,32 @@ $(document).ready(function() {
   }
 
   function setScaleInformation(scaleFactor) {
+    $('.labelSvg').remove();
     if (scaleFactor == 2 || scaleFactor == 3 || scaleFactor == 4) {
       if (model.viewModel.allMarkersUpdated() !== true) {
         model.viewModel.allMarkersUpdated(true);
         setTopMarkers(model.viewModel.locations().length);
       }
+      if (scaleFactor == 2) {
+        for (var i = 0; i < model.viewModel.locations().length; i++) {
+          if (model.viewModel.locations()[i].location()['Zoom Level2'] == 'Y') {
+              var path    = $('circle[data-index="'+i+'"]');
+              var pathParent  = $('circle[data-index="'+i+'"]').parent();
+              var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
+              $(pathParent).append(text);
+          };
+        };
+      };
+      if (scaleFactor == 3) {
+        for (var i = 0; i < model.viewModel.locations().length; i++) {
+          if (model.viewModel.locations()[i].location()['Zoom Level3'] == 'Y') {
+              var path    = $('circle[data-index="'+i+'"]');
+              var pathParent  = $('circle[data-index="'+i+'"]').parent();
+              var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
+              $(pathParent).append(text);
+          };
+        };
+      };
     }
      if(scaleFactor == 1 || scaleFactor == 0){
       model.viewModel.allMarkersUpdated(false);

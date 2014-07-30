@@ -474,5 +474,10 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   font-family: 'Open sans';
 }
 
+.labelSvg {
+  background-color: #000;
+  padding: 20px;
+}
+
 
 
