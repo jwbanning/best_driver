@@ -21,12 +21,12 @@ $(document).ready(function() {
       });
 
    model.viewModel.locations(m);
-   setTopMarkers();
+   setTopMarkers(10);
   }
 
 
-  function setTopMarkers() {
-    for (var i = 0; i < 10; i++) {
+  function setTopMarkers(numberCount) {
+    for (var i = 0; i < numberCount; i++) {
      model.viewModel.map.setSelectedMarkers(i);
      $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
     };
@@ -43,10 +43,10 @@ $(document).ready(function() {
   function panMapToMarkers() {
     var lat = model.viewModel.currentActiveLocation().Lat;
     var lng = model.viewModel.currentActiveLocation().Lon;
-    var scale = 5;
+    var scale = 4;
     // zoom to the area of interest
     // debugger;
-    var mapObj = $('.map').vectorMap('get', 'mapObject');
+    var mapObj = model.viewModel.map;
     mapObj.setScale(0);
     var foo = mapObj.latLngToPoint(lat,lng);
     var w = (foo.x - 25) / mapObj.width;
@@ -130,31 +130,38 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
-          $('.jvectormap-container .textSvg text').each(function(index, item) {
+        $('.jvectormap-container .textSvg text').each(function(index, item) {
           var x = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cx');
           var y = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cy');
           $(item).attr('x',x);
           $(item).attr('y',y);
         });
 
+        window.a = window.a + 1 || 0;
+
         var scalefactor = 0;
-        console.log(scale)
-        if (scale > 0 && scale < 2.0) {
-          console.log('US');
-          scalefactor = 1;
-        }
-        else if(scale >= 2 && scale < 3.7) {
-          console.log('region');
-          scalefactor = 2;
-        }
-        else if(scale >=3.7 && scale < 5) {
-          console.log('state');
-          scalefactor = 3;
-        }
-        else if(scale >= 5 && scale <= 8) {
-          console.log('city');
-          scalefactor = 4;
-        }
+        if (window.a > 0) {
+          if (scale > 0 && scale < 2.0) {
+            console.log('US');
+            scalefactor = 1;
+          }
+          else if(scale >= 2 && scale < 3.7) {
+            console.log('region');
+            scalefactor = 2;
+          }
+          else if(scale >=3.7 && scale < 5) {
+            console.log('state');
+            scalefactor = 3;
+          }
+          else if(scale >= 5 && scale <= 8) {
+            console.log('city');
+            scalefactor = 4;
+          }
+          if (scalefactor !== model.viewModel.scalefactor()) {
+            model.viewModel.scalefactor(scalefactor);
+          };
+        };
+        
         console.log(scalefactor)
         $('#zoom-bar').slider('value', ''+scalefactor+'')
         // console.log(scalefactor + ' scale');
@@ -162,6 +169,21 @@ $(document).ready(function() {
 
     });
     return map;
+  }
+
+  function setScaleInformation(scaleFactor) {
+    if (scaleFactor == 2 || scaleFactor == 3 || scaleFactor == 4) {
+      if (model.viewModel.allMarkersUpdated() !== true) {
+        model.viewModel.allMarkersUpdated(true);
+        setTopMarkers(model.viewModel.locations().length);
+      }
+    }
+     if(scaleFactor == 1 || scaleFactor == 0){
+      model.viewModel.allMarkersUpdated(false);
+      model.viewModel.map.clearSelectedMarkers();
+      $('.jvectormap-container text').remove();
+      setTopMarkers(10);
+    }
   }
 
   //THIS IS THE MODEL ---------------------------------
@@ -173,6 +195,8 @@ $(document).ready(function() {
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.year =  ko.observable("2014");
     self.locations = ko.observableArray([]);
+    self.allMarkersUpdated = ko.observable(false);
+    self.scalefactor = ko.observable(1);
     self.map = setMap();
     self.currentActiveLocation = ko.observable({});
 
@@ -182,13 +206,13 @@ $(document).ready(function() {
             $('.modal').css('border', 'solid 5px' + self.color + '');
             $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
-            e.stopPropagation();
             panMapToMarkers();
 
-            var markerIdx = $(e.currentTarget).attr('idx');
-            var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
-            $('.panned-to').attr("class", currentClasses);
-            $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
+             var markerIdx = $(e.currentTarget).attr('idx');
+             var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
+             $('.panned-to').attr("class", currentClasses);
+             $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
+            //e.stopPropagation();
             
          }
     
@@ -214,8 +238,12 @@ $(document).ready(function() {
        model.viewModel.map.removeAllMarkers();
        model.viewModel.map.addMarkers(markers);
        $('.jvectormap-container .textSvg text').remove();
-
     });
+
+    model.viewModel.scalefactor.subscribe(function(newValue) {
+      setScaleInformation(newValue);
+    });
+
 
 
     //UI EVENTS
@@ -282,7 +310,7 @@ $(document).ready(function() {
        $('.toplistings ul li.active').removeClass('active');
        $('.tabContentMap').removeClass('show-modal');
         e.stopPropagation();
-       var currentClasses = $('.panned-to').siblings().attr("class");
+       var currentClasses = $('.panned-to').siblings('circle').attr("class");
        $('.panned-to').attr("class", currentClasses);
     }
 

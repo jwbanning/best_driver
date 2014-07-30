@@ -465,8 +465,14 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   cursor:pointer;
 }
 .panned-to {
-  stroke:black;
   stroke-width:3;
+  fill: #333333;
+  stroke: #333333;
+  color: #fff;
+  font size: 14px;
+  font-weight: 600;
+  font-family: 'Open sans';
 }
+
 
 
