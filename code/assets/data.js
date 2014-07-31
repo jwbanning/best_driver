@@ -196,6 +196,7 @@ $(document).ready(function() {
               var path = $('circle[data-index="'+i+'"]');
               var pathParent  = $('circle[data-index="'+i+'"]').parent();
               var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
+              $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
               $(pathParent).append(text);
           };
         };
@@ -207,6 +208,7 @@ $(document).ready(function() {
               var path    = $('circle[data-index="'+i+'"]');
               var pathParent  = $('circle[data-index="'+i+'"]').parent();
               var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
+              $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
               $(pathParent).append(text);
           };
         };
