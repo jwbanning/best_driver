@@ -41,6 +41,7 @@ $(document).ready(function() {
   }
 
   function panMapToMarkers() {
+    //NEED TO FIGURE OUT HOW TO PAN WITHOUT GOING TO TOP LEVEL ZOOM
     var lat = model.viewModel.currentActiveLocation().Lat;
     var lng = model.viewModel.currentActiveLocation().Lon;
     var scale = 4;
@@ -130,18 +131,20 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
-        $('.jvectormap-container .textSvg text').each(function(index, item) {
-          var x = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cx');
-          var y = $('.jvectormap-container circle[data-index="'+index+'"]').attr('cy');
-          $(item).attr('x',x);
-          $(item).attr('y',y);
-        });
+
         $('.jvectormap-container .labelSvg text').each(function(index, item) {
           var itemPicked = $(item).data('index');
           var x = $('.jvectormap-container circle[data-index="'+itemPicked+'"]').attr('cx');
           var y = $('.jvectormap-container circle[data-index="'+itemPicked+'"]').attr('cy');
           var xInt = parseInt(x) + 20;
           $(item).attr('x',xInt);
+          $(item).attr('y',y);
+        });
+        $('.jvectormap-container .textSvg text').each(function(index, item) {
+          var correctIndex = $(item).data('index');
+          var x = $('.jvectormap-container circle[data-index="'+correctIndex+'"]').attr('cx');
+          var y = $('.jvectormap-container circle[data-index="'+correctIndex+'"]').attr('cy');
+          $(item).attr('x',x);
           $(item).attr('y',y);
         });
 
@@ -183,13 +186,14 @@ $(document).ready(function() {
     $('.labelSvg').remove();
     if (scaleFactor == 2 || scaleFactor == 3 || scaleFactor == 4) {
       if (model.viewModel.allMarkersUpdated() !== true) {
-        model.viewModel.allMarkersUpdated(true);
-        setTopMarkers(model.viewModel.locations().length);
+          model.viewModel.allMarkersUpdated(true);
+        // setTopMarkers(model.viewModel.locations().length);
       }
       if (scaleFactor == 2) {
         for (var i = 0; i < model.viewModel.locations().length; i++) {
           if (model.viewModel.locations()[i].location()['Zoom Level2'] == 'Y') {
-              var path    = $('circle[data-index="'+i+'"]');
+              model.viewModel.map.setSelectedMarkers(i);
+              var path = $('circle[data-index="'+i+'"]');
               var pathParent  = $('circle[data-index="'+i+'"]').parent();
               var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
               $(pathParent).append(text);
@@ -198,7 +202,8 @@ $(document).ready(function() {
       };
       if (scaleFactor == 3) {
         for (var i = 0; i < model.viewModel.locations().length; i++) {
-          if (model.viewModel.locations()[i].location()['Zoom Level3'] == 'Y') {
+          if (model.viewModel.locations()[i].location()['Zoom Level3'] == 'Y' || model.viewModel.locations()[i].location()['Zoom Level2'] == 'Y') {
+              model.viewModel.map.setSelectedMarkers(i);
               var path    = $('circle[data-index="'+i+'"]');
               var pathParent  = $('circle[data-index="'+i+'"]').parent();
               var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
@@ -232,16 +237,24 @@ $(document).ready(function() {
     self.popModal = function(currentLocation,e) {
             $('.toplistings ul li.active').removeClass('active');
             $(e.currentTarget).addClass('active');
+            
+      
+            var pos= ($('.toplistings').scrollTop()+$('li.active').position().top - 215);
+            $(".toplistings").animate({ scrollTop: pos }, 500);
+
             $('.modal').css('border', 'solid 5px' + self.color + '');
             $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             panMapToMarkers();
 
+            var windowHeight = $('.toplistings ul').height();
+            var currentTop = $('.toplistings').scrollTop();
+
              var markerIdx = $(e.currentTarget).attr('idx');
              var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
              $('.panned-to').attr("class", currentClasses);
              $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
-            //e.stopPropagation();
+             e.stopPropagation();
             
          }
     
@@ -281,6 +294,8 @@ $(document).ready(function() {
           sectionColor = $(e.currentTarget).data('color'),
           type = $(e.currentTarget).data('type'),
           byline = $(e.currentTarget).data('byline');
+
+          $('.toplistings').scrollTop()
           
           // hacks to handle the bad JSON
           var year = '2014';
