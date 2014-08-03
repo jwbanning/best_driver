@@ -2,9 +2,7 @@ body{
   background: #fff;
   font-family: 'Open Sans', sans-serif;
 }
-.headerImageContainer{
 
-}
 .headerImageContainer h1{
   text-align: center;
   margin:0 auto;
@@ -168,7 +166,7 @@ div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap 
   right:20px;
   border-radius: 0px;
   font-size: 16px;
-  z-index: 9999;
+  z-index: 10;
 }
 div.tabContent .tabContentMap .jvectormap-zoomin{bottom:155px;}
 div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20px;}
@@ -179,7 +177,7 @@ div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20px;}
   bottom: 83px;
   height: 118px;
   width: 4px;
-  z-index: 800;
+  z-index: 8;
   background: #fff;
   border-left: 1px solid #e3e3e3;
   border-right: 1px solid #e3e3e3;
@@ -295,7 +293,7 @@ div.tabContent .tabContentOther .listingHeader{
     line-height: 30px;
     font-size: 15px;
     height: 40px;
-    padding: 5px 30px;
+    padding: 5px 15px 5px 30px;
     font-family: 'Open Sans', sans-serif;
     color:#333;
     font-weight: 600;
@@ -310,6 +308,10 @@ div.tabContent .tabContentOther .listingHeader{
   }
   div.tabContent .tabContentOther .toplistings ul li p{
     margin-top: 0px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    overflow: hidden;
   }
   div.tabContent .tabContentOther .toplistings ul li svg{
     content: "";

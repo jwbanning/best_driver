@@ -39,14 +39,25 @@ $(document).ready(function() {
     }
     return markers;
   }
+  function bringMarkerToTop(index) {
+     var path = $('circle[data-index="'+index+'"]');
+     var pathParent  = $('circle[data-index="'+index+'"]').parent();
+     var text = '<svg class="textSvg"><text data-index="'+index+'" text-anchor="middle" alignment-baseline="middle" x="'+path.attr('cx')+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+(parseInt(index)+1)+'  </text></svg>';
+     if (path.attr('r') > 5) {
+       $(pathParent).append(path);
+       $(pathParent).append(text);
+     };
+  }
 
   function panMapToMarkers() {
-    //NEED TO FIGURE OUT HOW TO PAN WITHOUT GOING TO TOP LEVEL ZOOM
+    if (model.viewModel.scalefactor() == 4) {
+      console.log('s')
+      return;
+    };
+    //SHOULD FIGURE OUT HOW TO PAN WITHOUT GOING TO TOP LEVEL ZOOM
     var lat = model.viewModel.currentActiveLocation().Lat;
     var lng = model.viewModel.currentActiveLocation().Lon;
     var scale = 4;
-    // zoom to the area of interest
-    // debugger;
     var mapObj = model.viewModel.map;
     mapObj.setScale(0);
     var foo = mapObj.latLngToPoint(lat,lng);
@@ -86,6 +97,20 @@ $(document).ready(function() {
       },
       onMarkerOver: function(event, index){
         console.log('marker-over', index);
+        bringMarkerToTop(index);
+     //    var path = $('circle[data-index="'+index+'"]');
+     //    var m = $(path).position().top + $(path).position().left;
+     // var c = $('circle')
+     // for (var i = 0; i < $('circle').length; i++) {
+     //  var ipos = $($('circle')[i]).position().top + $($('circle')[i]).position().left;
+     //   if (Math.abs(m-ipos) < 20) {
+     //    var t = parseInt($($('circle')[i]).attr('cx') )+ Math.random(10);
+     //    var x = parseInt($($('circle')[i]).attr('cy') )+ Math.random(10);
+     //    $($('circle')[i]).attr('cy', t);
+     //    $($('circle')[i]).attr('cx', x);
+     //   };
+     // };
+
         return false;
       },
       onMarkerOut: function(event, index){
@@ -94,18 +119,14 @@ $(document).ready(function() {
       },
       onMarkerClick: function(event, index){
         $('.toplistings ul li').get(index).click();
+        bringMarkerToTop(index);
         event.stopPropagation();
         event.preventDefault();
         return;
         
       },
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
-         var path    = $('circle[data-index="'+index+'"]');
-         var pathParent  = $('circle[data-index="'+index+'"]').parent();
-         var text = ' <svg class="textSvg"><text data-index="'+index+'" text-anchor="middle" alignment-baseline="middle" x="'+path.attr('cx')+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+(parseInt(index)+1)+'  </text></svg>';
-
-         $(pathParent).append(path);
-         $(pathParent).append(text);
+        bringMarkerToTop(index);
       },
       onRegionLabelShow: function(event, label, code){
         label.html(label.html()+' (modified)');
@@ -131,7 +152,6 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
-
         $('.jvectormap-container .labelSvg text').each(function(index, item) {
           var itemPicked = $(item).data('index');
           var x = $('.jvectormap-container circle[data-index="'+itemPicked+'"]').attr('cx');
@@ -149,7 +169,6 @@ $(document).ready(function() {
         });
 
         window.a = window.a + 1 || 0;
-
         var scalefactor = 0;
         if (window.a > 0) {
           if (scale > 0 && scale < 2.0) {
@@ -182,45 +201,47 @@ $(document).ready(function() {
     return map;
   }
 
+
+
+ //Handle Markers on Scale ---------------------------------
   function setScaleInformation(scaleFactor) {
     $('.labelSvg').remove();
     if (scaleFactor == 2 || scaleFactor == 3 || scaleFactor == 4) {
-      if (model.viewModel.allMarkersUpdated() !== true) {
+        if (model.viewModel.allMarkersUpdated() !== true) {
           model.viewModel.allMarkersUpdated(true);
-        // setTopMarkers(model.viewModel.locations().length);
-      }
-      if (scaleFactor == 2) {
-        for (var i = 0; i < model.viewModel.locations().length; i++) {
-          if (model.viewModel.locations()[i].location()['Zoom Level2'] == 'Y') {
-              model.viewModel.map.setSelectedMarkers(i);
-              var path = $('circle[data-index="'+i+'"]');
-              var pathParent  = $('circle[data-index="'+i+'"]').parent();
-              var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
-              $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
-              $(pathParent).append(text);
-          };
-        };
+        }
+        model.viewModel.map.clearSelectedMarkers();
+        handleMarkersAndText(scaleFactor);
       };
-      if (scaleFactor == 3) {
-        for (var i = 0; i < model.viewModel.locations().length; i++) {
-          if (model.viewModel.locations()[i].location()['Zoom Level3'] == 'Y' || model.viewModel.locations()[i].location()['Zoom Level2'] == 'Y') {
-              model.viewModel.map.setSelectedMarkers(i);
-              var path    = $('circle[data-index="'+i+'"]');
-              var pathParent  = $('circle[data-index="'+i+'"]').parent();
-              var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
-              $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
-              $(pathParent).append(text);
-          };
-        };
-      };
-    }
-     if(scaleFactor == 1 || scaleFactor == 0){
+      
+     if(scaleFactor == 1 || scaleFactor == 0) {
       model.viewModel.allMarkersUpdated(false);
       model.viewModel.map.clearSelectedMarkers();
       $('.jvectormap-container text').remove();
       setTopMarkers(10);
     }
   }
+  function setMarkerSelected(i) {
+    var path = $('circle[data-index="'+i+'"]');
+    var pathParent  = $('circle[data-index="'+i+'"]').parent();
+    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #000; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
+    model.viewModel.map.setSelectedMarkers(i);
+    $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
+    $(pathParent).append(text);
+  }
+  function handleMarkersAndText(scaleFactor) {
+    for (var i = 0; i < model.viewModel.locations().length; i++) {
+      if (model.viewModel.locations()[i].location()['Zoom Level'+scaleFactor+''] == 'Y' || i < 11) {
+        setMarkerSelected(i);
+      }
+      else {
+        $('text[data-index="'+i+'"]').remove();
+      }
+    };
+  }
+
+//Handle Markers on Scale ---------------------------------
+
 
   //THIS IS THE MODEL ---------------------------------
   function TaskListViewModel() {
@@ -236,12 +257,17 @@ $(document).ready(function() {
     self.map = setMap();
     self.currentActiveLocation = ko.observable({});
 
+    self.formattedNumber = function(n) {
+      return n+'<sup>'+([,'st','nd','rd'][~~(n/10%10)-1?n%10:0]||'th')+'</sup>'
+    };
+
+
     self.popModal = function(currentLocation,e) {
             $('.toplistings ul li.active').removeClass('active');
             $(e.currentTarget).addClass('active');
             
       
-            var pos= ($('.toplistings').scrollTop()+$('li.active').position().top - 215);
+            var pos= ($('.toplistings').scrollTop()+$('li.active').position().top - 190);
             $(".toplistings").animate({ scrollTop: pos }, 500);
 
             $('.modal').css('border', 'solid 5px' + self.color + '');
@@ -256,6 +282,7 @@ $(document).ready(function() {
              var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
              $('.panned-to').attr("class", currentClasses);
              $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
+             setMarkerSelected(markerIdx);
              e.stopPropagation();
             
          }
@@ -288,7 +315,7 @@ $(document).ready(function() {
       setScaleInformation(newValue);
     });
 
-
+ //END OF MODEL ---------------------------------
 
     //UI EVENTS
     $( "#tabs .tab" ).on('click', function(e) {
@@ -353,11 +380,17 @@ $(document).ready(function() {
     });
 
     function closeModal(e) {
+        var index =  $('.panned-to').data('index');
+        var currentClasses = $('.panned-to').siblings('circle').attr("class");
+
+        //NEED TO CLEAR MARKER SELECTED - THIS METHOD CLEARS ALL - ONLY CLEAR ONE
+         //model.viewModel.map.clearSelectedMarkers(index);
+         //$('text[data-index="'+index+'"]').remove();
+
        $('.toplistings ul li.active').removeClass('active');
        $('.tabContentMap').removeClass('show-modal');
-        e.stopPropagation();
-       var currentClasses = $('.panned-to').siblings('circle').attr("class");
        $('.panned-to').attr("class", currentClasses);
+       e.stopPropagation();
     }
 
     //Set Slider
