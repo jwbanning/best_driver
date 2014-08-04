@@ -2,9 +2,7 @@ body{
   background: #fff;
   font-family: 'Open Sans', sans-serif;
 }
-.headerImageContainer{
 
-}
 .headerImageContainer h1{
   text-align: center;
   margin:0 auto;
@@ -168,9 +166,67 @@ div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap 
   right:20px;
   border-radius: 0px;
   font-size: 16px;
+  z-index: 10;
 }
-div.tabContent .tabContentMap .jvectormap-zoomin{bottom:40px;}
+div.tabContent .tabContentMap .jvectormap-zoomin{bottom:155px;}
 div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20px;}
+
+.zoom-bar-wrapper {
+  position: absolute;
+  right: 26px;
+  bottom: 83px;
+  height: 118px;
+  width: 4px;
+  z-index: 8;
+  background: #fff;
+  border-left: 1px solid #e3e3e3;
+  border-right: 1px solid #e3e3e3;
+}
+#zoom-bar {
+  height: 83%;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  z-index: 900;
+  border: none;
+  top: 15%;
+  bottom: 0;
+}
+#zoom-bar span{
+  width: 15px;
+  height: 15px;
+  border-radius: 300px;
+  position: absolute;
+  bottom: 7px;
+  left: -5px;
+  margin: 0 auto;
+  background:#0096d6;
+  border: none;
+  outline-width: 0;
+}
+.zoom-tick {
+  width: 15px;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  left: -5px;
+  background: #ccc;
+
+}
+.zoom-tick:nth-child(1) {
+  top: -10px;
+}
+
+.zoom-tick:nth-child(2) {
+  top: 22px;
+}
+
+.zoom-tick:nth-child(3) {
+  bottom: 38px;
+}
+.zoom-tick:nth-child(4) {
+  bottom: 8px;
+}
 
 
 /*TAB CONTENT OTHER*/
@@ -237,7 +293,7 @@ div.tabContent .tabContentOther .listingHeader{
     line-height: 30px;
     font-size: 15px;
     height: 40px;
-    padding: 5px 30px;
+    padding: 5px 15px 5px 30px;
     font-family: 'Open Sans', sans-serif;
     color:#333;
     font-weight: 600;
@@ -252,6 +308,10 @@ div.tabContent .tabContentOther .listingHeader{
   }
   div.tabContent .tabContentOther .toplistings ul li p{
     margin-top: 0px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    overflow: hidden;
   }
   div.tabContent .tabContentOther .toplistings ul li svg{
     content: "";
@@ -407,8 +467,19 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   cursor:pointer;
 }
 .panned-to {
-  stroke:black;
   stroke-width:3;
+  fill: #333333;
+  stroke: #333333;
+  color: #fff;
+  font size: 14px;
+  font-weight: 600;
+  font-family: 'Open sans';
 }
+
+.labelSvg {
+  background-color: #000;
+  padding: 20px;
+}
+
 
 
