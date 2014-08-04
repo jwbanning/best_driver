@@ -50,20 +50,21 @@ $(document).ready(function() {
   }
 
   function panMapToMarkers() {
-    if (model.viewModel.scalefactor() == 4) {
-      console.log('s')
-      return;
-    };
+    // if (model.viewModel.scalefactor() == 4) {
+    //   console.log('s')
+    //   return;
+    // }
     //SHOULD FIGURE OUT HOW TO PAN WITHOUT GOING TO TOP LEVEL ZOOM
     var lat = model.viewModel.currentActiveLocation().Lat;
     var lng = model.viewModel.currentActiveLocation().Lon;
-    var scale = 4;
+    // var scale = 4;
     var mapObj = model.viewModel.map;
+    var currentScale = mapObj.scale;
     mapObj.setScale(0);
     var foo = mapObj.latLngToPoint(lat,lng);
     var w = (foo.x - 25) / mapObj.width;
     var h = foo.y / mapObj.height;
-    mapObj.setFocus(scale, w, h);
+    mapObj.setFocus(currentScale, w, h);
   }
 
   function setMap(color) {
@@ -325,7 +326,6 @@ $(document).ready(function() {
           byline = $(e.currentTarget).data('byline');
 
           $('.toplistings').scrollTop()
-          
           // hacks to handle the bad JSON
           var year = '2014';
           var newtype = type.substring(5);
