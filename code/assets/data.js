@@ -57,14 +57,14 @@ $(document).ready(function() {
     //SHOULD FIGURE OUT HOW TO PAN WITHOUT GOING TO TOP LEVEL ZOOM
     var lat = model.viewModel.currentActiveLocation().Lat;
     var lng = model.viewModel.currentActiveLocation().Lon;
-    // var scale = 4;
+    var scale = 2;
     var mapObj = model.viewModel.map;
     var currentScale = mapObj.scale;
     mapObj.setScale(0);
     var foo = mapObj.latLngToPoint(lat,lng);
     var w = (foo.x - 25) / mapObj.width;
     var h = foo.y / mapObj.height;
-    mapObj.setFocus(currentScale, w, h);
+    mapObj.setFocus(scale, w, h);
   }
 
   function setMap(color) {
@@ -289,7 +289,7 @@ $(document).ready(function() {
          }
     
 
-    $.getJSON("assets/best-driver.json", function(allData) {
+    $.getJSON("/assets/best-driver.json", function(allData) {
         setSliderTicks();
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
         yr = '';
