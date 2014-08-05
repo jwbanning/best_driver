@@ -50,10 +50,7 @@ $(document).ready(function() {
   }
 
   function panMapToMarkers() {
-    if (model.viewModel.scalefactor() == 4) {
-        console.log('s');
-      return;
-    };
+
     //SHOULD FIGURE OUT HOW TO PAN WITHOUT GOING TO TOP LEVEL ZOOM
     var lat = model.viewModel.currentActiveLocation().Lat;
     var lng = model.viewModel.currentActiveLocation().Lon;
