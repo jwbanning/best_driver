@@ -69,7 +69,6 @@ $(document).ready(function() {
   function setMap(color) {
     var regionStyling = {initial: {fill: '#e8e8e8'},hover: {fill: "#666"}};
     var color = color || '#0096d6';
-    var selectedColor = selectedColor || '#0076a7';
     var map = new jvm.WorldMap({
       container: $('.map'),
       zoomStep: 2,
@@ -158,8 +157,9 @@ $(document).ready(function() {
           var x = $('.jvectormap-container circle[data-index="'+itemPicked+'"]').attr('cx');
           var y = $('.jvectormap-container circle[data-index="'+itemPicked+'"]').attr('cy');
           var xInt = parseInt(x) + 20;
+          var yInt = parseInt(y) + 5;
           $(item).attr('x',xInt);
-          $(item).attr('y',y);
+          $(item).attr('y',yInt);
         });
         $('.jvectormap-container .textSvg text').each(function(index, item) {
           var correctIndex = $(item).data('index');
@@ -227,7 +227,7 @@ $(document).ready(function() {
     var pathParent  = $('circle[data-index="'+i+'"]').parent();
     var color = model.viewModel.selectedColor() || '#0076a7';
 
-    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(path.attr('cy'))+'" style="fill: '+color+'; font-family: "Open Sans" font-size: 13px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
+    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(parseInt(path.attr('cy'))+5)+'" style="fill: '+color+'; font-family: "Open Sans" font-size: 13px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
     model.viewModel.map.setSelectedMarkers(i);
     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
     $(pathParent).append(text);
@@ -255,6 +255,7 @@ $(document).ready(function() {
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.year =  ko.observable("2014");
     self.selectedColor = ko.observable("#0076a7");
+    self.color = 'rgb(0, 150, 214)';
     self.locations = ko.observableArray([]);
     self.allMarkersUpdated = ko.observable(false);
     self.scalefactor = ko.observable(1);
@@ -286,8 +287,8 @@ $(document).ready(function() {
              var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
              $('.panned-to').attr("class", currentClasses);
              $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
-             $('circle[data-index="'+markerIdx+'"]').css('stroke', self.selectedColor())
              setMarkerSelected(markerIdx);
+             $('.panned-to').css('fill', model.viewModel.selectedColor());
              e.stopPropagation();
             
          }
@@ -396,7 +397,7 @@ $(document).ready(function() {
 
        $('.toplistings ul li.active').removeClass('active');
        $('.tabContentMap').removeClass('show-modal');
-       $('.panned-to').attr("class", currentClasses).css('stroke', 'none');
+       $('.panned-to').attr("class", currentClasses).css('fill', model.viewModel.color);
        e.stopPropagation();
     }
 
