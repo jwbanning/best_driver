@@ -443,7 +443,12 @@ div.tabContent .tabContentOther .listingHeader{
 .modalContainer .rankings .section h2{width:70%; float:left; font-size: 13px;
 margin-top:0px; margin-bottom:0px; color:#929292;}
 
-.modalContainer .rankings .section h2.numRank{float:right; text-align:right;width:30%;}
+.modalContainer .rankings .section h2.numRank{
+  float: right;
+  width: auto;
+  text-align: left;
+  min-width: 23px;
+}
 .modalContainer .rankings .section h2.numRank span{font-size:100%;}
 .modalContainer .rankings .section h2.numRank span.ordinal{vertical-align: super; font-size: 50%;}
 
