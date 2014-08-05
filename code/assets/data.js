@@ -225,7 +225,7 @@ $(document).ready(function() {
   function setMarkerSelected(i) {
     var path = $('circle[data-index="'+i+'"]');
     var pathParent  = $('circle[data-index="'+i+'"]').parent();
-    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #000; font-size: 11px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
+    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+path.attr('cy')+'" style="fill: #000; font-family: "Open Sans"; font-size: 13px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
     model.viewModel.map.setSelectedMarkers(i);
     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
     $(pathParent).append(text);
