@@ -241,7 +241,7 @@ $(document).ready(function() {
     self.year =  ko.observable("2014");
     self.yearFomattedTopDriver = ko.observable(self.year() + ' Top Cities');
     self.selectedColor = ko.observable("#0076a7");
-    self.color = 'rgb(0, 150, 214)';
+    self.color = '#0096d6';
     self.locations = ko.observableArray([]);
     self.savedLocations = ko.observableArray([]);
     self.allMarkersUpdated = ko.observable(false);
@@ -457,7 +457,7 @@ $(document).ready(function() {
 
       $slider.find('.ui-slider-tick-mark').remove();
         for (var i = 0; i < max+1 ; i++) {
-          $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * i) - 4 + 'px').appendTo($slider);                    
+          $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * i) - 5 + 'px').appendTo($slider);                    
         }
       }
 
