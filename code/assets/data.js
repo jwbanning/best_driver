@@ -69,6 +69,7 @@ $(document).ready(function() {
   function setMap(color) {
     var regionStyling = {initial: {fill: '#e8e8e8'},hover: {fill: "#666"}};
     var color = color || '#0096d6';
+    var selectedColor = selectedColor || '#0076a7';
     var map = new jvm.WorldMap({
       container: $('.map'),
       zoomStep: 2,
@@ -224,7 +225,7 @@ $(document).ready(function() {
   function setMarkerSelected(i) {
     var path = $('circle[data-index="'+i+'"]');
     var pathParent  = $('circle[data-index="'+i+'"]').parent();
-    var color = model.viewModel.color || '#0096d6'
+    var color = model.viewModel.selectedColor() || '#0076a7';
 
     var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(path.attr('cy'))+'" style="fill: '+color+'; font-family: "Open Sans" font-size: 13px;">'+model.viewModel.locations()[i].location().City +', '+model.viewModel.locations()[i].location().State +'  </text></g></svg>';
     model.viewModel.map.setSelectedMarkers(i);
@@ -253,6 +254,7 @@ $(document).ready(function() {
     self.id =  ko.observable("topCity");
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.year =  ko.observable("2014");
+    self.selectedColor = ko.observable("#0076a7");
     self.locations = ko.observableArray([]);
     self.allMarkersUpdated = ko.observable(false);
     self.scalefactor = ko.observable(1);
@@ -284,6 +286,7 @@ $(document).ready(function() {
              var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
              $('.panned-to').attr("class", currentClasses);
              $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
+             $('circle[data-index="'+markerIdx+'"]').css('stroke', self.selectedColor())
              setMarkerSelected(markerIdx);
              e.stopPropagation();
             
@@ -324,6 +327,7 @@ $(document).ready(function() {
       var id = $(e.currentTarget).attr('id'),
           sectionColor = $(e.currentTarget).data('color'),
           type = $(e.currentTarget).data('type'),
+          selectedColor = $(e.currentTarget).data('selcolor'),
           byline = $(e.currentTarget).data('byline');
 
           $('.toplistings').scrollTop()
@@ -362,6 +366,7 @@ $(document).ready(function() {
       model.viewModel.byline(byline);
       model.viewModel.year(year);
       model.viewModel.color = sectionColor;
+      model.viewModel.selectedColor(selectedColor);
       filterLocations(type, '');
       $('.ui-slider-handle').css('background-color', model.viewModel.color);
 
@@ -391,7 +396,7 @@ $(document).ready(function() {
 
        $('.toplistings ul li.active').removeClass('active');
        $('.tabContentMap').removeClass('show-modal');
-       $('.panned-to').attr("class", currentClasses);
+       $('.panned-to').attr("class", currentClasses).css('stroke', 'none');
        e.stopPropagation();
     }
 
