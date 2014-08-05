@@ -289,7 +289,7 @@ $(document).ready(function() {
          }
     
 
-    $.getJSON("/assets/best-driver.json", function(allData) {
+    $.getJSON("assets/best-driver.json", function(allData) {
         setSliderTicks();
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
         yr = '';
