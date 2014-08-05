@@ -406,14 +406,13 @@ div.tabContent .tabContentOther .listingHeader{
 }
 .modal {
   position: absolute;
-  top: 22%;
+  top: 21%;
   bottom: 32%;
   left: 20%;
   right: 40%;
   background-color: #fff;
   display: none;
   z-index: 10;
-  overflow: scroll;
 }
 .tabContentMap.show-modal .modal, .tabContentMap.show-modal .ui-blocker {
   display: block;
@@ -466,7 +465,7 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
 
 
 .modalContainer .shareContainer{padding: 15px 15px 0;}
-.modalContainer .shareContainer h2{margin-top: 0px; color:#333333;width:100%;font-family:'Open Sans',sans-serif; font-weight:600;font-size:14px;}
+.modalContainer .shareContainer h2{margin-top: 0px; color:#333333;width:100%;font-family:'Open Sans',sans-serif; font-weight:600;font-size:14px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
 
 
 /********END MODAL*/
