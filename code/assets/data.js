@@ -137,6 +137,7 @@ $(document).ready(function() {
         }
       },
       onViewportChange: function(e, scale, transX, transY){
+
         $('.jvectormap-container .labelSvg text').each(function(index, item) {
           var itemPicked = $(item).data('index');
           var x = $('.jvectormap-container circle[data-index="'+itemPicked+'"]').attr('cx');
@@ -310,10 +311,13 @@ $(document).ready(function() {
     model.viewModel.scalefactor.subscribe(function(newValue) {
       setScaleInformation(newValue);
     });
-
  //END OF MODEL ---------------------------------
 
     //UI EVENTS
+    $('.jvectormap-zoomin, .jvectormap-zoomout').on('click', function(e) {
+        closeModal(e);
+    });
+
     $( "#tabs .tab" ).on('click', function(e) {
       var id = $(e.currentTarget).attr('id'),
           sectionColor = $(e.currentTarget).data('color'),
@@ -367,7 +371,7 @@ $(document).ready(function() {
       $(".toplistings").scrollTop(0);
 
     });
-     
+
      // Close the modal
     $( ".modalContainer .close" ).on('click', function(e) {
         closeModal(e);
@@ -441,6 +445,7 @@ $(document).ready(function() {
           }
           console.log('this '+ui.value)
           mapObj.setFocus(rounded,0.5,0.5);
+          closeModal(event);
         }
       });
     };
