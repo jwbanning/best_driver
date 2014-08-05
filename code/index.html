@@ -275,7 +275,7 @@
                 <div id="close" class="close"></div>
                 <div class="cityContainer">
                   <h2 data-bind="text: currentActiveLocation().City +', '+currentActiveLocation().State" class="cityName"></h2>
-                  <h2 class="cityRank">is the <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Top Cities'])"></span> safest driving city</h2>
+                  <h2 class="cityRank">is the <span data-bind="html: formattedNumber(currentActiveLocation()[yearFomattedTopDriver()])"></span> safest driving city</h2>
                 </div>
 
                 <div class="rankings">

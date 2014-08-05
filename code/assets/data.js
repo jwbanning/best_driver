@@ -4,16 +4,15 @@ $(document).ready(function() {
   }
 
   function filterLocations(type, year) {
-    // debugger;
     if (year==''){
       type = type;
     }
     else{
       type = year + ' ' + type;
     }
-    var clonedArray = jQuery.extend([], model.viewModel.locations());
+    var clonedArray = jQuery.extend(true, {}, model.viewModel.savedLocations());
     var currentType = type;
-    var clonedArray = ko.utils.arrayFilter(model.viewModel.locations(), function(item) {
+    var clonedArray = ko.utils.arrayFilter(new model.viewModel.savedLocations(), function(item) {
       return item.location()[type] !== null && item.location()[type] !== -1;
     });
      var m = clonedArray.sort(function(left, right) {
@@ -98,19 +97,6 @@ $(document).ready(function() {
       onMarkerOver: function(event, index){
         console.log('marker-over', index);
         bringMarkerToTop(index);
-     //    var path = $('circle[data-index="'+index+'"]');
-     //    var m = $(path).position().top + $(path).position().left;
-     // var c = $('circle')
-     // for (var i = 0; i < $('circle').length; i++) {
-     //  var ipos = $($('circle')[i]).position().top + $($('circle')[i]).position().left;
-     //   if (Math.abs(m-ipos) < 20) {
-     //    var t = parseInt($($('circle')[i]).attr('cx') )+ Math.random(10);
-     //    var x = parseInt($($('circle')[i]).attr('cy') )+ Math.random(10);
-     //    $($('circle')[i]).attr('cy', t);
-     //    $($('circle')[i]).attr('cx', x);
-     //   };
-     // };
-
         return false;
       },
       onMarkerOut: function(event, index){
@@ -118,6 +104,7 @@ $(document).ready(function() {
         return false;
       },
       onMarkerClick: function(event, index){
+        model.viewModel.shouldScroll = true;
         $('.toplistings ul li').get(index).click();
         bringMarkerToTop(index);
         event.stopPropagation();
@@ -254,26 +241,31 @@ $(document).ready(function() {
     self.id =  ko.observable("topCity");
     self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
     self.year =  ko.observable("2014");
+    self.yearFomattedTopDriver = ko.observable(self.year() + ' Top Cities');
     self.selectedColor = ko.observable("#0076a7");
     self.color = 'rgb(0, 150, 214)';
     self.locations = ko.observableArray([]);
+    self.savedLocations = ko.observableArray([]);
     self.allMarkersUpdated = ko.observable(false);
     self.scalefactor = ko.observable(1);
     self.map = setMap();
     self.currentActiveLocation = ko.observable({});
+
 
     self.formattedNumber = function(n) {
       return n+'<sup>'+([,'st','nd','rd'][~~(n/10%10)-1?n%10:0]||'th')+'</sup>'
     };
 
 
-    self.popModal = function(currentLocation,e) {
+    self.popModal = function(currentLocation,e, shouldScrollList) {
             $('.toplistings ul li.active').removeClass('active');
             $(e.currentTarget).addClass('active');
             
-      
+          if (self.shouldScroll) {
             var pos= ($('.toplistings').scrollTop()+$('li.active').position().top - 190);
             $(".toplistings").animate({ scrollTop: pos }, 500);
+            self.shouldScroll = false;
+          };
 
             $('.modal').css('border', 'solid 5px' + self.color + '');
             $('.tabContentMap').addClass('show-modal');
@@ -299,6 +291,7 @@ $(document).ready(function() {
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
         yr = '';
         self.locations(mappedTasks);
+        self.savedLocations(mappedTasks);
         filterLocations(self.initialLoadType(), yr);
         addZoomBar();
     });  
@@ -419,6 +412,7 @@ $(document).ready(function() {
         filterLocations(yearString, val);
         model.viewModel.type(yearString);
         model.viewModel.year(ui.value);
+        model.viewModel.yearFomattedTopDriver(ui.value +' '+ yearString);
       }
     });
 
