@@ -265,7 +265,7 @@ $(document).ready(function() {
             self.shouldScroll = false;
           };
 
-            $('.modal').css('border', 'solid 5px' + self.color + '');
+            $('.modal').css('border', 'solid 5px ' + self.color + '');
             $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             panMapToMarkers();
