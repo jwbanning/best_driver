@@ -6,6 +6,13 @@
 <title>More Insurance Products | Allstate</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
+
+<!-- Open Graph Tags -->
+<meta property="fb:app_id" content="51244333578" />
+<meta property="og:url" content="http://www.allstate.com/" />
+<meta property="og:title" content="America's Best Driver Report" />
+<meta property="og:type" content="article" />
+
 <!--[if gt IE 8]>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:400,600" />
 <![endif]-->
@@ -13,6 +20,9 @@
 <link rel="stylesheet" type="text/css" href="css/best_driver.css" />
 <link rel="stylesheet" type="text/css" href="css/jquery.selectbox.css" />
 <link rel="stylesheet" type="text/css" href="css/jqmodal.css" />
+
+<!-- Load Gigya's JS library -->
+<script type="text/javascript" lang="javascript" src="http://cdn.gigya.com/JS/socialize.js?apikey=3_Uk95Mmi5mBePVs-6Y5rUJH3o6duMRC8WmoWuEB9aw-Vcg89IK3ojb3Y9Dp4T8hLT"></script>
 
 <!-- JVECTOR -->
 <link rel="stylesheet" href="css/jquery-jvectormap-1.2.2.css" type="text/css" media="screen"/>
@@ -298,8 +308,8 @@
                 </div>
 
                 <div class="shareContainer">
-                  <h2>Share <span data-bind="text: currentActiveLocation().City" class="cityName"> </span> 2014 ranking:</h2>
-                  <img src="img/map/share.png" />
+                  <h2>Share <span data-bind="text: currentActiveLocation().City" class="cityName"> </span> <span class="year" data-bind="text: year"></span> ranking:</h2>
+                  <div id="cityShare"></div>
                 </div>
               </div>
             </div>
@@ -328,7 +338,7 @@
               </ul>
             </div>
             <div class="socialContiner">
-              <img src="img/map/share.png" />
+              <div id="pageShare"></div>
             </div>
           </div>
         </div>
@@ -838,8 +848,8 @@
 <script src="assets/data.js"></script>
 <script src="js/jquery-ui-1-11-0.js"></script>
 <!--*****END JVECTOR -->
-
-
-
+<!-- Gigya -->
+<script src="js/social.js"></script>
+<!--*****END Gigya -->
 </body>
 </html>
