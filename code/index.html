@@ -279,27 +279,27 @@
                 </div>
 
                 <div class="rankings">
-                  <div class="modalHeader">2014 rankings:</div>
+                  <div class="modalHeader"><span data-bind="text: year"></span> rankings:</div>
 
-                  <div class="populated section">
+                  <div class="populated section" data-bind="if: currentActiveLocation()[year()+' Highly Populated Areas']">
                     <h2 class="modalh2">Highly Populated areas:</h2>
                     <h2 class="numRank modalh2">
                       <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Highly Populated Areas'])"></span><span class="ordinal"></span>
                     </h2>
                   </div>
-                  <div class="density section">
+                  <div class="density section" data-bind="if: currentActiveLocation()[year()+' Highly Populated Areas']">
                     <h2>High density areas:</h2>
                     <h2 class="numRank">
                        <span data-bind="html: formattedNumber(currentActiveLocation()['2014 High Density Areas'])"></span><span class="ordinal"></span>
                      </h2>
                   </div>
-                  <div class="rainSnow section">
+                  <div class="rainSnow section" data-bind="if: currentActiveLocation()[year()+' Highly Populated Areas']">
                     <h2>Rain and snow:</h2>
                     <h2 class="numRank">
                       <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Rain & Snow'])"></span><span class="ordinal"></span>
                     </h2>
                   </div>
-                  <div class="allConditions section">
+                  <div class="allConditions section" data-bind="if: currentActiveLocation()[year()+' Highly Populated Areas']">
                     <h2>All conditions:</h2>
                     <h2 class="numRank">
                       <span data-bind="html: formattedNumber(currentActiveLocation()['2014 All Conditions'])"></span><span class="ordinal"></span>
