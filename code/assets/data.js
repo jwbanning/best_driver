@@ -41,7 +41,7 @@ $(document).ready(function() {
   function bringMarkerToTop(index) {
      var path = $('circle[data-index="'+index+'"]');
      var pathParent  = $('circle[data-index="'+index+'"]').parent();
-     var text = '<svg class="textSvg"><text data-index="'+index+'" text-anchor="middle" alignment-baseline="middle" x="'+path.attr('cx')+'" y="'+path.attr('cy')+'" style="fill: #fff; font-size: 11px;">'+(parseInt(index)+1)+'  </text></svg>';
+     var text = '<svg class="textSvg"><text data-index="'+index+'" text-anchor="middle"  x="'+path.attr('cx')+'" y="'+(parseInt(path.attr('cy'))+4)+'" style="fill: #fff; font-size: 11px;">'+(parseInt(index)+1)+'  </text></svg>';
      if (path.attr('r') > 5) {
        $(pathParent).append(path);
        $(pathParent).append(text);
@@ -151,8 +151,9 @@ $(document).ready(function() {
           var correctIndex = $(item).data('index');
           var x = $('.jvectormap-container circle[data-index="'+correctIndex+'"]').attr('cx');
           var y = $('.jvectormap-container circle[data-index="'+correctIndex+'"]').attr('cy');
+          var yInt = parseInt(y) + 4;
           $(item).attr('x',x);
-          $(item).attr('y',y);
+          $(item).attr('y',yInt);
         });
 
         window.a = window.a + 1 || 0;

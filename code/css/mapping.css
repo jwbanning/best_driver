@@ -315,8 +315,7 @@ div.tabContent .tabContentOther .listingHeader{
   }
   div.tabContent .tabContentOther .toplistings ul li svg{
     content: "";
-/*    background-image: url('../img/map/marker.png');
-    background-image: url('../img/map/marker.svg');*/
+    background-image: url('../img/map/marker.png')\9;
     background-size: contain;
     background-color: transparent;
     background-repeat: no-repeat;
