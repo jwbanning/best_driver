@@ -234,7 +234,6 @@
   <div class="hero-bestdriver">
     <img alt="Allstate America’s Best Drivers Report®" src="http://placehold.it/450x150.png&text=Allstate+America’s+Best+Drivers+Report®">
   </div>  
-
   <div class="bestdriver-app">
     <div class="mappingContainer">
       <ul id="tabs">
@@ -276,7 +275,12 @@
                 <div id="close" class="close"></div>
                 <div class="cityContainer">
                   <h2 data-bind="text: currentActiveLocation().City +', '+currentActiveLocation().State" class="cityName"></h2>
-                  <h2 class="cityRank">was ranked the <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Top Cities'])"></span> safest driving city in <span class="year" data-bind="text: year"></span></h2>
+                    <!-- ko if: year() == '2014' -->
+                    <h2 class="cityRank">is the <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Top Cities'])"></span> safest driving city</h2>
+                    <!-- /ko -->
+                    <!-- ko if: year() != '2014' -->
+                    <h2 class="cityRank">was ranked the <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Top Cities'])"></span> safest driving city in <span class="year" data-bind="text: year"></span></h2>
+                    <!-- /ko -->
                 </div>
 
                 <div class="rankings">
