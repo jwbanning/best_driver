@@ -238,7 +238,7 @@ $(document).ready(function() {
     self.type =  ko.observable("Top Cities");
     self.initialLoadType =  ko.observable("2014 Top Cities");
     self.id =  ko.observable("topCity");
-    self.byline =  ko.observable("Explore the cities with the fewest auto collisions");
+    self.byline =  ko.observable("Explore cities that are least likely to experience collisions.");
     self.year =  ko.observable("2014");
     self.yearFomattedTopDriver = ko.observable(self.year() + ' Top Cities');
     self.selectedColor = ko.observable("#0076a7");

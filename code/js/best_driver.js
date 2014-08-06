@@ -18,6 +18,19 @@ $(function() {
 	if (isTablet) $('.slides_next, .slides_prev').remove();
 	$('.slides-outer').touchSwipe(swipeSlides);
 	$('.slides-nav a, .slides_next, .slides_prev').click(function(){$('.slides-outer').cycle('pause');});
+
+	//katulra
+	kWidget.embed({
+	    "targetId": "kaltura_player_1405460565",
+	    "wid": "_1437641",
+	    "uiconf_id": 14091641,
+	    "flashvars": {
+	      "streamerType": "auto"
+	    },
+	    "cache_st": 1405460565,
+	    "entry_id": "1_t5joki98"
+	});
+
 		
 });
 
