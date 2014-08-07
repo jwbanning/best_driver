@@ -474,6 +474,9 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   pointer-events:none;
   cursor:pointer;
 }
+.jvectormap-container svg g circle {
+  cursor:pointer;
+}
 .panned-to {
   color: #fff;
   font size: 14px;
