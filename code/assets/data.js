@@ -34,7 +34,7 @@ $(document).ready(function() {
   function formatMarkers(markerList, type) {
    var markers = [];
     for (var i = 0; i < model.viewModel.locations().length; i++) {
-      markers.push({'style': {fill: model.viewModel.color},'id':true, 'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
+      markers.push({'style': {fill: model.viewModel.color, stroke: model.viewModel.strokeColor},'id':true, 'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
     }
     return markers;
   }
@@ -62,9 +62,10 @@ $(document).ready(function() {
     mapObj.setFocus(scale, w, h);
   }
 
-  function setMap(color) {
+  function setMap(color, strokeColor) {
     var regionStyling = {initial: {fill: '#e8e8e8'},hover: {fill: "#666"}};
     var color = color || '#0096d6';
+    var strokeColor = strokeColor || '#fff';
     var map = new jvm.WorldMap({
       container: $('.map'),
       zoomStep: 2,
@@ -74,8 +75,7 @@ $(document).ready(function() {
       regionStyle:regionStyling,
       markerStyle: {
         initial: {
-          fill: color,
-          stroke:'#43c7ff'
+          stroke: strokeColor
         },
         selected: {
           r: 16,
@@ -215,12 +215,10 @@ $(document).ready(function() {
     var path = $('circle[data-index="'+i+'"]');
     var pathParent  = $('circle[data-index="'+i+'"]').parent();
     var color = model.viewModel.selectedColor() || '#0076a7';
-    var strokeColor = model.viewModel.strokeColor() || 'red';
-
     var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(parseInt(path.attr('cy'))+5)+'" style="fill: '+color+'; font-family: "Open Sans" font-size: 13px;">'+model.viewModel.locations()[i].location().City +'  </text></g></svg>';
     model.viewModel.map.setSelectedMarkers(i);
     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
-    $('circle[data-index="'+i+'"]').css('stroke', strokeColor);
+    
      $(pathParent).append(text);
   }
   function handleMarkersAndText(scaleFactor) {
@@ -248,8 +246,8 @@ $(document).ready(function() {
     self.year =  ko.observable("2014");
     self.yearFomattedTopDriver = ko.observable(self.year() + ' Top Cities');
     self.selectedColor = ko.observable("#0076a7");
-    self.strokeColor = ko.observable("#43c7ff");
     self.color = '#0096d6';
+    self.strokeColor = '#01d9d2';
     self.locations = ko.observableArray([]);
     self.savedLocations = ko.observableArray([]);
     self.allMarkersUpdated = ko.observable(false);
@@ -286,7 +284,6 @@ $(document).ready(function() {
              $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
              setMarkerSelected(markerIdx);
              $('.panned-to').css('fill', model.viewModel.selectedColor());
-             $('.panned-to').css('stroke', model.viewModel.strokeColor());
              e.stopPropagation();
             
          }
@@ -331,8 +328,8 @@ $(document).ready(function() {
           sectionColor = $(e.currentTarget).data('color'),
           type = $(e.currentTarget).data('type'),
           selectedColor = $(e.currentTarget).data('selcolor'),
-          strokeColor = $(e.currentTarget).data('strokecolor'),
           byline = $(e.currentTarget).data('byline');
+          strokeColor = $(e.currentTarget).data('strokecolor');
 
       $('.toplistings').scrollTop();
           
@@ -370,8 +367,8 @@ $(document).ready(function() {
       model.viewModel.byline(byline);
       model.viewModel.year(year);
       model.viewModel.color = sectionColor;
+      model.viewModel.strokeColor = strokeColor;
       model.viewModel.selectedColor(selectedColor);
-      model.viewModel.strokeColor(strokeColor);
       filterLocations(type, '');
       $('.ui-slider-handle').css('background-color', model.viewModel.color);
 
