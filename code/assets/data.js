@@ -95,13 +95,13 @@ $(document).ready(function() {
         // return false;
       },
       onMarkerOver: function(event, index){
-        console.log('marker-over', index);
+        //console.log('marker-over', index);
         bringMarkerToTop(index);
 
         return false;
       },
       onMarkerOut: function(event, index){
-        console.log('marker-out', index);
+        //console.log('marker-out', index);
         return false;
       },
       onMarkerClick: function(event, index){
