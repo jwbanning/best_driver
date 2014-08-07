@@ -8,7 +8,9 @@ var image = {
 // Define a UserAction onject
 var ua = new gigya.socialize.UserAction();
 ua.setLinkBack("http://www.allstate.com/");
-ua.setTitle("America's Best Driver Report");
+ua.setTitle("Allstate America's Best Driver Report");
+ua.setDescription("Is your city home to the best drivers in the U.S.? Allstate’s annual America’s Best Drivers Report has the answer. #BestDriversReport <a href=\"#\">LINK</a>");
+ua.addActionLink("Link", "http://www.allstate.com/");
 ua.addMediaItem(image);
 
 // Define Share Bar plugin's Parameters (Page Level)
@@ -19,7 +21,7 @@ var shareBarParams ={
         { // General Share Button
             provider:'share',
             tooltip:'Share Button',
-            userMessage:'Checkout America\'s Best Driver Report'
+            userMessage:'Is your city home to the best drivers in the U.S.? Allstate’s annual America’s Best Drivers Report has the answer. #BestDriversReport <a href="#">LINK</a>'
         }
     ],
     containerID: 'pageShare' // location of the Share Bar plugin
@@ -31,7 +33,9 @@ gigya.socialize.showShareBarUI(shareBarParams);
 // Define a UserAction onject
 var uaCity = new gigya.socialize.UserAction();
 uaCity.setLinkBack("http://www.allstate.com/");
-uaCity.setTitle("America's Best Driver Report");
+uaCity.setTitle("Allstate America's Best Driver Report");
+uaCity.setDescription("{City} is the {rank} safest driving city. See where your city ranks on America’s Best Drivers Report. #BestDriversReport <a href=\"#\">LINK</a>");
+uaCity.addActionLink("Link", "http://www.allstate.com/");
 uaCity.addMediaItem(image);
 
 // Define Share Bar plugin's Parameters (City Level)
@@ -42,7 +46,7 @@ var cityShareBarParams = {
         { // General Share Button
             provider: 'share',
             tooltip: 'Share Button',
-            userMessage: 'Checkout America\'s Best Driver Report'
+            userMessage: '{city} is the {rank} safest driving city. See where your city ranks on America’s Best Drivers Report. #BestDriversReport <a href="#">LINK</a>'
         }
     ],
     containerID: 'cityShare' // location of the Share Bar plugin
