@@ -409,6 +409,7 @@ $(document).ready(function() {
       step: 1,
       slide: function( event, ui ) {
         closeModal(event);
+        $(".toplistings").scrollTop(0);
         $('.tabContentMap').removeClass('show-modal');
         //need to reset the map to be back at the US view.
         var mapObject = $('.map').vectorMap('get', 'mapObject');
