@@ -30,8 +30,6 @@ $(function() {
 	    "cache_st": 1405460565,
 	    "entry_id": "1_t5joki98"
 	});
-
-		
 });
 
 function fontResize() {
