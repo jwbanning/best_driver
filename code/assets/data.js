@@ -222,7 +222,8 @@ $(document).ready(function() {
   }
   function handleMarkersAndText(scaleFactor) {
     for (var i = 0; i < model.viewModel.locations().length; i++) {
-      if (model.viewModel.locations()[i].location()['Zoom Level'+scaleFactor+''] == 'Y' || i < 11) {
+        //if (model.viewModel.locations()[i].location()['Zoom Level'+scaleFactor+''] == 'Y' || i < 11) {
+      if (model.viewModel.locations()[i].location()['Zoom Level' + scaleFactor + ''] == 'Y') {
         setMarkerSelected(i);
       }
       else {
@@ -330,7 +331,7 @@ $(document).ready(function() {
           strokeColor = $(e.currentTarget).data('strokecolor'),
           byline = $(e.currentTarget).data('byline');
 
-          $('.toplistings').scrollTop()
+      $('.toplistings').scrollTop();
           
           // hacks to handle the bad JSON
           var year = '2014';

@@ -284,7 +284,6 @@ div.tabContent .tabContentOther .listingHeader{
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
     height: 445px;
-    /*overflow: scroll;*/
     overflow-y: scroll;
     overflow-x: hidden;
   }
