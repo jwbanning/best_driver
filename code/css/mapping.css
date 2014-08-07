@@ -495,5 +495,12 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   float: left;
   margin-top: 30px;
 }
+div.jvectormap-label{
+  border: solid 1px #000;
+  background-color: #fff;
+  padding:3px;
+  color: #000;
+  border-radius: 0px
+}
 
 
