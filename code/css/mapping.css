@@ -242,7 +242,7 @@ div.tabContent .tabContentOther{
 div.tabContent .tabContentOther .listingHeader{
   padding: 30px 10px 30px 15px;
   border-bottom: solid 1px #ececec;
-  height: 185px;
+  height: 195px;
   position: relative;
   font-family: 'Open Sans', sans-serif;
   color: #666;
@@ -283,7 +283,7 @@ div.tabContent .tabContentOther .listingHeader{
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
-    height: 445px;
+    height: 435px;
     overflow-y: scroll;
     overflow-x: hidden;
   }
