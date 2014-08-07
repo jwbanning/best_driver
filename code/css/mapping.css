@@ -489,5 +489,9 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   padding: 20px;
 }
 
+.commentContainer{
+  float: left;
+  margin-top: 30px;
+}
 
 
