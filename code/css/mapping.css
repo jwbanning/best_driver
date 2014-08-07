@@ -269,10 +269,11 @@ div.tabContent .tabContentOther .listingHeader{
     /*font-family: 'Open Sans', sans-serif;*/
   }
   div.tabContent .tabContentOther .listingHeader p {
-    position: absolute;
-    bottom: 30px;
+   /* position: absolute;
+    bottom: 30px;*/
     font-size: 13px;
     margin-top: 0px;
+    float: left;
     /*font-family: 'Open Sans', sans-serif;*/
 
   }
