@@ -88,8 +88,11 @@ $(document).ready(function() {
       markersSelectableOne: false,
 
       onMarkerLabelShow: function(event, label, index){
-        label.html(label.html()+' (modified marker)');
-        return false;
+        // console.log(label);
+        label.html(
+          '<div class="labelContainer">'+ label.html() +'</div>'
+          );
+        // return false;
       },
       onMarkerOver: function(event, index){
         console.log('marker-over', index);
