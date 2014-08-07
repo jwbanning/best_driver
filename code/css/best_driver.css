@@ -198,6 +198,38 @@ ul.breadcrumb li span {
 }
 .bestdriver-right .stat-top {
 	border:1px solid #999;
+	background-color: #f3f3f3;
+	width:360px;
+	height:197px;
+	position: relative;
+}
+.bestdriver-right .stat-top .carCrashImage{
+	height:100%;
+	background: url('../img/home/Fact_Collision10Years_Top.png') no-repeat center;
+}
+.bestdriver-right .stat-top .twitterContainer, .bestdriver-right .stat-bottom .twitterContainer{
+	height:25px;
+	width: 25px;
+	background: url('../img/home/Twitter_INACTIVE.png') no-repeat center;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+.bestdriver-right .stat-top .twitterContainer:hover, .bestdriver-right .stat-bottom .twitterContainer:hover{
+	background: url('../img/home/Twitter_ROLLOVER.png') no-repeat center;
+}
+.bestdriver-right .stat-bottom {
+	border:1px solid #999;
+	background-color: #f3f3f3;
+	width:360px;
+	height:115px;
+	position: relative;
+}
+.bestdriver-right .stat-bottom .percentage{
+	background: url('../img/home/Fact_Fatalities_Bottom.png') no-repeat center;
+	height: 100%
+}
+.bestdriver-right .stat-bottom ..twitterContainer{
 }
 .bestdriver-right .stat-bottom {
 	border:1px solid #999;

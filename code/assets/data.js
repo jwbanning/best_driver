@@ -10,15 +10,15 @@ $(document).ready(function() {
     else{
       type = year + ' ' + type;
     }
-    var clonedArray = jQuery.extend(true, {}, model.viewModel.savedLocations());
-    var currentType = type;
+
+    var clonedArray = jQuery.extend(true, {}, model.viewModel.savedLocations()); //get all the data
+    var currentType = type; //get the filter
     var clonedArray = ko.utils.arrayFilter(new model.viewModel.savedLocations(), function(item) {
       return item.location()[type] !== null && item.location()[type] !== -1;
+    }); //get the location that has no nulls.
+    var m = clonedArray.sort(function(left, right) {
+      return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
     });
-     var m = clonedArray.sort(function(left, right) {
-        return left.location()[type] == right.location()[type] ? 0 : (left.location()[type] < right.location()[type] ? -1 : 1); 
-      });
-
    model.viewModel.locations(m);
    setTopMarkers(10);
   }
@@ -38,6 +38,7 @@ $(document).ready(function() {
     }
     return markers;
   }
+
   function bringMarkerToTop(index) {
      var path = $('circle[data-index="'+index+'"]');
      var pathParent  = $('circle[data-index="'+index+'"]').parent();
@@ -97,7 +98,6 @@ $(document).ready(function() {
       onMarkerOver: function(event, index){
         //console.log('marker-over', index);
         bringMarkerToTop(index);
-
         return false;
       },
       onMarkerOut: function(event, index){
@@ -111,7 +111,6 @@ $(document).ready(function() {
         event.stopPropagation();
         event.preventDefault();
         return;
-        
       },
       onMarkerSelected: function(event, index, isSelected, selectedMarkers){
         bringMarkerToTop(index);
@@ -163,27 +162,26 @@ $(document).ready(function() {
         var scalefactor = 0;
         if (window.a > 0) {
           if (scale > 0 && scale < 2.0) {
-            console.log('US');
+            //console.log('US');
             scalefactor = 1;
           }
           else if(scale >= 2 && scale < 3.7) {
-            console.log('region');
+            //console.log('region');
             scalefactor = 2;
           }
           else if(scale >=3.7 && scale < 5) {
-            console.log('state');
+            //console.log('state');
             scalefactor = 3;
           }
           else if(scale >= 5 && scale <= 8) {
-            console.log('city');
+            //console.log('city');
             scalefactor = 4;
           }
           if (scalefactor !== model.viewModel.scalefactor()) {
             model.viewModel.scalefactor(scalefactor);
           };
         };
-
-          console.log(scalefactor);
+          //console.log(scalefactor);
         $('#zoom-bar').slider('value', '' + scalefactor + '');
       }
 
@@ -451,7 +449,7 @@ $(document).ready(function() {
           else if (ui.value == 4) {
             rounded = 8;
           }
-          console.log('this '+ui.value)
+          //console.log('this '+ui.value)
           mapObj.setFocus(rounded,0.5,0.5);
           closeModal(event);
         }
