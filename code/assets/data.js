@@ -275,8 +275,17 @@ $(document).ready(function() {
             self.shouldScroll = false;
           };
 
-            $('.modal').css('border', 'solid 5px ' + self.color + '');
-            $('.tabContentMap').addClass('show-modal');
+          $('.modal').css('border', 'solid 5px ' + self.color + '');
+
+          if(self.year() != "2014"){
+              $('.modal').css('top', '39%');
+              $('.modal').css('bottom', '46%');
+          }else{
+              $('.modal').css('top', '21%');
+              $('.modal').css('bottom', '27%');
+          }
+
+          $('.tabContentMap').addClass('show-modal');
             self.currentActiveLocation(currentLocation.location());
             panMapToMarkers();
 

@@ -276,7 +276,8 @@
                     <h2 class="cityRank">was ranked the <span data-bind="html: formattedNumber(currentActiveLocation()[year()+' '+type()])"></span> safest driving city in <span class="year" data-bind="text: year"></span></h2>
                     <!-- /ko -->
                 </div>
-              <!-- ko if: currentActiveLocation()[year()+' Highly Populated Areas'] ||  currentActiveLocation()[year()+' High Density Areas'] || currentActiveLocation()[year()+' Rain & Snow']  || currentActiveLocation()[year()+' All Conditions']-->
+
+              <!-- ko if: currentActiveLocation()[year()+' Highly Populated Areas'] ||  currentActiveLocation()[year()+' High Density Areas'] || currentActiveLocation()[year()+' Rain & Snow']  || currentActiveLocation()[year()+' All Conditions'] || year() == '2014'-->
                 <div class="rankings">
                   <div class="modalHeader"><span class="year" data-bind="text: year"></span> rankings:</div>
                   
@@ -318,11 +319,12 @@
 
                 </div>
                 <!-- /ko -->
-                 <div class="shareContainer">
+              <!-- ko if: year() == '2014' -->
+                  <div class="shareContainer">
                   <h2>Share <span data-bind="text: currentActiveLocation().City" class="cityName"> </span> <span class="year" data-bind="text: year"></span> ranking:</h2>
                   <div id="cityShare"></div>
-                </div> 
-                
+                </div>
+              <!-- /ko -->
               </div>
             </div>
           </div>
