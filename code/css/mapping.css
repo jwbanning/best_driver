@@ -575,12 +575,17 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   margin-bottom:30px;
 }
 .commentContainer p{
-font-family: 'Open Sans',sans-serif;
-font-size: 16px;
-line-height: 10px;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+}
+.safest{
+  font-family: 'Open Sans',sans-serif;
+  font-size: 15px;
+  line-height: 22px;
 }
 .ruler{
-  margin: 20px 0 40px;
+  margin: 20px 0 50px;
   clear:both;
   width:100%;
   border-top:solid 1px #dadada;
