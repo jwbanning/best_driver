@@ -205,7 +205,7 @@ ul.breadcrumb li span {
 }
 .bestdriver-right .stat-top .carCrashImage{
 	height:100%;
-	background: url('../img/home/Fact_Collision10Years_Top.png') no-repeat center;
+	background: url('../img/home/fact-collision10Years-top.png') no-repeat center;
 }
 .bestdriver-right .stat-top .twitterContainer, .bestdriver-right .stat-bottom .twitterContainer{
 	height:25px;
@@ -226,7 +226,7 @@ ul.breadcrumb li span {
 	position: relative;
 }
 .bestdriver-right .stat-bottom .percentage{
-	background: url('../img/home/Fact_Fatalities_Bottom.png') no-repeat center;
+	background: url('../img/home/fact-newport-bottom.png') no-repeat center;
 	height: 100%
 }
 .bestdriver-right .stat-bottom ..twitterContainer{
