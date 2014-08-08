@@ -174,7 +174,7 @@ div.tabContent {
   padding:0 0 0 0.0em;
   background-color: #fff;
   min-height: 100%;
-  margin-bottom: 90px;
+  margin-bottom: 35px;
   position: relative;
 }
 div.tabContent.hide {
@@ -187,6 +187,11 @@ div.tabContent .tabContentMap{
   position: relative;
 }
 /*ZOOM LEVEL CONTROLS*/
+
+.timeLine-SocialContainer{
+  width:100%;
+  padding-top:35px;
+}
 
 div.tabContent .tabContentMap .jvectormap-zoomin, div.tabContent .tabContentMap .jvectormap-zoomout{
   background: #fff;
@@ -205,7 +210,7 @@ div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20px;}
 .zoom-bar-wrapper {
   position: absolute;
   right: 26px;
-  bottom: 163px;
+  bottom: 38px;
   height: 118px;
   width: 4px;
   z-index: 8;
@@ -291,6 +296,7 @@ div.tabContent .tabContentOther .listingHeader{
 
   div.tabContent .tabContentOther .listingHeader .headingContainer h4{
     color:#666;
+<<<<<<< HEAD
     font-size:15px;
     font-weight: 600;
     line-height: 22px;
@@ -302,6 +308,18 @@ div.tabContent .tabContentOther .listingHeader{
     font-weight: 600;
     line-height: 21px;
     margin-bottom: 12px;
+=======
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    padding-top:10px;
+  }
+  div.tabContent .tabContentOther .listingHeader .headingContainer h3{
+    color:#666;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+>>>>>>> FETCH_HEAD
   }
   div.tabContent .tabContentOther .listingHeader p {
    /* position: absolute;
@@ -373,7 +391,8 @@ div.tabContent .tabContentOther .listingHeader{
 
 /*SCALEBAR*/
 .sliderContainer{
-  margin-top:40px;
+  width: 75%;
+  float:left;
 }
 .sliderContainer #slider{
   height:5px;
@@ -437,7 +456,9 @@ div.tabContent .tabContentOther .listingHeader{
 
 /*SOCIAL*/
 .socialContiner{
-  margin-top:30px;
+  float:right;
+  width:25%;
+  height:110px;
 }
 .socialContiner img{
   float:right;
@@ -550,7 +571,19 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
 
 .commentContainer{
   float: left;
-  margin-top: 30px;
+  margin-top: 10px;
+  margin-bottom:30px;
+}
+.commentContainer p{
+font-family: 'Open Sans',sans-serif;
+font-size: 16px;
+line-height: 10px;
+}
+.ruler{
+  margin: 20px 0 40px;
+  clear:both;
+  width:100%;
+  border-top:solid 1px #dadada;
 }
 div.jvectormap-label{
   border: solid 2px rgb(0, 118, 167);
