@@ -295,9 +295,6 @@ $(document).ready(function() {
 
              var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
 
-            
-             
-
              $('.panned-to').attr("class", currentClasses);
              $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
              setMarkerSelected(markerIdx);
