@@ -362,6 +362,8 @@ div.tabContent .tabContentOther .listingHeader{
     margin-top: 0px;
     overflow: hidden;
     line-height: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   div.tabContent .tabContentOther .toplistings ul li svg{
     content: "";
