@@ -344,9 +344,9 @@ $(document).ready(function() {
 
       //Slider Options
       $("#slider").slider('value','2014');
-      $('.tabContent .sliderContainer #slider').removeClass('disabled');
+      $('.tabContent .sliderContainer #slider, .timeLineCopyContainer').removeClass('disabled');
       if (!$('#tabs #topCity').hasClass('selected')){
-        $('.tabContent .sliderContainer #slider').addClass('disabled');
+        $('.tabContent .sliderContainer #slider, .timeLineCopyContainer').addClass('disabled');
         $("#slider").slider({
           disabled:true
         });

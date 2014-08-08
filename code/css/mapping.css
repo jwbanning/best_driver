@@ -174,7 +174,7 @@ div.tabContent .tabContentMap .jvectormap-zoomout{bottom:20px;}
 .zoom-bar-wrapper {
   position: absolute;
   right: 26px;
-  bottom: 120px;
+  bottom: 163px;
   height: 118px;
   width: 4px;
   z-index: 8;
@@ -371,12 +371,34 @@ div.tabContent .tabContentOther .listingHeader{
   display:inline-block;
   width:4px;
   background:#0096d6;
-  height:16px;
+  height:10px;
   position:absolute;
-  top:-5px;
+  top:0px;
 }
 .ui-slider-disabled .ui-slider-tick-mark{
   background:#f1f1f1;
+}
+
+.timeLineCopyContainer{
+  position:relative;
+  padding-top: 15px;
+}
+.timeLineCopyContainer .startYear, .timeLineCopyContainer .endYear{
+  position: absolute;
+  top:25px;
+}
+.timeLineCopyContainer .copy{
+  text-align: center;
+  padding: 10px 150px;
+}
+.timeLineCopyContainer .startYear{
+  left:-5px;
+}
+.timeLineCopyContainer .endYear{
+  right:-5px;
+}
+.timeLineCopyContainer.disabled{
+  color: #f1f1f1;
 }
 /********END SCALEBAR*/
 
