@@ -9,7 +9,7 @@ var image = {
 var ua = new gigya.socialize.UserAction();
 ua.setLinkBack("http://www.allstate.com/");
 ua.setTitle("Allstate America's Best Driver Report");
-ua.setDescription("Is your city home to the best drivers in the U.S.? Allstate’s annual America’s Best Drivers Report has the answer. #BestDriversReport <a href=\"#\">LINK</a>");
+ua.setDescription("Is your city home to the best drivers in the U.S.? Allstate’s annual America’s #BestDriversReport has the answer.");
 ua.addActionLink("Link", "http://www.allstate.com/");
 ua.addMediaItem(image);
 
@@ -21,7 +21,7 @@ var shareBarParams ={
         { // General Share Button
             provider:'share',
             tooltip:'Share Button',
-            userMessage:'Is your city home to the best drivers in the U.S.? Allstate’s annual America’s Best Drivers Report has the answer. #BestDriversReport <a href="#">LINK</a>'
+            userMessage:'Is your city home to the best drivers in the U.S.? Allstate’s annual America’s #BestDriversReport has the answer.'
         }
     ],
     containerID: 'pageShare' // location of the Share Bar plugin
@@ -34,7 +34,7 @@ gigya.socialize.showShareBarUI(shareBarParams);
 var uaCity = new gigya.socialize.UserAction();
 uaCity.setLinkBack("http://www.allstate.com/");
 uaCity.setTitle("Allstate America's Best Driver Report");
-uaCity.setDescription("{City} is the {rank} safest driving city. See where your city ranks on America’s Best Drivers Report. #BestDriversReport <a href=\"#\">LINK</a>");
+uaCity.setDescription("{City} is the {rank} safest driving city. See where your city ranks on America’s #BestDriversReport.");
 uaCity.addActionLink("Link", "http://www.allstate.com/");
 uaCity.addMediaItem(image);
 
@@ -46,7 +46,7 @@ var cityShareBarParams = {
         { // General Share Button
             provider: 'share',
             tooltip: 'Share Button',
-            userMessage: '{city} is the {rank} safest driving city. See where your city ranks on America’s Best Drivers Report. #BestDriversReport <a href="#">LINK</a>'
+            userMessage: '{City} is the {rank} safest driving city. See where your city ranks on America’s #BestDriversReport.'
         }
     ],
     containerID: 'cityShare' // location of the Share Bar plugin
