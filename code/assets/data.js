@@ -111,7 +111,9 @@ $(document).ready(function() {
       },
       onMarkerClick: function(event, index){
         model.viewModel.shouldScroll = true;
+        model.viewModel.lastMarkerClicked = index;
         var obj = model.viewModel.map.markers[index].config.dataObj[model.viewModel.year()+' '+model.viewModel.type()];
+
         $('.toplistings ul li[idx="'+obj+'"]').click();
         bringMarkerToTop(index);
         event.stopPropagation();
@@ -222,8 +224,7 @@ $(document).ready(function() {
     var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(parseInt(path.attr('cy'))+5)+'" style="fill: '+color+'; font-family: "Open Sans" font-size: 13px;">'+model.viewModel.locations()[i].location().City +'  </text></g></svg>';
     model.viewModel.map.setSelectedMarkers(i);
     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
-    
-     $(pathParent).append(text);
+    $(pathParent).append(text);
   }
   function handleMarkersAndText(scaleFactor) {
     for (var i = 0; i < model.viewModel.locations().length; i++) {
@@ -282,18 +283,28 @@ $(document).ready(function() {
             var windowHeight = $('.toplistings ul').height();
             var currentTop = $('.toplistings').scrollTop();
 
-             var markerIdx = $(e.currentTarget).attr('loopIndex');
+             var markerIdx = model.viewModel.lastMarkerClicked ? model.viewModel.lastMarkerClicked : null;
+             var markerData = model.viewModel.map.markers;
+             if (!markerIdx) {
+              for (var j in markerData) {
+                 if (markerData[j].config.dataObj[model.viewModel.year()+' '+model.viewModel.type()] == currentLocation.location()[model.viewModel.year()+' '+model.viewModel.type()]) {
+                    var markerIdx = j;
+                 }
+               };
+             };
+
              var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
 
-             // var currentLocationIndex = currentLocation.location()[model.viewModel.year()+' '+model.viewModel.type()];
-           
-             // var marker = model.viewModel.map.markers.config.dataObj[currentLocationIndex]
+            
              
 
              $('.panned-to').attr("class", currentClasses);
              $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
              setMarkerSelected(markerIdx);
              $('.panned-to').css('fill', model.viewModel.selectedColor());
+
+             model.viewModel.lastMarkerClicked = null;
+
              e.stopPropagation();
             
          }

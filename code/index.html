@@ -280,10 +280,10 @@
                 <div class="cityContainer">
                   <h2 data-bind="text: currentActiveLocation().City +', '+currentActiveLocation().State" class="cityName"></h2>
                     <!-- ko if: year() == '2014' -->
-                    <h2 class="cityRank">is the <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Top Cities'])"></span> safest driving city</h2>
+                    <h2 class="cityRank">is the <span data-bind="html: formattedNumber(currentActiveLocation()[year()+' '+type()])"></span> safest driving city</h2>
                     <!-- /ko -->
                     <!-- ko if: year() != '2014' -->
-                    <h2 class="cityRank">was ranked the <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Top Cities'])"></span> safest driving city in <span class="year" data-bind="text: year"></span></h2>
+                    <h2 class="cityRank">was ranked the <span data-bind="html: formattedNumber(currentActiveLocation()[year()+' '+type()])"></span> safest driving city in <span class="year" data-bind="text: year"></span></h2>
                     <!-- /ko -->
                 </div>
 
