@@ -532,6 +532,11 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   margin-top: 10px;
   margin-bottom:30px;
 }
+.commentContainer p{
+font-family: 'Open Sans',sans-serif;
+font-size: 16px;
+line-height: 10px;
+}
 .ruler{
   margin: 20px 0 40px;
   clear:both;
