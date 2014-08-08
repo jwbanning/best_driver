@@ -46,7 +46,8 @@ var cityShareBarParams = {
         { // General Share Button
             provider: 'share',
             tooltip: 'Share Button',
-            userMessage: '{City} is the {rank} safest driving city. See where your city ranks on America’s #BestDriversReport.'
+            userMessage: '{City} is the {rank} safest driving city. See where your city ranks on America’s #BestDriversReport.',
+
         }
     ],
     containerID: 'cityShare' // location of the Share Bar plugin

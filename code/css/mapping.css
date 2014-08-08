@@ -302,24 +302,19 @@ div.tabContent .tabContentOther .listingHeader{
     line-height: 22px;
     padding-top: 7px;
   }
+  div.tabContent .tabContentOther .listingHeader .headingContainer h4{
+    color:#666;
+    font-size:15px;
+    font-weight: 600;
+    line-height: 22px;
+    padding-top: 7px;
+  }
   div.tabContent .tabContentOther .listingHeader .headingContainer h3{
     color:#666;
     font-size:17px;
     font-weight: 600;
     line-height: 21px;
     margin-bottom: 12px;
-=======
-    font-size: 15px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    padding-top:10px;
-  }
-  div.tabContent .tabContentOther .listingHeader .headingContainer h3{
-    color:#666;
-    font-size: 22px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
->>>>>>> FETCH_HEAD
   }
   div.tabContent .tabContentOther .listingHeader p {
    /* position: absolute;
