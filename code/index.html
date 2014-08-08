@@ -263,16 +263,6 @@
         <div class="tabContent" id="advantages">
           <div class="tabContentMap">
             <div class="map" style=""></div>
-            <div class="sliderContainer">
-              <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content">
-                <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 100%;"></a>
-              </div>
-              <div class="timeLineCopyContainer">
-                <p class="startYear">2005</p>
-                <p class="copy">Use the slider to view driver data from the past 10 years of Allstate America’s Best Drivers Report<sup class="superscript">®</sup>.</p>
-                <p class="endYear">2014</p>
-              </div>
-            </div>
             <div class="ui-blocker"></div>
             <div class="modal" style="border: 5px solid rgb(0, 150, 214);">
               <div class="modalContainer">
@@ -315,11 +305,6 @@
                     </h2>
                   </div>
                 </div>
-
-                <div class="shareContainer">
-                  <h2>Share <span data-bind="text: currentActiveLocation().City" class="cityName"> </span> <span class="year" data-bind="text: year"></span> ranking:</h2>
-                  <div id="cityShare"></div>
-                </div>
               </div>
             </div>
           </div>
@@ -345,19 +330,39 @@
                 </li>
               </ul>
             </div>
-            <div class="socialContiner">
-              <div id="pageShare"></div>
-            </div>
           </div>
         </div>
+
+
       </div>
-    </div>  
+
+    </div>
+    <div class="timeLine-SocialContainer">
+      <div class="sliderContainer">
+        <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content">
+          <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 100%;"></a>
+        </div>
+        <div class="timeLineCopyContainer">
+          <p class="startYear">2005</p>
+          <p class="copy">Use the slider to view driver data from the past 10 years of Allstate America’s Best Drivers Report<sup class="superscript">®</sup>.</p>
+          <p class="endYear">2014</p>
+        </div>
+      </div>
+
+    <!--<div class="shareContainer">
+        <h2>Share <span data-bind="text: currentActiveLocation().City" class="cityName"> </span> <span class="year" data-bind="text: year"></span> ranking:</h2>
+        <div id="cityShare"></div>
+      </div> -->
+
+      <div class="socialContiner">
+        <div id="pageShare"></div>
+      </div>
+    </div>
   </div>
   <div class="commentContainer">
     <p>Allstate is committed to helping people across the nation protect their cars and families. Allstate America’s Best Driving Report<sup class="superscript">®</sup> is an annual ranking that identifies which of the 200 largest U.S. cities has the safest drivers. Sharing this data every year can highlight the importance of educating people about the importance of safe driving. <a href="#" class="orange">Download the full report.</a></p>
   </div>
-  <hr />
-
+  <div class="ruler"></div>
   <h2>The Safest Drivers From Coast To Coast.</h2>
   <p>From always buckling up to never texting behind the wheel, there are many ways people across the nation practice safe driving habits. With its annual report, Allstate hopes to encourage Americans to be safer, smarter drivers.</p>
 
