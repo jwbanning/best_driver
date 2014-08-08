@@ -88,6 +88,7 @@ body{
   background-size: 70px 70px;
   background-repeat: no-repeat;
   background-position:center 5px;
+  cursor: pointer;
  }
 
  #tabs .tab:last-child {
@@ -98,16 +99,46 @@ body{
   box-shadow: 0px 0px 1px 1px #ccc;*/
  }
 
-#tabs #topCity {background-image: url('../img/map/topCities_Gray.png');}
-#tabs #topCity.selected, .icon.topCity{background-image: url('../img/map/topCities_Active.png');}
-#tabs #populated{background-image: url('../img/map/populated_Gray.png');}
-#tabs #populated.selected, .icon.populated{background-image: url('../img/map/populated_Active.png');}
-#tabs #density{background-image: url('../img/map/density_Gray.png');}
-#tabs #density.selected, .icon.density{background-image: url('../img/map/density_Active.png');}
-#tabs #rainSnow{background-image: url('../img/map/rainSnow_Gray.png');}
-#tabs #rainSnow.selected, .icon.rainSnow{background-image: url('../img/map/rainSnow_Active.png');}
-#tabs #allConditions{background-image: url('../img/map/allConditions_Gray.png');}
-#tabs #allConditions.selected, .icon.allConditions{background-image: url('../img/map/allConditions_Active.png');}
+#tabs #topCity {
+    background-image: url('../img/map/topCities_Gray.png');
+    background-position: center top;
+  }
+#tabs #topCity.selected, .icon.topCity{
+  background-image: url('../img/map/topCities_Active.png');
+  background-position: center top;
+}
+#tabs #populated{
+  background-image: url('../img/map/populated_Gray.png');
+  background-position: center top;
+}
+#tabs #populated.selected, .icon.populated{
+  background-image: url('../img/map/populated_Active.png');
+  background-position: center top;
+}
+#tabs #density{
+  background-image: url('../img/map/density_Gray.png');
+  background-position: center top;
+}
+#tabs #density.selected, .icon.density{
+  background-image: url('../img/map/density_Active.png');
+  background-position: center top;
+}
+#tabs #rainSnow{
+  background-image: url('../img/map/rainSnow_Gray.png');
+  background-position: center top;
+}
+#tabs #rainSnow.selected, .icon.rainSnow{
+  background-image: url('../img/map/rainSnow_Active.png');
+  background-position: center top;
+}
+#tabs #allConditions{
+  background-image: url('../img/map/allConditions_Gray.png');
+  background-position: center top;
+}
+#tabs #allConditions.selected, .icon.allConditions{
+  background-image: url('../img/map/allConditions_Active.png');
+  background-position: center top;
+}
 
 #tabs .tab.selected {
   background-color: #fff;
@@ -252,7 +283,6 @@ div.tabContent .tabContentOther .listingHeader{
 }
   div.tabContent .tabContentOther .listingHeader .headingContainer {}
   div.tabContent .tabContentOther .listingHeader .headingContainer .icon{
-    background-size: 70px 70px;
     background-repeat: no-repeat;
     height: 70px;
     width: 70px;
@@ -262,18 +292,24 @@ div.tabContent .tabContentOther .listingHeader{
   div.tabContent .tabContentOther .listingHeader .headingContainer h4{
     color:#666;
     font-size:15px;
+    font-weight: 600;
+    line-height: 22px;
+    padding-top: 7px;
   }
   div.tabContent .tabContentOther .listingHeader .headingContainer h3{
     color:#666;
     font-size:17px;
-    /*font-family: 'Open Sans', sans-serif;*/
+    font-weight: 600;
+    line-height: 21px;
+    margin-bottom: 12px;
   }
   div.tabContent .tabContentOther .listingHeader p {
    /* position: absolute;
     bottom: 30px;*/
-    font-size: 13px;
+    font-size: 12px;
     margin-top: 0px;
     float: left;
+    padding: 0 22px;
     /*font-family: 'Open Sans', sans-serif;*/
 
   }
@@ -311,9 +347,6 @@ div.tabContent .tabContentOther .listingHeader{
   }
   div.tabContent .tabContentOther .toplistings ul li p{
     margin-top: 0px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    word-wrap: normal;
     overflow: hidden;
   }
   div.tabContent .tabContentOther .toplistings ul li svg{
@@ -490,7 +523,7 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
 
 
 .modalContainer .shareContainer{padding: 15px 15px 0;}
-.modalContainer .shareContainer h2{margin-top: 0px; color:#333333;width:100%;font-family:'Open Sans',sans-serif; font-weight:500;font-size:11px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-bottom: 6px; line-height: 15px;}
+.modalContainer .shareContainer h2{margin-top: 0px; color:#333333;width:100%;font-family:'Open Sans',sans-serif; font-weight:600;font-size:11px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-bottom: 6px; line-height: 15px;}
 
 
 /********END MODAL*/
@@ -520,10 +553,15 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   margin-top: 30px;
 }
 div.jvectormap-label{
-  border: solid 1px #000;
+  border: solid 2px rgb(0, 118, 167);
   background-color: #fff;
   padding:3px;
   color: #000;
-  border-radius: 0px
+  border-radius: 0px;
+  font-weight: 500;
+  font-size: 12px;
+  font-family: 'Open sans';
 }
+
+
 

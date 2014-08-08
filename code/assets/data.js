@@ -349,6 +349,8 @@ $(document).ready(function() {
           byline = $(e.currentTarget).data('byline');
           strokeColor = $(e.currentTarget).data('strokecolor');
 
+      $('div.jvectormap-label').css('border', '2px solid '+selectedColor+'')
+
       $('.toplistings').scrollTop();
           
           // hacks to handle the bad JSON
