@@ -264,7 +264,7 @@
           <div class="tabContentMap">
             <div class="map" style=""></div>
             <div class="sliderContainer">
-              <p>Use the slider to view driver data from the past 10 years of Allstate America’s Best Drivers Report®.</p>
+              <p>Use the slider to view driver data from the past 10 years of Allstate America’s Best Drivers Report<sup class="superscript">®</sup>.</p>
               <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content">
                 <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 100%;"></a>
               </div>
@@ -332,14 +332,13 @@
             </div>
             <div class="toplistings">
               <ul data-bind="foreach: locations, visible: locations().length > 0">
-                <li data-bind="click: $parent.popModal, attr:{idx: $index()}" >
+                 <li data-bind="click: $parent.popModal, attr:{idx: location()[$parent.year()+' '+$parent.type()]}" >
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="44px" viewBox="0 0 30 44" enable-background="new 0 0 30 44" xml:space="preserve">
                     <path fill="#0276A7" d="M28.898,16.164c0,7.659-13.867,24.65-13.867,24.65S1.167,23.822,1.167,16.164c0-7.658,6.208-13.866,13.864-13.866C22.689,2.298,28.898,8.505,28.898,16.164z"/>
-                      <text text-anchor="middle" alignment-baseline="middle" x="14.4" y="16" style="fill: #fff; font-size: 11px;" data-bind="text:($index() + 1)">  </text>
-                   
+                      <text text-anchor="middle" alignment-baseline="middle" x="14.4" y="16" style="fill: #fff; font-size: 11px;" data-bind="text:location()[$parent.year()+' '+$parent.type()]">  </text>
+                   <p data-bind="text: location().City +', '+ location().State"></p>
                   </svg>
-                  <p data-bind="text: location().City +', '+ location().State"></p>
-                </li> 
+                </li>
               </ul>
             </div>
             <div class="socialContiner">
@@ -351,7 +350,7 @@
     </div>  
   </div>
   <div class="commentContainer">
-    <p>Allstate is committed to helping people across the nation protect their cars and families. Allstate America’s Best Driving Report® is an annual ranking that identifies which of the 200 largest U.S. cities has the safest drivers. Sharing this data every year can highlight the importance of educating people about the importance of safe driving. <a href="#" class="orange">Download the full report.</a></p>
+    <p>Allstate is committed to helping people across the nation protect their cars and families. Allstate America’s Best Driving Report<sup class="superscript">®</sup> is an annual ranking that identifies which of the 200 largest U.S. cities has the safest drivers. Sharing this data every year can highlight the importance of educating people about the importance of safe driving. <a href="#" class="orange">Download the full report.</a></p>
   </div>
   <hr />
 

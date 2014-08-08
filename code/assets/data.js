@@ -25,16 +25,21 @@ $(document).ready(function() {
 
 
   function setTopMarkers(numberCount) {
+    var markerData = model.viewModel.map.markers; //[0].config.dataObj;
     for (var i = 0; i < numberCount; i++) {
-     model.viewModel.map.setSelectedMarkers(i);
-     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
+     for (var j in markerData) {
+       if (markerData[j].config.dataObj[model.viewModel.year()+' '+model.viewModel.type()] == i+1) {
+          model.viewModel.map.setSelectedMarkers(j);
+          $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
+       }
+     };
     };
   }
 
   function formatMarkers(markerList, type) {
    var markers = [];
     for (var i = 0; i < model.viewModel.locations().length; i++) {
-      markers.push({'style': {fill: model.viewModel.color, stroke: model.viewModel.strokeColor},'id':true, 'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
+      markers.push({'style': {fill: model.viewModel.color, stroke: model.viewModel.strokeColor},'dataObj':model.viewModel.locations()[i].location(), 'id':true, 'latLng': [model.viewModel.locations()[i].location().Lat, model.viewModel.locations()[i].location().Lon], 'name': model.viewModel.locations()[i].location().City +", " + model.viewModel.locations()[i].location().State});
     }
     return markers;
   }
@@ -106,7 +111,8 @@ $(document).ready(function() {
       },
       onMarkerClick: function(event, index){
         model.viewModel.shouldScroll = true;
-        $('.toplistings ul li').get(index).click();
+        var obj = model.viewModel.map.markers[index].config.dataObj[model.viewModel.year()+' '+model.viewModel.type()];
+        $('.toplistings ul li[idx="'+obj+'"]').click();
         bringMarkerToTop(index);
         event.stopPropagation();
         event.preventDefault();
@@ -276,8 +282,14 @@ $(document).ready(function() {
             var windowHeight = $('.toplistings ul').height();
             var currentTop = $('.toplistings').scrollTop();
 
-             var markerIdx = $(e.currentTarget).attr('idx');
+             var markerIdx = $(e.currentTarget).attr('loopIndex');
              var currentClasses = $('circle[data-index="' + markerIdx + '"]').attr("class");
+
+             // var currentLocationIndex = currentLocation.location()[model.viewModel.year()+' '+model.viewModel.type()];
+           
+             // var marker = model.viewModel.map.markers.config.dataObj[currentLocationIndex]
+             
+
              $('.panned-to').attr("class", currentClasses);
              $('circle[data-index="'+markerIdx+'"]').attr("class", currentClasses +" panned-to");
              setMarkerSelected(markerIdx);
@@ -290,10 +302,10 @@ $(document).ready(function() {
     $.getJSON("assets/best-driver.json", function(allData) {
         setSliderTicks();
         var mappedTasks = $.map(allData, function(item) { return new Locations(item) });
-        yr = '';
+        var year = '';
         self.locations(mappedTasks);
         self.savedLocations(mappedTasks);
-        filterLocations(self.initialLoadType(), yr);
+        filterLocations(self.initialLoadType(), year);
         addZoomBar();
     });  
   }
