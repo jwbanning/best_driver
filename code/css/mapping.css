@@ -360,7 +360,7 @@ div.tabContent .tabContentOther .listingHeader{
   div.tabContent .tabContentOther .toplistings ul li p{
     margin-top: 0px;
     overflow: hidden;
-    line-height: 16px;
+    line-height: 25px;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
