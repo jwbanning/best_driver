@@ -515,6 +515,7 @@ div#slider.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-
   height:12px;
   width:12px;
   position: absolute;
+  cursor: pointer;
   top: 15px;
   right:15px;
 }
@@ -607,6 +608,18 @@ div.jvectormap-label{
   font-weight: 500;
   font-size: 12px;
   font-family: 'Open sans';
+}
+
+#pageShare .gig-share-button *, #cityShare .gig-share-button *{
+  background-image:none !important;
+}
+#cityShare .gig-share-button, #pageShare .gig-share-button {
+  background-image:url('../img/icons/share.png');
+  min-width: 66px;
+  background-repeat: no-repeat;
+}
+#cityShare .gig-button-text, #pageShare .gig-button-text {
+  opacity: 0;
 }
 
 

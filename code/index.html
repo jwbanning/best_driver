@@ -276,39 +276,53 @@
                     <h2 class="cityRank">was ranked the <span data-bind="html: formattedNumber(currentActiveLocation()[year()+' '+type()])"></span> safest driving city in <span class="year" data-bind="text: year"></span></h2>
                     <!-- /ko -->
                 </div>
-
+              <!-- ko if: currentActiveLocation()[year()+' Highly Populated Areas'] ||  currentActiveLocation()[year()+' High Density Areas'] || currentActiveLocation()[year()+' Rain & Snow']  || currentActiveLocation()[year()+' All Conditions']-->
                 <div class="rankings">
                   <div class="modalHeader"><span class="year" data-bind="text: year"></span> rankings:</div>
-
-                  <div class="populated section" data-bind="if: currentActiveLocation()[year()+' Highly Populated Areas']">
+                  
+                  <!-- ko if: currentActiveLocation()[year()+' Highly Populated Areas'] --> 
+                  <div class="populated section">
                     <h2 class="modalh2">Highly Populated areas:</h2>
                     <h2 class="numRank modalh2">
-                      <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Highly Populated Areas'])"></span><span class="ordinal"></span>
+                      <span data-bind="html: formattedNumber(currentActiveLocation()[year()+' Highly Populated Areas'])"></span><span class="ordinal"></span>
                     </h2>
                   </div>
-                  <div class="density section" data-bind="if: currentActiveLocation()[year()+' Highly Populated Areas']">
+                  <!-- /ko -->
+
+                  <!-- ko if: currentActiveLocation()[year()+' High Density Areas'] -->
+                  <div class="density section">
                     <h2>High density areas:</h2>
                     <h2 class="numRank">
-                       <span data-bind="html: formattedNumber(currentActiveLocation()['2014 High Density Areas'])"></span><span class="ordinal"></span>
+                       <span data-bind="html: formattedNumber(currentActiveLocation()[year()+' High Density Areas'])"></span><span class="ordinal"></span>
                      </h2>
                   </div>
-                  <div class="rainSnow section" data-bind="if: currentActiveLocation()[year()+' Highly Populated Areas']">
+                  <!-- /ko -->
+
+                  <!-- ko if: currentActiveLocation()[year()+' Rain & Snow'] -->
+                  <div class="rainSnow section">
                     <h2>Rain and snow:</h2>
                     <h2 class="numRank">
                       <span data-bind="html: formattedNumber(currentActiveLocation()['2014 Rain & Snow'])"></span><span class="ordinal"></span>
                     </h2>
                   </div>
-                  <div class="allConditions section" data-bind="if: currentActiveLocation()[year()+' Highly Populated Areas']">
+                  <!-- /ko -->
+
+                  <!-- ko if: currentActiveLocation()[year()+' All Conditions'] -->
+                  <div class="allConditions section">
                     <h2>All conditions:</h2>
                     <h2 class="numRank">
-                      <span data-bind="html: formattedNumber(currentActiveLocation()['2014 All Conditions'])"></span><span class="ordinal"></span>
+                      <span data-bind="html: formattedNumber(currentActiveLocation()[year()+' All Conditions'])"></span><span class="ordinal"></span>
                     </h2>
                   </div>
+                  <!-- /ko -->
+
                 </div>
+                <!-- /ko -->
                  <div class="shareContainer">
                   <h2>Share <span data-bind="text: currentActiveLocation().City" class="cityName"> </span> <span class="year" data-bind="text: year"></span> ranking:</h2>
                   <div id="cityShare"></div>
                 </div> 
+                
               </div>
             </div>
           </div>
