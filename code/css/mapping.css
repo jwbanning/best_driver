@@ -361,6 +361,7 @@ div.tabContent .tabContentOther .listingHeader{
   div.tabContent .tabContentOther .toplistings ul li p{
     margin-top: 0px;
     overflow: hidden;
+    line-height: 16px;
   }
   div.tabContent .tabContentOther .toplistings ul li svg{
     content: "";
