@@ -389,6 +389,11 @@ div.tabContent .tabContentOther .listingHeader{
   width: 75%;
   float:left;
 }
+#slider .ui-slider-tick-mark:nth-child(2) {
+  left: 0 !important;
+  height:25px;
+  top:-10px;
+}
 .sliderContainer #slider{
   height:5px;
   width:100%;
