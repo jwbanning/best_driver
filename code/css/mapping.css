@@ -385,10 +385,16 @@ div.tabContent .tabContentOther .listingHeader{
   position:absolute;
   top:0px;
 }
-.ui-slider-disabled .ui-slider-tick-mark{
+div#slider.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all.ui-state-disabled.ui-slider-disabled{
   background:#f1f1f1;
 }
-
+.ui-state-disabled a.ui-slider-handle.ui-state-default.ui-corner-all{
+    background:#f1f1f1 !important;
+    border: 1px solid #f1f1f1 !important;
+}
+.ui-slider-disabled .ui-slider-tick-mark{
+    background:#f1f1f1;
+}
 .timeLineCopyContainer{
   position:relative;
   padding-top: 15px;
