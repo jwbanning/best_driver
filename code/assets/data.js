@@ -311,8 +311,11 @@ $(document).ready(function() {
 
              model.viewModel.lastMarkerClicked = null;
 
+             // Set the city specific social share copy
+             var city = model.viewModel.currentActiveLocation().City;
+             var rank = model.viewModel.formattedNumber(model.viewModel.currentActiveLocation()[model.viewModel.year() + ' ' + model.viewModel.type()]);
+             setCityShare(city, rank);
              e.stopPropagation();
-            
          }
     
 

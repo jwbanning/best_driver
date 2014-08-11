@@ -1,16 +1,22 @@
-﻿// Define an image media item:
+﻿// Constants
+var pageUrl = 'http://www.allstate.com/';
+var shareImage = 'http://localhost:63342/best_driver/code/img/home/share-thumbnail.jpg';
+var cityShareCopy = '{city} is the {rank} safest driving city. See where your city ranks on America’s #BestDriversReport.';
+var mapShareCopy = 'Is your city home to the best drivers in the U.S.? Allstate’s annual America’s #BestDriversReport has the answer.';
+
+// Define an image media item:
 var image = {
     type: 'image',
-    src: 'http://localhost:63342/best_driver/code/img/home/share-thumbnail.jpg',
-    href: 'http://www.allstate.com/'
+    src: shareImage,
+    href: pageUrl
 }
 
 // Define a UserAction onject
 var ua = new gigya.socialize.UserAction();
-ua.setLinkBack("http://www.allstate.com/");
-ua.setTitle("Allstate America's Best Driver Report");
-ua.setDescription("Is your city home to the best drivers in the U.S.? Allstate’s annual America’s #BestDriversReport has the answer.");
-ua.addActionLink("Link", "http://www.allstate.com/");
+ua.setLinkBack(pageUrl);
+ua.setTitle(mapShareCopy);
+ua.setDescription(' ');
+ua.addActionLink("Link", pageUrl);
 ua.addMediaItem(image);
 
 // Define Share Bar plugin's Parameters (Page Level)
@@ -21,7 +27,7 @@ var shareBarParams ={
         { // General Share Button
             provider:'share',
             tooltip:'Share Button',
-            userMessage:'Is your city home to the best drivers in the U.S.? Allstate’s annual America’s #BestDriversReport has the answer.'
+            userMessage: mapShareCopy
         }
     ],
     containerID: 'pageShare' // location of the Share Bar plugin
@@ -32,10 +38,10 @@ gigya.socialize.showShareBarUI(shareBarParams);
 
 // Define a UserAction onject
 var uaCity = new gigya.socialize.UserAction();
-uaCity.setLinkBack("http://www.allstate.com/");
-uaCity.setTitle("Allstate America's Best Driver Report");
-uaCity.setDescription("{City} is the {rank} safest driving city. See where your city ranks on America’s #BestDriversReport.");
-uaCity.addActionLink("Link", "http://www.allstate.com/");
+uaCity.setLinkBack(pageUrl);
+uaCity.setTitle(cityShareCopy);
+uaCity.setDescription(' ');
+uaCity.addActionLink("Link", pageUrl);
 uaCity.addMediaItem(image);
 
 // Define Share Bar plugin's Parameters (City Level)
@@ -46,8 +52,7 @@ var cityShareBarParams = {
         { // General Share Button
             provider: 'share',
             tooltip: 'Share Button',
-            userMessage: '{City} is the {rank} safest driving city. See where your city ranks on America’s #BestDriversReport.',
-
+            userMessage: cityShareCopy,
         }
     ],
     containerID: 'cityShare' // location of the Share Bar plugin
@@ -55,3 +60,10 @@ var cityShareBarParams = {
 
 // Load Share Bar plugin
 gigya.socialize.showShareBarUI(cityShareBarParams);
+
+function setCityShare(city, rank) {
+    var copy = cityShareCopy.replace('{city}', city);
+    copy = copy.replace("{rank}", rank);
+    copy = copy.replace(/<(?:.|\n)*?>/gm, '');
+    uaCity.setTitle(copy);
+}
