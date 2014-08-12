@@ -19,7 +19,7 @@ body {
 	margin-top: 5px;
 }
 .container_12 a{
-	font-weight: bold
+	/*font-weight: bold*/
 }
 
 a.orange:link, a.orange:visited {
@@ -45,7 +45,7 @@ a.orange:hover {
 
 .btn-cta-sm {
 	padding:7px 10px;
-	font:15px/19px 'Open Sans',sans-serif;
+	font:14px/19px 'Open Sans Semibold',sans-serif;
 	color:#fff !important;
 	text-decoration:none !important;
 	background-color:#e67e22;
@@ -197,7 +197,7 @@ ul.breadcrumb li span {
 	text-decoration:none;
 }
 .bestdriver-right .stat-top {
-	border:1px solid #999;
+	border:1px solid #dcdcdc;
 	background-color: #f3f3f3;
 	width:360px;
 	height:197px;
@@ -219,7 +219,7 @@ ul.breadcrumb li span {
 	background: url('../img/home/Twitter_ROLLOVER.png') no-repeat center;
 }
 .bestdriver-right .stat-bottom {
-	border:1px solid #999;
+	border:1px solid #dcdcdc;
 	background-color: #f3f3f3;
 	width:360px;
 	height:115px;
@@ -232,7 +232,7 @@ ul.breadcrumb li span {
 .bestdriver-right .stat-bottom .twitterContainer{
 }
 .bestdriver-right .stat-bottom {
-	border:1px solid #999;
+	border:1px solid #dcdcdc;
 	border-top: none;
 }
 
@@ -275,7 +275,7 @@ ul.breadcrumb li span {
 	right:31px;
 }
 .bestdriver-carousel .slides-inner h3 {
-	font:21px/25px 'Open Sans',sans-serif;
+	font:22px/25px 'Open Sans Regular',sans-serif;
 	color:#e67e22;
 }
 .bestdriver-carousel .slides-inner a {

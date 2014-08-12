@@ -90,6 +90,9 @@ body{
   background-position:center 5px;
   cursor: pointer;
  }
+#tabs .tab:last-child {
+  border-right: none;
+ }
 
  #tabs .tab:last-child {
 /*  border: none;
