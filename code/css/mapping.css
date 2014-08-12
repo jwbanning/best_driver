@@ -16,7 +16,6 @@ body{
   border:solid 1px #f0f0f0;
   max-width: 960px;
   background: #fff;
-  font-family: Arial;
   position: relative;
 }
 
@@ -565,6 +564,8 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
 .jvectormap-container svg g text {
   pointer-events:none;
   cursor:pointer;
+  font-family: 'Open Sans';
+  font-size: 1em;
 }
 .jvectormap-container svg g circle {
   cursor:pointer;

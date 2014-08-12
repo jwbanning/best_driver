@@ -221,7 +221,7 @@ $(document).ready(function() {
     var path = $('circle[data-index="'+i+'"]');
     var pathParent  = $('circle[data-index="'+i+'"]').parent();
     var color = model.viewModel.selectedColor() || '#073F6E';
-    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(parseInt(path.attr('cy'))+5)+'" style="fill: '+color+'; font-family: \'Open Sans\' font-size: 1.3em;">'+model.viewModel.locations()[i].location().City +'</text></g></svg>';
+    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(parseInt(path.attr('cy'))+5)+'" style="fill: '+color+'; font-family: \'Open Sans\' font-size: 1em;">'+model.viewModel.locations()[i].location().City +'</text></g></svg>';
     model.viewModel.map.setSelectedMarkers(i);
     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
     $(pathParent).append(text);
