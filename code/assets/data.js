@@ -315,7 +315,7 @@ $(document).ready(function() {
                  if ($(this).text() === model.viewModel.currentActiveLocation().City) {
                      var styles = $(this).attr("style");
                      $(this).attr("old-style", styles);
-                     $(this).attr("style", "font-family: 'Open Sans Semibold'; font-size: 15pt; color: #333333;");
+                     $(this).attr("style", "font-family: 'Open Sans',sans-serif; font-size: 15pt; font-weight: 600; color: #333333;");
                  }
              });
 
