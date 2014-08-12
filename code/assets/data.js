@@ -221,7 +221,7 @@ $(document).ready(function() {
     var path = $('circle[data-index="'+i+'"]');
     var pathParent  = $('circle[data-index="'+i+'"]').parent();
     var color = model.viewModel.selectedColor() || '#073F6E';
-    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(parseInt(path.attr('cy'))+5)+'" style="fill: '+color+'; font-family: \'Open Sans\' font-size: 1em;">'+model.viewModel.locations()[i].location().City +'</text></g></svg>';
+    var text = '<svg data-index="' + i + '" class="labelSvg" width="100%" height="100%"><g data-index="' + i + '" ><rect data-index="' + i + '" width="' + (model.viewModel.locations()[i].location().City.length * 13) + '" height="0" style=\"fill: #ffffff; fill-opacity: 0.9;\"' + '" text-anchor="left" x="' + (parseInt(path.attr('cx')) + 18) + '" y="' + (parseInt(path.attr('cy')) - 20) + '"' + '></rect><text data-index="' + i + '" text-anchor="left" x="' + (parseInt(path.attr('cx')) + 20) + '" y="' + (parseInt(path.attr('cy')) + 5) + '" style="fill: ' + color + '; font-family: \'Open Sans\' font-size: 1em;">' + model.viewModel.locations()[i].location().City + '</text></g></svg>';
     model.viewModel.map.setSelectedMarkers(i);
     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
     $(pathParent).append(text);
@@ -316,6 +316,14 @@ $(document).ready(function() {
                      var styles = $(this).attr("style");
                      $(this).attr("old-style", styles);
                      $(this).attr("style", "font-family: 'Open Sans',sans-serif; font-size: 15pt; font-weight: 600; color: #333333;");
+                     var rect = $(this).prev();
+
+                     if (rect) { // Label Background
+                         if (rect[0].nodeName === "rect") { // Make sure we are acting on the rectangle
+                             rect.attr("height", "40");
+                             rect.attr("width", ($(this).width() + 5));
+                         }
+                     }
                  }
              });
 
@@ -447,6 +455,14 @@ $(document).ready(function() {
            var styles = $(this).attr("old-style");
            $(this).attr("style", styles);
            $(this).removeAttr("old-style");
+
+           // Remove Label Background
+           var rect = $(this).prev();
+           if (rect) {
+               if (rect[0].nodeName === "rect") { // Make sure we are acting on the rectangle
+                   rect.attr("height", "0");
+               }
+           }
        });
 
        e.stopPropagation();
