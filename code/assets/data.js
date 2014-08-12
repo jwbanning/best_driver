@@ -47,7 +47,7 @@ $(document).ready(function() {
   function bringMarkerToTop(index) {
      var path = $('circle[data-index="'+index+'"]');
      var pathParent  = $('circle[data-index="'+index+'"]').parent();
-     var text = '<svg class="textSvg"><text data-index="'+index+'" text-anchor="middle"  x="'+path.attr('cx')+'" y="'+(parseInt(path.attr('cy'))+4)+'" style="fill: #fff; font-size: 11px;">'+(parseInt(index)+1)+'  </text></svg>';
+     var text = '<svg class="textSvg"><text data-index="'+index+'" text-anchor="middle"  x="'+path.attr('cx')+'" y="'+(parseInt(path.attr('cy'))+4)+'" style="fill: #fff; font-size: 11px;">'+(parseInt(index)+1)+'</text></svg>';
      if (path.attr('r') > 5) {
        $(pathParent).append(path);
        $(pathParent).append(text);
@@ -120,7 +120,7 @@ $(document).ready(function() {
         event.preventDefault();
         return;
       },
-      onMarkerSelected: function(event, index, isSelected, selectedMarkers){
+      onMarkerSelected: function (event, index, isSelected, selectedMarkers) {
         bringMarkerToTop(index);
       },
       onRegionLabelShow: function(event, label, code){
@@ -220,12 +220,13 @@ $(document).ready(function() {
   function setMarkerSelected(i) {
     var path = $('circle[data-index="'+i+'"]');
     var pathParent  = $('circle[data-index="'+i+'"]').parent();
-    var color = model.viewModel.selectedColor() || '#0076a7';
-    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(parseInt(path.attr('cy'))+5)+'" style="fill: '+color+'; font-family: "Open Sans" font-size: 13px;">'+model.viewModel.locations()[i].location().City +'  </text></g></svg>';
+    var color = model.viewModel.selectedColor() || '#073F6E';
+    var text = ' <svg class="labelSvg"><g><rect></rect><text data-index="'+i+'" text-anchor="left" x="'+(parseInt(path.attr('cx'))+20)+'" y="'+(parseInt(path.attr('cy'))+5)+'" style="fill: '+color+'; font-family: \'Open Sans\' font-size: 1.3em;">'+model.viewModel.locations()[i].location().City +'</text></g></svg>';
     model.viewModel.map.setSelectedMarkers(i);
     $('circle[data-index="'+i+'"]').css('fill', model.viewModel.color);
     $(pathParent).append(text);
   }
+
   function handleMarkersAndText(scaleFactor) {
     for (var i = 0; i < model.viewModel.locations().length; i++) {
         //if (model.viewModel.locations()[i].location()['Zoom Level'+scaleFactor+''] == 'Y' || i < 11) {
@@ -250,9 +251,9 @@ $(document).ready(function() {
     self.byline = ko.observable("Explore cities that are least likely to experience collisions.");
     self.year =  ko.observable("2014");
     self.yearFomattedTopDriver = ko.observable(self.year() + ' Top Cities');
-    self.selectedColor = ko.observable("#0076a7");
+    self.selectedColor = ko.observable("#073F6E");
     self.color = '#0096d6';
-    self.strokeColor = '#01d9d2';
+    self.strokeColor = '#43c7ff';
     self.locations = ko.observableArray([]);
     self.savedLocations = ko.observableArray([]);
     self.allMarkersUpdated = ko.observable(false);
@@ -309,6 +310,15 @@ $(document).ready(function() {
              setMarkerSelected(markerIdx);
              $('.panned-to').css('fill', model.viewModel.selectedColor());
 
+             // Add City Label
+             $('text[data-index="' + markerIdx + '"]').each(function (index) {
+                 if ($(this).text() === model.viewModel.currentActiveLocation().City) {
+                     var styles = $(this).attr("style");
+                     $(this).attr("old-style", styles);
+                     $(this).attr("style", "font-family: 'Open Sans Semibold'; font-size: 15pt; color: #333333;");
+                 }
+             });
+
              model.viewModel.lastMarkerClicked = null;
 
              // Set the city specific social share copy
@@ -361,7 +371,7 @@ $(document).ready(function() {
           byline = $(e.currentTarget).data('byline');
           strokeColor = $(e.currentTarget).data('strokecolor');
 
-      $('div.jvectormap-label').css('border', '2px solid '+selectedColor+'')
+          $('div.jvectormap-label').css('border', '2px solid ' + selectedColor + '');
 
       $('.toplistings').scrollTop();
           
@@ -431,6 +441,14 @@ $(document).ready(function() {
        $('.toplistings ul li.active').removeClass('active');
        $('.tabContentMap').removeClass('show-modal');
        $('.panned-to').attr("class", currentClasses).css('fill', model.viewModel.color);
+
+        // Remove City Label
+       $('[old-style]').each(function (index) {
+           var styles = $(this).attr("old-style");
+           $(this).attr("style", styles);
+           $(this).removeAttr("old-style");
+       });
+
        e.stopPropagation();
     }
 

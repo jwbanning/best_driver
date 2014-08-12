@@ -328,7 +328,7 @@ div.tabContent .tabContentOther .listingHeader{
 
   div.tabContent .tabContentOther .toplistings{
     border-left: 1px solid #f0f0f0;
-    padding:30px 0;
+    padding:10px 0;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -572,7 +572,6 @@ margin-top:0px; margin-bottom:0px; color:#929292;}
   font-weight: 600;
   font-family: 'Open sans';
 }
-
 .labelSvg {
   background-color: #000;
   padding: 20px;

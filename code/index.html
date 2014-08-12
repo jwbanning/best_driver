@@ -237,9 +237,10 @@
   <div class="bestdriver-app">
     <div class="mappingContainer">
       <ul id="tabs">
-        <li class="selected tab" id="topCity" data-byline="Explore cities that are least likely to experience collisions." data-type="2014 Top Cities" data-color="#0096d6" data-selcolor="#0076a7" data-strokecolor="#43c7ff"><div class="title">Top Cities</div>
-          <div class="bottomColor"></div>
-        </li>
+          <li class="selected tab" id="topCity" data-byline="Explore cities that are least likely to experience collisions." data-type="2014 Top Cities" data-color="#0096d6" data-selcolor="#073F6E" data-strokecolor="#43c7ff">
+              <div class="title">Top Cities</div>
+              <div class="bottomColor"></div>
+          </li>
         <li class="tab" id="populated" data-byline="See how drivers in highly populated areas compare." data-type="2014 Highly Populated Areas" data-color="#01b3ad" data-selcolor="#178783" data-strokecolor="#01d9d2">
           <div class="title">Highly Populated Areas</div>
           <div class="bottomColor"></div>
@@ -252,10 +253,10 @@
           <div class="title">Rain And Snow</div>
           <div class="bottomColor"></div>
         </li>
-        <li class="tab" id="allConditions" data-byline="Explore how drivers perform when you combine elements like rain, snow, population and population density." data-type="2014 All Conditions" data-color="#ee8722" data-selcolor="#b46c25" data-strokecolor="#ffc184">
-          <div class="title">All Conditions</div>
-          <div class="bottomColor"></div>
-        </li>
+          <li class="tab" id="allConditions" data-byline="Explore how drivers perform when you combine elements like rain, snow, population and population density." data-type="2014 All Conditions" data-color="#ee8722" data-selcolor="#cb4b06" data-strokecolor="#ffc184">
+              <div class="title">All Conditions</div>
+              <div class="bottomColor"></div>
+          </li>
       </ul>
 
       <div class="tabContentContainer">
@@ -344,7 +345,7 @@
                  <li data-bind="click: $parent.popModal, attr:{idx: location()[$parent.year()+' '+$parent.type()]}" >
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="44px" viewBox="0 0 30 44" enable-background="new 0 0 30 44" xml:space="preserve">
                     <path fill="#0276A7" d="M28.898,16.164c0,7.659-13.867,24.65-13.867,24.65S1.167,23.822,1.167,16.164c0-7.658,6.208-13.866,13.864-13.866C22.689,2.298,28.898,8.505,28.898,16.164z"/>
-                      <text text-anchor="middle" alignment-baseline="middle" x="14.4" y="16" style="fill: #fff; font-size: 11px;" data-bind="text:location()[$parent.year()+' '+$parent.type()]">  </text>
+                      <text text-anchor="middle" alignment-baseline="middle" x="14.4" y="16" style="fill: #fff; font-size: 11pt;" data-bind="text:location()[$parent.year()+' '+$parent.type()]">  </text>
                    <p data-bind="text: location().City +', '+ location().State"></p>
                   </svg>
                 </li>
